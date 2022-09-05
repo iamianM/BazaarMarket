@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import CreatorCard from "../components/CreatorCard";
 import CreatorCarousel from "../components/CreatorCarousel";
+import FAQ from "../components/FAQ";
+import FAQRow from "../components/FAQRow";
 import Footer from "../components/Footer";
 import FrontHero from "../components/FrontHero";
 import Header from "../components/Header";
@@ -24,19 +26,24 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="bg-gradient-to-tr min-h-screen from-primary via-secondary to-neutral" >
-        <Header />
-        <section>
-          <FrontHero />
-        </section>
-        <section>
-          <Partners />
-        </section>
-        <section>
-          <NFTCollection />
-        </section>
-        <section>
-          <CreatorCarousel />
-        </section>
+        <div className="max-w-7xl mx-auto">
+          <Header />
+          <section>
+            <FrontHero />
+          </section>
+          <section>
+            <Partners />
+          </section>
+          <section>
+            <NFTCollection />
+          </section>
+          <section>
+            <CreatorCarousel />
+          </section>
+          <section>
+            <FAQ />
+          </section>
+        </div>
         <section>
           <Footer />
         </section>
