@@ -8,12 +8,12 @@ function FAQ() {
                 <p className="font-poppins text-lg mt-5">Any questions?</p>
             </div>
             <div className="grid grid-cols-2 gap-4 mt-10">
-                <FAQRow />
-                <FAQRow />
-                <FAQRow />
-                <FAQRow />
-                <FAQRow />
-                <FAQRow />
+                <FAQRow tabIndex={0} />
+                <FAQRow tabIndex={1} />
+                <FAQRow tabIndex={2} />
+                <FAQRow tabIndex={3} />
+                <FAQRow tabIndex={4} />
+                <FAQRow tabIndex={5} />
             </div>
         </div>
     )

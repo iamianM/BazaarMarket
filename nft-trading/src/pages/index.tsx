@@ -1,13 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import CreatorCard from "../components/CreatorCard";
 import CreatorCarousel from "../components/CreatorCarousel";
 import FAQ from "../components/FAQ";
-import FAQRow from "../components/FAQRow";
 import Footer from "../components/Footer";
 import FrontHero from "../components/FrontHero";
 import Header from "../components/Header";
-import NFTCard from "../components/NFTCard";
 import NFTCollection from "../components/NFTCollection";
 import Partners from "../components/Partners";
 import { trpc } from "../utils/trpc";

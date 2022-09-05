@@ -8,7 +8,7 @@ function Header() {
         <header className="fixed top-0 right-0 left-0 p-7 z-50 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
                 <Link href={"/"}>
-                    <a className="font-bold text-2xl text-base-100">Babylon<span className="text-secondary">Traders</span></a>
+                    <a className="font-bold text-2xl text-base-100">Babylon<span className="text-primary-focus">Traders</span></a>
                 </Link>
                 <SearchBar placeholder="Search for collections" />
                 <div className="hidden lg:flex lg:space-x-7">
@@ -27,6 +27,7 @@ function Header() {
                     <ThemeSelector />
                 </div>
             </div>
+            <div className="divider" />
         </header>
     )
 }

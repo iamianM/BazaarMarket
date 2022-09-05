@@ -1,8 +1,8 @@
 import React from 'react'
 
-function FAQRow() {
+function FAQRow({ tabIndex }: { tabIndex: number }) {
     return (
-        <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-transparent outline-none">
+        <div tabIndex={tabIndex} className="collapse collapse-arrow border border-base-300 bg-transparent outline-none">
             <div className="collapse-title text-xl font-medium">
                 Lorem ipsum?
             </div>
