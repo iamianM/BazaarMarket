@@ -4,7 +4,7 @@ function CreatorCollection() {
         <div className="flex flex-col">
             <div className="avatar">
                 <div className="w-24 rounded-full">
-                    <img src="https://placeimg.com/192/192/people" />
+                    <img src="/imaginary_ones.jpeg" />
                 </div>
 
             </div>
