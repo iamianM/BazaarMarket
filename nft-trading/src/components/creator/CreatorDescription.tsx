@@ -1,6 +1,5 @@
 import LoremIpsum from "react-lorem-ipsum"
 import CreatorStats from "./CreatorStats"
-import { SocialIcon } from 'react-social-icons';
 
 function CreatorDescription() {
     return (
@@ -17,10 +16,10 @@ function CreatorDescription() {
                     <CreatorStats type="views" />
                     <div className="divider" />
                     <div className="flex justify-between">
-                        <SocialIcon url="https://twitter.com/" />
+                        {/* <SocialIcon url="https://twitter.com/" />
                         <SocialIcon url="https://www.instagram.com/" />
                         <SocialIcon url="https://www.facebook.com/" />
-                        <SocialIcon url="https://www.youtube.com/" />
+                        <SocialIcon url="https://www.youtube.com/" /> */}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { number } from 'zod'
 
 function NFTCreatorAvatar({ nft }: { nft?: string }) {
     return (
