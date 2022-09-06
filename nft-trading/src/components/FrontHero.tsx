@@ -1,5 +1,3 @@
-import React from 'react'
-import { LoremIpsum } from 'react-lorem-ipsum';
 
 function FrontHero() {
     return (
@@ -8,7 +6,9 @@ function FrontHero() {
                 <img src="/heroimage.png" className="max-w-lg rounded-lg" />
                 <div className='mr-10'>
                     <h1 className="text-5xl font-bold font-poppins text-base/[.16]">Trade & Collect NFTs!</h1>
-                    <p className="py-6 font-poppins"><LoremIpsum p={1} /></p>
+                    <p className="py-6 font-poppins">
+                        Lorem ipsum odor amet, consectetuer adipiscing elit. Ultrices orci accumsan non faucibus efficitur sem senectus viverra. Dapibus volutpat non quis nisi suscipit bibendum maecenas. Elit netus facilisi tortor mattis amet. Malesuada sollicitudin ex vitae inceptos urna. Accumsan tincidunt torquent faucibus efficitur aptent! Natoque vehicula nunc taciti phasellus suspendisse ipsum magna accumsan. Natoque euismod adipiscing ullamcorper congue magnis mauris.
+                    </p>
                     <div className='flex space-x-4'>
                         <button className="btn btn-secondary shadow-md">Explore</button>
                         <button className="btn btn-primary shadow-md">Trade</button>

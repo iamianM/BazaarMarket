@@ -9,6 +9,8 @@ import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
 import { themeChange } from 'theme-change'
 import { useEffect } from 'react';
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const MyApp: AppType = ({
   Component,
@@ -21,7 +23,9 @@ const MyApp: AppType = ({
 
   return (
     <SessionProvider session={session}>
+      <Header />
       <Component {...pageProps} />
+      <Footer />
     </SessionProvider>
   );
 };
