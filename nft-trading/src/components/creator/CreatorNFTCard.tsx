@@ -2,8 +2,8 @@
 
 function CreatorNFTCard({ src }: { src: string }) {
     return (
-        <div className="card card-normal w-96 shadow-xl cursor-pointer">
-            <img src={src} className="rounded-xl" />
+        <div className="card card-normal w-96 shadow-xl bg-white bg-opacity-50 backdrop-blur-xl cursor-pointer">
+            <img src={src} className="rounded-xl p-5" />
             <div className="card-body text-center">
                 <h2 className="text-center font-bold text-2xl">Lorem ipsum dolor sit amet</h2>
                 <div className="flex justify-evenly mt-4">

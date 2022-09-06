@@ -5,7 +5,7 @@ import { SocialIcon } from 'react-social-icons';
 function CreatorDescription() {
     return (
         <div className="mt-32 mx-12 mb-10">
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 bg-white bg-opacity-50 backdrop-blur-xl shadow-xl">
                 <div className="card-body">
                     <div className="flex flex-col text-center">
                         <h2 className="font-bold font-poppins text-2xl">Creator</h2>

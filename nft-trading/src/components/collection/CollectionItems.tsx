@@ -3,7 +3,7 @@ import NFTCollection from '../NFTCollection'
 
 function CollectionItems() {
     return (
-        <div>
+        <div className='p-5'>
             <div className="flex mt-10 space-x-4">
                 <input type="text" placeholder="Search an NFT" className="border border-base-200 focus:border-secondary outline-none flex-1 rounded-full p-2" />
                 <select className="select select-secondary w-full outline-none max-w-xs">
