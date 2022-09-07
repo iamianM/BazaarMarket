@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import AirdropCards from "../components/AirdropCards";
 import CreatorCarousel from "../components/creator/CreatorCarousel";
 import FAQ from "../components/FAQ";
-import Footer from "../components/Footer";
 import FrontHero from "../components/FrontHero";
-import Header from "../components/Header";
 import NFTCollection from "../components/NFTCollection";
 import Partners from "../components/Partners";
 import { trpc } from "../utils/trpc";
+import ModalOpenPack from "../components/ModalOpenPack";
 
 const Home: NextPage = () => {
 
@@ -41,6 +41,9 @@ const Home: NextPage = () => {
           </section>
           <section>
             <FAQ />
+          </section>
+          <section>
+            <AirdropCards />
           </section>
         </div>
       </main>
