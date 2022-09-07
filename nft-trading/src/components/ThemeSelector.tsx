@@ -43,36 +43,6 @@ export default function ThemeSelector() {
                                 </div>
                             </div>
                         </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="cupcake" data-act-classname="outline">
-                            <div data-theme="cupcake" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">cupcake</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="bumblebee" data-act-classname="outline">
-                            <div data-theme="bumblebee" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">bumblebee</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="emerald" data-act-classname="outline">
                             <div data-theme="emerald" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
                                 <div className="grid grid-cols-5 grid-rows-3">
@@ -108,21 +78,6 @@ export default function ThemeSelector() {
                                 <div className="grid grid-cols-5 grid-rows-3">
                                     <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
                                         <div className="flex-grow text-sm font-bold">synthwave</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="retro" data-act-classname="outline">
-                            <div data-theme="retro" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">retro</div>
                                         <div className="flex flex-shrink-0 flex-wrap gap-1">
                                             <div className="bg-primary w-2 rounded"></div>
                                             <div className="bg-secondary w-2 rounded"></div>
@@ -193,41 +148,11 @@ export default function ThemeSelector() {
                                 </div>
                             </div>
                         </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="forest" data-act-classname="outline">
-                            <div data-theme="forest" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">forest</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="aqua" data-act-classname="outline">
                             <div data-theme="aqua" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
                                 <div className="grid grid-cols-5 grid-rows-3">
                                     <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
                                         <div className="flex-grow text-sm font-bold">aqua</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="lofi" data-act-classname="outline">
-                            <div data-theme="lofi" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">lofi</div>
                                         <div className="flex flex-shrink-0 flex-wrap gap-1">
                                             <div className="bg-primary w-2 rounded"></div>
                                             <div className="bg-secondary w-2 rounded"></div>
@@ -258,36 +183,6 @@ export default function ThemeSelector() {
                                 <div className="grid grid-cols-5 grid-rows-3">
                                     <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
                                         <div className="flex-grow text-sm font-bold">fantasy</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="wireframe" data-act-classname="outline">
-                            <div data-theme="wireframe" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">wireframe</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="black" data-act-classname="outline">
-                            <div data-theme="black" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">black</div>
                                         <div className="flex flex-shrink-0 flex-wrap gap-1">
                                             <div className="bg-primary w-2 rounded"></div>
                                             <div className="bg-secondary w-2 rounded"></div>
@@ -408,36 +303,6 @@ export default function ThemeSelector() {
                                 <div className="grid grid-cols-5 grid-rows-3">
                                     <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
                                         <div className="flex-grow text-sm font-bold">night</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="coffee" data-act-classname="outline">
-                            <div data-theme="coffee" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">coffee</div>
-                                        <div className="flex flex-shrink-0 flex-wrap gap-1">
-                                            <div className="bg-primary w-2 rounded"></div>
-                                            <div className="bg-secondary w-2 rounded"></div>
-                                            <div className="bg-accent w-2 rounded"></div>
-                                            <div className="bg-neutral w-2 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="outline-base-content overflow-hidden rounded-lg outline outline-2 outline-offset-2" data-set-theme="winter" data-act-classname="outline">
-                            <div data-theme="winter" className="bg-base-100 text-base-content w-full cursor-pointer font-sans">
-                                <div className="grid grid-cols-5 grid-rows-3">
-                                    <div className="col-span-5 row-span-3 row-start-1 flex gap-1 py-3 px-4">
-                                        <div className="flex-grow text-sm font-bold">winter</div>
                                         <div className="flex flex-shrink-0 flex-wrap gap-1">
                                             <div className="bg-primary w-2 rounded"></div>
                                             <div className="bg-secondary w-2 rounded"></div>
