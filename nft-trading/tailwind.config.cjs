@@ -27,7 +27,8 @@ module.exports = {
     }
   },
   plugins: [
-    require("daisyui")
+    require("daisyui"),
+    require('tailwind-scrollbar-hide'),
   ],
   daisyui: {
     themes: ["acid", "light", "dark", "emerald", "corporate", "synthwave", "cyberpunk", "valentine", "halloween", "garden", "aqua", "pastel", "fantasy", "luxury", "dracula", "cmyk", "autumn", "business", "lemonade", "night"],

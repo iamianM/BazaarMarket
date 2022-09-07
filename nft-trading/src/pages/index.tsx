@@ -7,7 +7,6 @@ import FrontHero from "../components/FrontHero";
 import NFTCollection from "../components/NFTCollection";
 import Partners from "../components/Partners";
 import { trpc } from "../utils/trpc";
-import ModalOpenPack from "../components/ModalOpenPack";
 
 const Home: NextPage = () => {
 
@@ -19,8 +18,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-gradient-to-tr min-h-screen from-primary via-secondary to-neutral" >
-        <div className="max-w-7xl mx-auto">
+      <main className="min-h-screen bg-gradient-to-tr from-primary via-secondary to-neutral scrollbar-hide" >
+        <div className="max-w-sm md:max-w-3xl lg:max-w-6xl xl:max-w-7xl mx-auto">
           <section>
             <FrontHero />
           </section>

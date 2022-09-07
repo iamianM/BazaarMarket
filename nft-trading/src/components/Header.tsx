@@ -10,8 +10,10 @@ function Header() {
                 <Link href={"/"}>
                     <a className="font-bold text-2xl text-base-100">Babylon<span className="text-primary-focus">Traders</span></a>
                 </Link>
-                <SearchBar placeholder="Search for collections" />
-                <div className="hidden lg:flex lg:space-x-7">
+                <div className="hidden md:inline-flex">
+                    <SearchBar placeholder="Search for collections" />
+                </div>
+                <div className="hidden xl:flex xl:space-x-7">
                     <Link href={"/"}>
                         <a className="text-base-100 text-xl font-poppins">Collections</a>
                     </Link>
@@ -23,7 +25,7 @@ function Header() {
                     </Link>
                 </div>
                 <ConnectWallet />
-                <div className="hidden md:inline-block">
+                <div className="hidden lg:inline-block">
                     <ThemeSelector />
                 </div>
             </div>
