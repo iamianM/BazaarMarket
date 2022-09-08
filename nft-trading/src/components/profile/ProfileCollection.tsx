@@ -1,5 +1,5 @@
 
-function CreatorCollection() {
+function ProfileCollection() {
     return (
         <div className="flex flex-col">
             <div className="avatar">
@@ -13,4 +13,4 @@ function CreatorCollection() {
     )
 }
 
-export default CreatorCollection
+export default ProfileCollection

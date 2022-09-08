@@ -1,5 +1,5 @@
 
-function CreatorBanner() {
+function ProfileBanner() {
     return (
         <div className="relative">
             <img src="/banner.jpeg" alt="banner" className="w-full h-96 object-cover" />
@@ -9,4 +9,4 @@ function CreatorBanner() {
     )
 }
 
-export default CreatorBanner
+export default ProfileBanner

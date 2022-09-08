@@ -1,6 +1,7 @@
 import { useState } from "react"
-import CreatorNFTs from "./CreatorNFTs"
-function CreatorNFTInfo() {
+import CreatorNFTs from "./ProfileNFTs"
+
+function ProfileNFTInfo() {
 
     const [activeTab, setActiveTab] = useState('collectibles')
 
@@ -45,4 +46,4 @@ function CreatorNFTInfo() {
     )
 }
 
-export default CreatorNFTInfo
+export default ProfileNFTInfo

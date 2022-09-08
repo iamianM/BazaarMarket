@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-function CreatorNFTCard({ src }: { src: string }) {
+function ProfileNFTCard({ src }: { src: string }) {
     return (
         <Link href={'/nft/id'}>
             <div className="card card-normal w-96 mx-auto lg:w-80 xl:w-96 shadow-xl bg-white bg-opacity-50 backdrop-blur-xl cursor-pointer">
@@ -25,4 +25,4 @@ function CreatorNFTCard({ src }: { src: string }) {
     )
 }
 
-export default CreatorNFTCard
+export default ProfileNFTCard

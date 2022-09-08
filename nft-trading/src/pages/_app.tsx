@@ -9,7 +9,13 @@ import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
 import { themeChange } from 'theme-change'
 import { useEffect } from 'react';
-import Header from "../components/Header";
+import dynamic from 'next/dynamic'
+
+const Header = dynamic(
+  () => import('../components/Header'),
+  { ssr: false }
+)
+
 import Footer from "../components/Footer";
 
 //wagmi.
@@ -25,7 +31,7 @@ import {
 const { chains, provider } = configureChains(defaultChains, [publicProvider()])
 
 const { connectors } = getDefaultWallets({
-  appName: 'My RainbowKit App',
+  appName: 'Babylon Traders',
   chains
 });
 

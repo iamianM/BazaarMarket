@@ -1,6 +1,6 @@
-import CreatorCard from "./CreatorCard"
+import ProfileCard from "./ProfileCard"
 
-function CreatorCarousel() {
+function ProfileCarousel() {
     return (
         <div className="mt-24">
             <div className="text-center">
@@ -9,20 +9,20 @@ function CreatorCarousel() {
             </div>
             <div className="carousel carousel-center max-w-7xl mx-auto mt-10 p-4 space-x-4 bg-transparent rounded-box">
                 <div className="carousel-item">
-                    <CreatorCard src="./creator1.png" />
+                    <ProfileCard src="./creator1.png" />
                 </div>
                 <div className="carousel-item">
-                    <CreatorCard src="./creator1.png" />
+                    <ProfileCard src="./creator1.png" />
                 </div>
                 <div className="carousel-item">
-                    <CreatorCard src="./creator1.png" />
+                    <ProfileCard src="./creator1.png" />
                 </div>
                 <div className="carousel-item">
-                    <CreatorCard src="./creator1.png" />
+                    <ProfileCard src="./creator1.png" />
                 </div>
             </div>
         </div>
     )
 }
 
-export default CreatorCarousel
+export default ProfileCarousel

@@ -7,7 +7,7 @@ function CollectionInfo() {
     const [activeTab, setActiveTab] = useState('nfts')
 
     return (
-        <div>
+        <>
             <div>
                 <ul className="flex border-b border-gray-100">
                     <li className="flex-1 cursor-pointer">

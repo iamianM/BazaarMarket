@@ -1,6 +1,6 @@
 
 
-function CreatorStats({ type }: { type: string }) {
+function ProfileStats({ type }: { type: string }) {
     return (
         <div className="stats shadow bg-white bg-opacity-20 backdrop-blur-xl">
             {type === "likes" && (<div className="stat">
@@ -23,4 +23,4 @@ function CreatorStats({ type }: { type: string }) {
     )
 }
 
-export default CreatorStats
+export default ProfileStats

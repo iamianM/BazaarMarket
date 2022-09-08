@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-function CreatorCard({ src }: { src: string }) {
+function ProfileCard({ src }: { src: string }) {
     return (
         <Link href={"/profile/username"}>
             <div className="card card-normal w-96 shadow-xl cursor-pointer">
@@ -20,4 +20,4 @@ function CreatorCard({ src }: { src: string }) {
     )
 }
 
-export default CreatorCard
+export default ProfileCard

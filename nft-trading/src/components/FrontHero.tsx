@@ -5,7 +5,7 @@ function FrontHero() {
             <div className="hero-content flex-col lg:flex-row-reverse mx-auto mt-32">
                 <img src="/heroimage.png" className="max-w-sm rounded-lg" />
                 <div className='mr-10'>
-                    <h1 className="text-center text-5xl font-bold font-poppins">Trade & Collect NFTs!</h1>
+                    <h1 className="text-5xl font-bold font-poppins">Trade & Collect NFTs!</h1>
                     <p className="py-6 font-poppins">
                         Lorem ipsum odor amet, consectetuer adipiscing elit. Ultrices orci accumsan non faucibus efficitur sem senectus viverra. Dapibus volutpat non quis nisi suscipit bibendum maecenas. Elit netus facilisi tortor mattis amet. Malesuada sollicitudin ex vitae inceptos urna. Accumsan tincidunt torquent faucibus efficitur aptent! Natoque vehicula nunc taciti phasellus suspendisse ipsum magna accumsan. Natoque euismod adipiscing ullamcorper congue magnis mauris.
                     </p>

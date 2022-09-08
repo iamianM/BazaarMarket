@@ -1,6 +1,6 @@
-import CreatorCollection from "./CreatorCollection"
+import CreatorCollection from "./ProfileCollection"
 
-function CreatorCollectionCarousel() {
+function ProfileCollectionCarousel() {
     return (
         <div className="lg:mt-10">
             <h1 className="font-bold text-3xl font-poppins">Collections</h1>
@@ -65,4 +65,4 @@ function CreatorCollectionCarousel() {
     )
 }
 
-export default CreatorCollectionCarousel
+export default ProfileCollectionCarousel
