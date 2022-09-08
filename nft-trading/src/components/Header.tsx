@@ -1,9 +1,20 @@
 import Link from "next/link"
 import SearchBar from "./SearchBar"
 import ThemeSelector from "./ThemeSelector"
-import ConnectWallet from "./ConnectWallet"
+import {
+    useConnectModal,
+    useAccountModal,
+    useChainModal,
+} from '@rainbow-me/rainbowkit';
+import { useAccount } from 'wagmi'
 
 function Header() {
+
+    const { openConnectModal } = useConnectModal();
+    const { openAccountModal } = useAccountModal();
+    const { openChainModal } = useChainModal();
+    const { isConnected } = useAccount();
+
     return (
         <header className="fixed top-0 right-0 left-0 p-7 z-50 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
@@ -24,7 +35,16 @@ function Header() {
                         <a className="text-base-100 text-xl font-poppins">FAQ</a>
                     </Link>
                 </div>
-                <ConnectWallet />
+                {isConnected ?
+                    (<>
+                        <button className="btn btn-sm btn-outline btn-primary ml-3 normal-case" onClick={openAccountModal}>Profile</button>
+                        <button className="btn btn-sm btn-outline btn-primary ml-3 normal-case" onClick={openChainModal}>Chain</button>
+                    </>)
+                    :
+                    (<button className="p-2 rounded-md bg-gradient-to-tr from-primary to-secondary shadow-md" onClick={openConnectModal}>
+                        <p className="lg:inline font-poppins text-inherit">Connect wallet</p>
+                    </button>)
+                }
                 <div className="hidden lg:inline-block">
                     <ThemeSelector />
                 </div>

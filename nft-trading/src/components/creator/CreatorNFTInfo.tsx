@@ -6,7 +6,7 @@ function CreatorNFTInfo() {
 
     return (
         <>
-            <ul className="flex border-b border-gray-100 mt-10 mr-24">
+            <ul className="flex border-b border-gray-100 mt-10 max-w-md lg:max-w-2xl mx-auto">
                 <li className="flex-1 cursor-pointer">
                     <a className="relative block p-4" onClick={() => setActiveTab('collectibles')}>
                         {activeTab === 'collectibles' && <span className="absolute inset-x-0 w-full h-px bg-primary -bottom-px"></span>}

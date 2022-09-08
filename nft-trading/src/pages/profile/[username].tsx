@@ -12,12 +12,12 @@ function ProfilePage() {
 
     return (
         <div className="bg-gradient-to-tr min-h-screen from-primary via-secondary to-neutral">
-            <CreatorBanner />
-            <main className="flex flex-col justify-center w-auto lg:grid lg:grid-cols-3 lg:gap-10 mx-auto">
-                <section className="lg:col-span-1">
+            <img src="/banner.jpeg" alt="banner" className="w-full h-96 object-cover relative" />
+            <main className="flex flex-col justify-center w-auto lg:grid md:grid-cols-1 lg:grid-cols-3 gap-10 mx-auto">
+                <section className="md:col-span-1">
                     <CreatorDescription />
                 </section>
-                <section className="lg:col-span-2 mb-10 mt-5">
+                <section className="md:col-span-1 xl:col-span-2 md:max-w-lg lg:max-w-3xl xl:max-w-4xl mx-auto mb-10 mt-5">
                     <CreatorCollectionCarousel />
                     <CreatorNFTInfo />
                 </section>

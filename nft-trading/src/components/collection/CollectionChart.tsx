@@ -50,6 +50,7 @@ function CollectionChart() {
     ];
 
     return (
+        // <ResponsiveContainer width="80%" height="80%">
         <LineChart
             width={1000}
             height={600}
@@ -69,6 +70,7 @@ function CollectionChart() {
             <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
             <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
+        // </ResponsiveContainer>
     );
 }
 

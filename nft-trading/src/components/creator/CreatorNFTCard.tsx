@@ -3,7 +3,7 @@ import Link from "next/link"
 function CreatorNFTCard({ src }: { src: string }) {
     return (
         <Link href={'/nft/id'}>
-            <div className="card card-normal w-96 shadow-xl bg-white bg-opacity-50 backdrop-blur-xl cursor-pointer">
+            <div className="card card-normal w-96 mx-auto lg:w-80 xl:w-96 shadow-xl bg-white bg-opacity-50 backdrop-blur-xl cursor-pointer">
                 <img src={src} className="rounded-xl p-5" />
                 <div className="card-body text-center">
                     <h2 className="text-center font-bold text-2xl">Lorem ipsum dolor sit amet</h2>

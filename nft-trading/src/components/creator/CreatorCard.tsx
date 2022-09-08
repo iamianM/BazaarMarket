@@ -5,7 +5,7 @@ function CreatorCard({ src }: { src: string }) {
         <Link href={"/profile/username"}>
             <div className="card card-normal w-96 shadow-xl cursor-pointer">
                 <div className="relative flex">
-                    <img src={src} className="rounded-xl " />
+                    <img src={src} className="rounded-xl" />
                     <img src="./photo1.png" className="rounded-xl absolute top-48 left-[146px] h-24 w-24" />
                 </div>
                 <div className="card-body items-center text-center">

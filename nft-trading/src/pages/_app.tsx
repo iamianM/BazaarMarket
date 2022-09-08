@@ -12,6 +12,29 @@ import { useEffect } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+//wagmi.
+import { WagmiConfig, createClient, configureChains, defaultChains } from 'wagmi'
+import { publicProvider } from 'wagmi/providers/public';
+//rainbow kit UI framework.
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+
+const { chains, provider } = configureChains(defaultChains, [publicProvider()])
+
+const { connectors } = getDefaultWallets({
+  appName: 'My RainbowKit App',
+  chains
+});
+
+const client = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+})
+
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
@@ -23,9 +46,13 @@ const MyApp: AppType = ({
 
   return (
     <SessionProvider session={session}>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <WagmiConfig client={client}>
+        <RainbowKitProvider chains={chains}>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </RainbowKitProvider>
+      </WagmiConfig>
     </SessionProvider>
   );
 };

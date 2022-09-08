@@ -3,8 +3,8 @@ import CollectionTradeRow from './CollectionTradeRow'
 
 function CollectionTrades() {
     return (
-        <div className="overflow-x-auto w-full">
-            <table className="table w-full">
+        <div className="overflow-x-auto w-auto">
+            <table className="table table-normal">
                 {/* <!-- head --> */}
                 <thead>
                     <tr>
