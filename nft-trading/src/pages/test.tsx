@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import CardPack from '../components/CardPack'
 import ModalOpenPack from '../components/ModalOpenPack'
 import ShowCard from '../components/ShowCard'
+import TradeModal from '../components/TradeModal'
 
 function TestPage() {
 
@@ -15,7 +16,8 @@ function TestPage() {
     //     .catch(err => console.error(err));
 
     return (
-        <div className='min-h-screen'>
+        <div className='min-h-screen justify-center flex items-center'>
+            <TradeModal />
         </div>
     )
 }

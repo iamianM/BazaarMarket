@@ -10,7 +10,7 @@ function ProfilePage() {
     const username = router.query.username
 
     return (
-        <div className="bg-gradient-to-tr min-h-screen from-primary via-secondary to-neutral">
+        <div className="min-h-screen">
             <img src="/banner.jpeg" alt="banner" className="w-full h-96 object-cover relative" />
             <main className="flex flex-col justify-center w-auto lg:grid md:grid-cols-1 lg:grid-cols-3 gap-10 mx-auto">
                 <section className="md:col-span-1">

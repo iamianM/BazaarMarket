@@ -7,7 +7,7 @@ function NFTPage() {
     const username = router.query.username
 
     return (
-        <div className="bg-gradient-to-tr min-h-screen from-primary via-secondary to-neutral">
+        <div className="min-h-screen">
             <main className="flex flex-col justify-center max-w-7xl lg:grid lg:grid-cols-3 lg:gap-10 mx-auto">
                 <section className="lg:col-span-1 ">
                     <NFTShowCard src="/collection1.png" />

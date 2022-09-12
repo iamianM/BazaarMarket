@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        'tremble': 'shake 0.5s infinite'
+        'tremble': 'shake 0.5s infinite',
+        'motion': 'gradient 15s ease infinite'
       },
       keyframes: {
         shake: {
@@ -19,6 +20,11 @@ module.exports = {
           '80%': { transform: 'translate(-1px, -1px) rotate(1deg)' },
           '90%': { transform: 'translate(1px, 2px) rotate(0deg)' },
           '100%': { transform: 'translate(1px, -2px) rotate(-1deg)' },
+        },
+        gradient: {
+          '0%': {},
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         }
       }
     },

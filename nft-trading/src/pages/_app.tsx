@@ -54,9 +54,11 @@ const MyApp: AppType = ({
     <SessionProvider session={session}>
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
-          <Header />
-          <Component {...pageProps} />
-          <Footer />
+          <div className="bg-gradient-to-tr from-primary via-secondary to-neutral">
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
         </RainbowKitProvider>
       </WagmiConfig>
     </SessionProvider>
