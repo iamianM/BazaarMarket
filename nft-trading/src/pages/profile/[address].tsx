@@ -17,8 +17,8 @@ function ProfilePage() {
                     <ProfileDescription />
                 </section>
                 <section className="md:col-span-1 xl:col-span-2 md:max-w-lg lg:max-w-3xl xl:max-w-4xl mx-auto mb-10 mt-5">
-                    <ProfileCollectionCarousel />
-                    <ProfileNFTInfo />
+                    {/* <ProfileCollectionCarousel />
+                    <ProfileNFTInfo /> */}
                 </section>
             </main>
         </div>

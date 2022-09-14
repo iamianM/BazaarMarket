@@ -1,17 +1,16 @@
 import NFTCard from "./NFTCard"
+import { collections } from "../../data/featuredCollections.json"
+import type { FeaturedCollection } from '../../types'
 
 function NFTCollection() {
+
+    const data: FeaturedCollection[] = collections
+
     return (
         <>
-            <NFTCard src="/collection1.png" />
-            <NFTCard src="/collection2.png" />
-            <NFTCard src="/collection3.png" />
-            <NFTCard src="/collection4.png" />
-            <NFTCard src="/collection5.png" />
-            <NFTCard src="/collection6.png" />
-            <NFTCard src="/collection7.png" />
-            <NFTCard src="/collection8.png" />
-            <NFTCard src="/collection9.png" />
+            {data?.map((collection, index) => (
+                <NFTCard key={index} content={collection} />
+            ))}
         </>
     )
 }

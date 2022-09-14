@@ -1,7 +1,4 @@
 import NFTCard from "./NFTCard"
-import NFTCollection from "./NFTCollection"
-import ProfileCollection from "./profile/ProfileCollection"
-import SearchBar from "./SearchBar"
 import { useEffect, useState } from "react"
 import NFTCompactCard from "./NFTCompactCard"
 import { XCircleIcon, PlusCircleIcon } from '@heroicons/react/solid'

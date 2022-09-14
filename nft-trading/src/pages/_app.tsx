@@ -10,6 +10,8 @@ import "../styles/globals.css";
 import { themeChange } from 'theme-change'
 import { useEffect } from 'react';
 import dynamic from 'next/dynamic'
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 const Header = dynamic(
   () => import('../components/Header'),
@@ -17,7 +19,6 @@ const Header = dynamic(
 )
 
 import Footer from "../components/Footer";
-
 //wagmi.
 import { WagmiConfig, createClient, configureChains, defaultChains } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public';
@@ -41,6 +42,8 @@ const client = createClient({
   provider,
 })
 
+const queryClient = new QueryClient()
+
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
@@ -54,11 +57,14 @@ const MyApp: AppType = ({
     <SessionProvider session={session}>
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
-          <div className="bg-gradient-to-tr from-primary via-secondary to-neutral">
-            <Header />
-            <Component {...pageProps} />
-            <Footer />
-          </div>
+          <QueryClientProvider client={queryClient}>
+            <div className="bg-gradient-to-tr from-primary via-secondary to-neutral">
+              <Header />
+              <Component {...pageProps} />
+              <Footer />
+            </div>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
         </RainbowKitProvider>
       </WagmiConfig>
     </SessionProvider>

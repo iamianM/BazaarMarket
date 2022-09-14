@@ -1,8 +1,13 @@
 import CollectionBanner from '../../components/collection/CollectionBanner'
 import CollectionDetails from '../../components/collection/CollectionDetails'
 import CollectionInfo from '../../components/collection/CollectionInfo'
+import { useRouter } from 'next/router'
 
 function CollectionPage() {
+
+    const router = useRouter()
+    const address = router.query.address
+
     return (
         <div className="min-h-screen">
             <div className='flex flex-col'>

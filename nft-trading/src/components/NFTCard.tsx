@@ -1,15 +1,17 @@
 import Link from 'next/link'
+import type { FeaturedCollection } from '../../types'
 
-function NFTCard({ src }: { src: string }) {
+function NFTCard({ content }: { content: FeaturedCollection }) {
+
     return (
-        <Link href={'/collection/name'}>
+        <Link href={`/collection/${content.token_address}`}>
             <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
                 <figure className="px-10 pt-10">
-                    <img src={src} className="rounded-xl" />
+                    <img src={content.image} className="rounded-xl" />
                 </figure>
                 <div className="card-body items-center text-center">
                     <p>@Pules</p>
-                    <h2 className="card-title">An Awesome NFT</h2>
+                    <h2 className="card-title">{content.name}</h2>
                     <div className="card-actions">
                         <button className="btn btn-primary">Trade Now</button>
                     </div>

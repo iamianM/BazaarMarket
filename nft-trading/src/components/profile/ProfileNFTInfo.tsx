@@ -1,7 +1,7 @@
 import { useState } from "react"
-import CreatorNFTs from "./ProfileNFTs"
+import ProfileNFTs from "./ProfileNFTs"
 
-function ProfileNFTInfo() {
+function ProfileNFTInfo({ address }: { address: string | string[] | undefined }) {
 
     const [activeTab, setActiveTab] = useState('collectibles')
 
@@ -41,7 +41,7 @@ function ProfileNFTInfo() {
                     </a>
                 </li>
             </ul>
-            {activeTab === 'collectibles' && (<CreatorNFTs />)}
+            {activeTab === 'collectibles' && (<ProfileNFTs address={address} />)}
         </>
     )
 }
