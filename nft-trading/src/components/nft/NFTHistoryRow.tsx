@@ -1,9 +1,15 @@
 import NFTCreatorAvatar from "./NFTCreatorAvatar"
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/solid'
-function NFTHistoryRow() {
+import makeBlockie from 'ethereum-blockies-base64';
+
+function NFTHistoryRow({ owner }: { owner: string | any }) {
     return (
         <div className="flex items-center justify-between">
-            <NFTCreatorAvatar nft="Imaginary ones #3467" />
+            <div className="avatar">
+                <div className="w-24 rounded-full">
+                    <img src={makeBlockie(owner)} />
+                </div>
+            </div>
             <div className='flex items-center space-x-2'>
                 <div className="mask mask-squircle w-12 h-12">
                     <img src="/imaginary_ones.jpeg" alt="Avatar Tailwind CSS Component" />

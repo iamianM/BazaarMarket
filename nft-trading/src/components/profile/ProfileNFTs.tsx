@@ -20,13 +20,11 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
     const isDownloading = isLoading || isFetching
 
     const fetchNFTs = async ({ pageParam = 1 }) => {
-        const res = await fetch(`/api/nfts/${address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=8`)
+        const res = await fetch(`/api/nfts/wallet/${address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=8`)
         const data = await res.json()
         const nfts = data.nfts
         return nfts
     }
-
-    console.log(nfts)
 
     return (
         <>

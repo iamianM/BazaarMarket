@@ -21,6 +21,7 @@
     "@trpc/server": "^9.27.2",
     "@uiball/loaders": "^1.2.6",
     "daisyui": "^2.24.2",
+    "ethereum-blockies-base64": "^1.0.2",
     "ethers": "^5.7.0",
     "moralis": "^2.3.1",
     "next": "12.2.5",

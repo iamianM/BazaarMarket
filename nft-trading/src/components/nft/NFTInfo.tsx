@@ -1,25 +1,29 @@
-import NFTCategory from "./NFTCategory"
 import NFTCollectionAvatar from "./NFTCollectionAvatar"
-import NFTCreatorAvatar from "./NFTCreatorAvatar"
 import NFTDetails from "./NFTDetails"
-import NFTRank from "./NFTRank"
-import type { NFT } from '../../../types'
 
-function NFTInfo({ nft }: { nft: NFT }) {
+function NFTInfo({ owner, description, collection_image, collection_name, attributes }: { owner: string | any, description: string, collection_image: string, collection_name: string, attributes: [] }) {
+    console.log(owner)
     return (
         <div className="mt-28">
             <div className="bg-white flex flex-col space-y-10 bg-opacity-25 backdrop-blur-xl rounded-2xl shadow-md p-5">
-                <div className="flex justify-between">
-                    {nft.owner && <NFTCreatorAvatar creator={nft.owner} />}
-                    <NFTCollectionAvatar />
-                </div>
-                <NFTRank />
+                <NFTCollectionAvatar src={collection_image} name={collection_name} />
                 <p className="font-poppins">
-                    {nft.description}
+                    {description}
                 </p>
-                <NFTCategory />
+                {attributes && <p className="font-poppins italic text-xl">
+                    Attributes:
+                </p>}
+                <div className="flex flex-wrap space-x-4 space-y-3">
+                    {
+                        attributes && attributes.map((attribute: any) => (
+                            <div className='p-2 rounded-md border-primary border-2 shadow-md'>
+                                <p className="font-poppins text-inherit">{attribute.trait_type}: {attribute.value} </p>
+                            </div>
+                        ))
+                    }
+                </div>
                 <div className="mx-12 mt-5">
-                    <NFTDetails />
+                    <NFTDetails owner={owner} />
                 </div>
             </div>
         </div>

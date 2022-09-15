@@ -2,7 +2,7 @@ import Link from "next/link"
 
 function ProfileCard({ src }: { src: string }) {
     return (
-        <Link href={"/profile/username"}>
+        <Link href={"/profile/0x4bbb41F61fFfc1Bbe65a2aa192C65281E16eA758"}>
             <div className="card card-normal w-96 shadow-xl cursor-pointer">
                 <div className="relative flex">
                     <img src={src} className="rounded-xl" />

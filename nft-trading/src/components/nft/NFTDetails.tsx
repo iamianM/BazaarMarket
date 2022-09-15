@@ -2,7 +2,7 @@ import { useState } from 'react'
 import NFTHistory from './NFTHistory'
 import NFTOwnership from './NFTOwnership'
 
-function NFTDetails() {
+function NFTDetails({ owner }: { owner: string | any }) {
 
     const [activeTab, setActiveTab] = useState('ownership')
 
@@ -26,8 +26,8 @@ function NFTDetails() {
                     </a>
                 </li>
             </ul>
-            {activeTab === 'ownership' && <NFTOwnership />}
-            {activeTab === 'history' && <NFTHistory />}
+            {activeTab === 'ownership' && <NFTOwnership owner={owner} />}
+            {activeTab === 'history' && <NFTHistory owner={owner} />}
         </div>
     )
 }

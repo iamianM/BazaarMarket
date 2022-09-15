@@ -15,7 +15,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
     })
 
     const fetchNFTs = async ({ pageParam = 1 }) => {
-        const res = await fetch(`/api/nfts/${contract_address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=9`)
+        const res = await fetch(`/api/nfts/collection/${contract_address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=9`)
         const data = await res.json()
         const nfts = data.nfts
         return nfts
