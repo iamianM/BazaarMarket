@@ -1,24 +1,41 @@
-import { useState } from "react";
-import ProfileCollection from "./ProfileCollection"
 import { useQuery } from "react-query";
-import type { Collection } from '../../../types'
 import { Ring } from '@uiball/loaders'
+import Link from "next/link";
 
 function ProfileCollectionCarousel({ address }: { address: string | string[] | undefined }) {
 
-    const { data: collections, isLoading, isFetching } = useQuery('collections', () => fetchCollections())
+    type CollectionCarouselItems = {
+        contracts: [
+            {
+                name: string,
+                metadata: {
+                    thumbnail_url: string,
+                    cached_thumbnail_url: string,
+                }
+                address: string
+            },
+        ]
+    }
+
+    console.log(address)
+
+    const { data: collections, isLoading, isFetching } = useQuery('collections', () => fetchCollections(), {
+        retry: 10,
+        retryDelay: attempt => Math.min(attempt > 1 ? 2 ** attempt * 1000 : 1000, 30 * 1000)
+    })
+
     const isDownloading = isLoading || isFetching
 
     async function fetchCollections() {
-        const response = await fetch(`/api/profile/collections/${address}`)
-        const fetchedCollections: Collection[] = await response.json()
+        const response = await fetch(`/api/profile/collections/${address}?chain=ethereum&type=owns_contract_nfts`)
+        const fetchedCollections: CollectionCarouselItems = await response.json()
         return fetchedCollections
     }
 
     return (
-        <div className="lg:mt-10">
-            <h1 className="font-bold text-3xl font-poppins">Collections</h1>
-            <div className="carousel carousel-center max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-3xl mt-4 mx-auto p-4 space-x-8 bg-transparent ">
+        <div className="mt-4 lg:mt-20">
+            <h1 className="font-bold text-5xl uppercase text-center font-poppins">Collections</h1>
+            <div className="carousel carousel-center w-5/6 mt-10 mx-auto p-4 space-x-8 bg-transparent ">
                 {isDownloading ?
                     <div className="justify-center">
                         <Ring
@@ -28,10 +45,19 @@ function ProfileCollectionCarousel({ address }: { address: string | string[] | u
                             color="black"
                         />
                     </div> :
-                    collections?.map((collection, index) => (
-                        <div className="carousel-item">
-                            <ProfileCollection key={index} collection={collection} />
-                        </div>
+                    collections?.contracts?.map((collection, index) => (
+                        <Link href={`/collection/${collection.address}`} key={index}>
+                            <div className="carousel-item cursor-pointer" key={index}>
+                                <div className="flex flex-col">
+                                    <div className="avatar">
+                                        <div className="w-24 rounded-full">
+                                            <img src={collection?.metadata?.cached_thumbnail_url ?? collection?.metadata?.thumbnail_url} alt="carousel-item" />
+                                        </div>
+                                    </div>
+                                    <p className="text-center w-24 font-poppins truncate">{collection?.name}</p>
+                                </div>
+                            </div>
+                        </Link>
                     ))}
             </div>
         </div>

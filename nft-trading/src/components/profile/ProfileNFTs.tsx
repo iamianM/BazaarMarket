@@ -1,45 +1,35 @@
-import ProfileNFTCard from "./ProfileNFTCard"
-import { NFT } from "../../../types"
-import { useQuery } from "react-query"
+import CollectionItem from "../collection/CollectionItem"
+import { Item } from "../../../types"
+import { useInfiniteQuery } from "react-query"
 import { Ring } from '@uiball/loaders'
+import React from 'react'
 
 function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
 
-    const { data: nfts, isLoading, isFetching } = useQuery('nfts', fetchNFTs)
+    const {
+        data: nfts,
+        fetchNextPage,
+        hasNextPage,
+        isLoading,
+        isFetching,
+    } = useInfiniteQuery('nfts', (pageParam) => fetchNFTs(pageParam), {
+        getNextPageParam: (_, allPages) => allPages.length + 1,
+        getPreviousPageParam: (_, allPages) => allPages.length - 1,
+    })
+
     const isDownloading = isLoading || isFetching
 
-    type NFTResult = {
-        cursor: string
-        page: number
-        page_size: number
-        result: []
-        status: string
-        total: number
-    }
-
-    async function fetchNFTs() {
-        const response = await fetch(`/api/profile/nfts/${address}`)
-        const fetchedNFTS: NFTResult = await response.json()
-        let NFTs = Array<NFT>()
-        fetchedNFTS?.result?.forEach((nft: any) => {
-            const metadata = JSON.parse(nft.metadata)
-            NFTs.push({
-                token_address: nft.token_address,
-                token_id: nft.token_id,
-                name: metadata?.name,
-                description: metadata?.description,
-                image: metadata?.image,
-            })
-        })
-        return NFTs
+    const fetchNFTs = async ({ pageParam = 1 }) => {
+        const res = await fetch(`/api/nfts/${address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=8`)
+        const data = await res.json()
+        const nfts = data.nfts
+        return nfts
     }
 
     console.log(nfts)
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-2
-        max-w-xl lg:max-w-2xl xl:max-w-4xl mx-auto mt-10
-        gap-8">
+        <>
             {isDownloading ?
                 <div className="justify-center">
                     <Ring
@@ -48,13 +38,24 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
                         speed={2}
                         color="black"
                     />
-                </div> :
-                nfts?.map((nft, index) => (
-                    <div className="carousel-item">
-                        <ProfileNFTCard key={index} nft={nft} />
+                </div>
+                :
+                <div className="grid grid-cols-2 lg:grid-cols-4 w-5/6 mx-auto mt-10 gap-8">
+                    <>
+                        {nfts?.pages.map((group: any[], index: number) => (
+                            <React.Fragment key={index}>
+                                {group?.map((nft: Item) => (
+                                    <CollectionItem key={nft.token_id} nft={nft} />
+                                ))}
+                            </React.Fragment>
+                        ))}
+                    </>
+                    <div className="mt-10 mb-10 flex justify-center">
+                        <button className="btn btn-secondary" disabled={!hasNextPage} onClick={() => fetchNextPage()}>Load more</button>
                     </div>
-                ))}
-        </div>
+                </div>
+            }
+        </ >
     )
 }
 

@@ -6,7 +6,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     headers.append('Content-Type', 'application/json')
     headers.append('Authorization', process.env.NFT_PORT_API_KEY)
     const contract_address = req.query.contract_address
-    const data = await fetch(`https://api.nftport.xyz/v0/nfts/${contract_address}?chain=ethereum`, { headers: headers })
+    const data = await fetch(`https://api.nftport.xyz/v0/nfts/${contract_address}?chain=ethereum&page_size=1`, { headers: headers })
     const response = await data.json()
     res.status(200).json(response)
     return response

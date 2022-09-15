@@ -22,3 +22,17 @@ export type FeaturedCollection = {
     image: string,
     banner: string,
 }
+
+export type Item = {
+    contract_address: string
+    token_id: string
+    metadata: {
+        name: string
+        description: string
+        ipfs_image?: string
+        image?: string
+    }
+    file_url?: string
+    cached_file_url?: string
+    owner: string
+}

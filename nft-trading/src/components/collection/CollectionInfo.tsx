@@ -2,7 +2,7 @@ import { useState } from "react"
 import CollectionItems from "./CollectionItems"
 import CollectionActivity from "./CollectionActivity"
 
-function CollectionInfo() {
+function CollectionInfo({ contract_address }: { contract_address: any }) {
 
     const [activeTab, setActiveTab] = useState('nfts')
 
@@ -28,7 +28,7 @@ function CollectionInfo() {
                     </li>
                 </ul>
             </div>
-            {activeTab === 'nfts' && <CollectionItems />}
+            {activeTab === 'nfts' && <CollectionItems contract_address={contract_address} />}
             {activeTab === 'activity' && <CollectionActivity />}
         </>
     )

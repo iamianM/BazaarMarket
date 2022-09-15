@@ -20,8 +20,8 @@ function CollectionPage() {
                 cached_tumbnail_url: string
                 cached_banner_url: string
             }
-            total: number
         }
+        total: number
     }
 
     const router = useRouter()
@@ -40,10 +40,10 @@ function CollectionPage() {
             <div className='flex flex-col'>
                 <CollectionBanner banner={collection?.contract?.metadata?.banner_url} logo={collection?.contract?.metadata?.thumbnail_url} />
                 <div className='bg-white bg-opacity-50 backdrop-blur-xl w-2/3 -mt-32 p-9 lg:p-12 shadow-lg mx-auto rounded-lg'>
-                    <CollectionDetails name={collection?.contract?.name} description={collection?.contract?.metadata?.description} />
+                    <CollectionDetails name={collection?.contract?.name} description={collection?.contract?.metadata?.description} total={collection?.total} />
                 </div>
                 <div className='bg-white bg-opacity-50 backdrop-blur-xl mt-10 mb-10 p-4 shadow-lg mx-auto rounded-lg' >
-                    <CollectionInfo />
+                    <CollectionInfo contract_address={contract_address} />
                 </div>
             </div>
         </div>
