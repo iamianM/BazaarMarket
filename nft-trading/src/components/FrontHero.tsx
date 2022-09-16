@@ -1,3 +1,4 @@
+import Link from "next/link"
 
 function FrontHero() {
     return (
@@ -10,7 +11,9 @@ function FrontHero() {
                         Lorem ipsum odor amet, consectetuer adipiscing elit. Ultrices orci accumsan non faucibus efficitur sem senectus viverra. Dapibus volutpat non quis nisi suscipit bibendum maecenas. Elit netus facilisi tortor mattis amet. Malesuada sollicitudin ex vitae inceptos urna. Accumsan tincidunt torquent faucibus efficitur aptent! Natoque vehicula nunc taciti phasellus suspendisse ipsum magna accumsan. Natoque euismod adipiscing ullamcorper congue magnis mauris.
                     </p>
                     <div className='flex space-x-4'>
-                        <button className="btn btn-secondary shadow-md">Explore</button>
+                        <Link href="/collections">
+                            <button className="btn btn-secondary shadow-md">Explore</button>
+                        </Link>
                         <button className="btn btn-primary shadow-md">Trade</button>
                     </div>
                     <div className="flex justify-between mt-10">

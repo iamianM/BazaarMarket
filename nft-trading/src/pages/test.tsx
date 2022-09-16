@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CardPack from '../components/CardPack'
+import CollectionCard from '../components/collections/CollectionCard'
 import ModalOpenPack from '../components/ModalOpenPack'
 import ShowCard from '../components/ShowCard'
 import TradeModal from '../components/TradeModal'

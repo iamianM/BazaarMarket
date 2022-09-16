@@ -1,5 +1,6 @@
+import Link from "next/link"
 
-function NFTCollectionAvatar({ src, name }: { src: string, name: string }) {
+function NFTCollectionAvatar({ src, name, address }: { src: string, name: string, address: string }) {
     return (
         <div className='flex space-x-3 items-center'>
             <div className="avatar">
@@ -7,7 +8,7 @@ function NFTCollectionAvatar({ src, name }: { src: string, name: string }) {
                     <img src={src} />
                 </div>
             </div>
-            <p className='font-poppins'>{name}</p>
+            <Link href={`/collection/${address}`}><p className='cursor-pointer hover:underline hover:text-info font-poppins'>{name}</p></Link>
         </div>
     )
 }

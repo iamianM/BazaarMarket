@@ -17,8 +17,6 @@ function ProfileCollectionCarousel({ address }: { address: string | string[] | u
         ]
     }
 
-    console.log(address)
-
     const { data: collections, isLoading, isFetching } = useQuery('collections', () => fetchCollections(), {
         retry: 10,
         retryDelay: attempt => Math.min(attempt > 1 ? 2 ** attempt * 1000 : 1000, 30 * 1000)

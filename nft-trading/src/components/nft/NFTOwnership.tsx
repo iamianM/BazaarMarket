@@ -1,5 +1,6 @@
 import { DocumentDuplicateIcon } from '@heroicons/react/outline'
 import makeBlockie from 'ethereum-blockies-base64';
+import Link from 'next/link';
 
 function NFTOwnership({ owner }: { owner: string | any }) {
 
@@ -13,7 +14,7 @@ function NFTOwnership({ owner }: { owner: string | any }) {
             <div className="flex flex-col space-y-1">
                 <p className='font-poppins'>Address</p>
                 <div className='flex space-x-1 items-center'>
-                    <p>{owner}</p>
+                    <Link href={`/profile/${owner}`}><p className='cursor-pointer hover:underline hover:text-info'>{owner}</p></Link>
                     <DocumentDuplicateIcon className='h-6 cursor-pointer' />
                 </div>
             </div>

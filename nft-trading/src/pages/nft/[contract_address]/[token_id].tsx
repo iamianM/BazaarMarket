@@ -53,21 +53,22 @@ function NFTPage() {
             <main className="flex flex-col justify-center max-w-7xl lg:grid lg:grid-cols-3 lg:gap-10 mx-auto">
                 <section className="lg:col-span-1 ">
                     {data?.nft && <NFTShowCard
-                        image={data?.nft.cached_file_url ||
-                            data?.nft.file_url ||
-                            data?.nft.metadata?.google_image ||
-                            data?.nft.metadata?.image ||
-                            data?.nft.metadata?.ipfs_image}
-                        name={data?.nft.metadata.name} />}
+                        image={data?.nft?.cached_file_url ||
+                            data?.nft?.file_url ||
+                            data?.nft?.metadata?.google_image ||
+                            data?.nft?.metadata?.image ||
+                            data?.nft?.metadata?.ipfs_image}
+                        name={data?.nft?.metadata?.name} />}
                 </section>
                 <section className="lg:col-span-2 mb-10 mt-5">
                     {data?.nft &&
                         <NFTInfo
                             owner={data?.owner ?? data?.owner?.address}
-                            description={data?.nft.metadata?.description}
+                            description={data?.nft?.metadata?.description}
                             collection_image={data?.contract?.metadata?.cached_thumbnail_url ?? data?.contract?.metadata?.cached_thumbnail_url}
                             collection_name={data?.contract?.name}
-                            attributes={data?.nft?.metadata?.attributes} />
+                            attributes={data?.nft?.metadata?.attributes}
+                            collection_address={data?.nft?.contract_address} />
                     }
                 </section>
             </main>

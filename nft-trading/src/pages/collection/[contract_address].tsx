@@ -24,22 +24,22 @@ function CollectionPage() {
         total: number
     }
 
-    const router = useRouter()
-    const contract_address = router.query.contract_address
-    const { data } = useQuery('collection', () => fetchCollection())
-    const collection: Collection = data
-
     const fetchCollection = async () => {
         const res = await fetch(`/api/collection/${contract_address}`)
         const data = await res.json()
         return data
     }
 
+    const router = useRouter()
+    const contract_address = router.query.contract_address
+    const { data } = useQuery('collection', () => fetchCollection())
+    const collection: Collection = data
+
     return (
         <div className="min-h-screen">
             <div className='flex flex-col'>
                 <CollectionBanner banner={collection?.contract?.metadata?.banner_url} logo={collection?.contract?.metadata?.thumbnail_url} />
-                <div className='bg-white bg-opacity-50 backdrop-blur-xl w-2/3 -mt-32 p-9 lg:p-12 shadow-lg mx-auto rounded-lg'>
+                <div className='bg-white bg-opacity-50 backdrop-blur-xl w-4/5 -mt-32 p-9 lg:p-12 shadow-lg mx-auto rounded-lg'>
                     <CollectionDetails name={collection?.contract?.name} description={collection?.contract?.metadata?.description} total={collection?.total} />
                 </div>
                 <div className='bg-white bg-opacity-50 backdrop-blur-xl mt-10 mb-10 p-4 shadow-lg mx-auto rounded-lg' >

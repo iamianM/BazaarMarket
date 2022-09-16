@@ -12,9 +12,9 @@ function ProfilePage() {
     return (
         <div className="min-h-screen">
             <div className='flex flex-col'>
-                <ProfileBanner />
+                <ProfileBanner address={address} />
                 <div className='bg-white bg-opacity-50 backdrop-blur-xl w-3/4 -mt-32 p-9 lg:p-12 shadow-lg mx-auto rounded-lg'>
-                    <ProfileDescription />
+                    <ProfileDescription address={address} />
                 </div>
                 <div>
                     <ProfileCollectionCarousel address={address} />

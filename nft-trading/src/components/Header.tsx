@@ -23,10 +23,10 @@ function Header() {
                     <a className="font-bold text-2xl text-base-100">Meta<span className="text-primary-focus">TraderZ</span></a>
                 </Link>
                 <div className="hidden md:inline-flex">
-                    <SearchBar placeholder="Search for collections" />
+                    <SearchBar placeholder="Search an address" />
                 </div>
                 <div className="hidden xl:flex xl:space-x-7">
-                    <Link href={"/"}>
+                    <Link href={"/collections"}>
                         <a className="text-base-100 text-xl font-poppins">Collections</a>
                     </Link>
                     <Link href={"/"}>

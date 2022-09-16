@@ -16,7 +16,7 @@ export type NFT = {
 }
 
 export type FeaturedCollection = {
-    name: string,
+    contract_: string,
     token_address: string,
     description: string,
     image: string,
@@ -32,6 +32,7 @@ export type Item = {
         ipfs_image?: string
         image?: string
     }
+    name?: string
     file_url?: string
     cached_file_url?: string
     owner: string

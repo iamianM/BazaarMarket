@@ -1,15 +1,20 @@
 import NFTCard from "./NFTCard"
-import { collections } from "../../data/featuredCollections.json"
-import type { FeaturedCollection } from '../../types'
+import { useQuery } from "react-query"
 
 function NFTCollection() {
 
-    const data: FeaturedCollection[] = collections
+    const fetchFeaturedCollections = async () => {
+        const response = await fetch('/api/collections?include=insights&sort=-insights.trades&filter[network]=ethereum&page[limit]=9')
+        const data = await response.json()
+        return data
+    }
+
+    const { data: featuredCollections } = useQuery('featuredCollections', () => fetchFeaturedCollections())
 
     return (
         <>
-            {data?.map((collection, index) => (
-                <NFTCard key={index} content={collection} />
+            {featuredCollections?.data?.map((collection: any, index: number) => (
+                <NFTCard key={index} content={collection.attributes} />
             ))}
         </>
     )
