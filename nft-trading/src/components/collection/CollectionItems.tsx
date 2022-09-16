@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import type { Item } from '../../../types'
 import CollectionItem from './CollectionItem'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function CollectionItems({ contract_address }: { contract_address: any }) {
 
@@ -22,7 +24,9 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
         data,
         fetchNextPage,
         hasNextPage,
-        isFetchingNextPage
+        isFetchingNextPage,
+        isFetching,
+        isLoading,
     } = useInfiniteQuery('nfts', ({ pageParam = 1 }) => fetchNFTs(pageParam), {
         getNextPageParam: (lastPage, allPages) => {
             const maxPages = lastPage.total / 9
@@ -74,16 +78,17 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mx-auto mt-10 gap-6 xl:gap-8'>
                 {
-                    wordEntered.length > 0 && (
-                        filteredData?.search_results?.length > 0 && (
-                            filteredData?.search_results?.map((nft: Item) => (
-                                <CollectionItem key={nft.token_id} nft={nft} />
-                            ))
-                        ))
+                    isLoading || isFetching && (
+                        <Skeleton count={10} />
+                    )
                 }
                 {
                     wordEntered.length > 0 && (
-                        filteredData?.search_results?.length === 0 && (
+                        filteredData?.search_results?.length > 0 ? (
+                            filteredData?.search_results?.map((nft: Item) => (
+                                <CollectionItem key={nft.token_id} nft={nft} />
+                            ))
+                        ) : (
                             <div className='text-center text-2xl font-bold text-gray-500'>
                                 No NFTs found
                             </div>

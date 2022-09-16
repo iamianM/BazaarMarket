@@ -2,6 +2,8 @@ import React from 'react'
 import { useInfiniteQuery } from 'react-query'
 import CollectionCard from '../components/collections/CollectionCard'
 import { useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const fetchCollections = async ({ pageParam = "" }) => {
     const response = await fetch(`/api/collections?include=insights&sort=-insights.trades&filter[network]=ethereum&page[limit]=8&page[cursor]=${pageParam}`)
@@ -36,7 +38,7 @@ function CollectionsPage() {
     }
 
 
-    const { data, isFetchingNextPage, hasNextPage, fetchNextPage } = useInfiniteQuery('collections', (pageParam) => fetchCollections(pageParam), {
+    const { data, isFetchingNextPage, hasNextPage, fetchNextPage, isFetching, isLoading } = useInfiniteQuery('collections', (pageParam) => fetchCollections(pageParam), {
         getNextPageParam: (lastPage, allPages) => lastPage.meta?.next_cursor,
     })
 
@@ -52,21 +54,24 @@ function CollectionsPage() {
                     onChange={handleFilter} />
                 <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pb-10'>
                     {
-                        wordEntered.length > 0 && (
-                            filteredData?.data?.map((collection: any) => (
-                                <CollectionCard key={collection.id} banner={collection.attributes.image_url} logo={collection.attributes.image_preview_icon_url} name={collection.attributes.name} address={collection.attributes.address} />
-                            ))
+                        isLoading || isFetching || isFetchingNextPage && (
+                            <Skeleton count={8} />
                         )
                     }
                     {
-                        wordEntered.length === 0 && (
+                        wordEntered.length > 0 ? (
+                            filteredData?.data?.map((collection: any) => (
+                                <CollectionCard key={collection.id} banner={collection.attributes.image_url} logo={collection.attributes.image_preview_icon_url} name={collection.attributes.name} address={collection.attributes.address} />
+                            ))
+                        ) : (
                             data?.pages?.map((page, index) => (
                                 <React.Fragment key={index}>
                                     {page?.data?.map((collection: any) => (
                                         <CollectionCard key={collection.id} banner={collection.attributes.image_url} logo={collection.attributes.image_preview_icon_url} name={collection.attributes.name} address={collection.attributes.address} />
                                     ))}
                                 </React.Fragment>
-                            )))}
+                            )))
+                    }
                 </div>
                 {
                     wordEntered.length === 0 && (
