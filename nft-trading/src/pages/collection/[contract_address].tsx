@@ -3,8 +3,12 @@ import CollectionDetails from '../../components/collection/CollectionDetails'
 import CollectionInfo from '../../components/collection/CollectionInfo'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
+import { useNetwork } from 'wagmi'
 
 function CollectionPage() {
+
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
 
     type Collection = {
         response: string
@@ -25,7 +29,7 @@ function CollectionPage() {
     }
 
     const fetchCollection = async () => {
-        const res = await fetch(`/api/collection/${contract_address}`)
+        const res = await fetch(`/api/collection/${contract_address}?chain=${connectedChain}`)
         const data = await res.json()
         return data
     }

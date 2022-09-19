@@ -32,6 +32,7 @@ export type Item = {
         ipfs_image?: string
         image?: string
     }
+    image?: string
     name?: string
     file_url?: string
     cached_file_url?: string

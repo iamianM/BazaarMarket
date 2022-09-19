@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-//get nfts from wallet address
+//get collections from chain
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json')

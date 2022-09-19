@@ -76,7 +76,7 @@
     core-js-pure "^3.20.2"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.17.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.16.7", "@babel/runtime@^7.17.2":
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.19.0.tgz#22b11c037b094d27a8a2504ea4dcff00f50e2259"
   integrity sha512-eR8Lo9hnDS7tqkO7NsV+mKvCmv5boaXFSZ70DnfhcgiEne8hv9oCEd36Klw74EtizEqLsy4YnW8UWwpBVolHZA==
@@ -679,6 +679,13 @@
   version "12.2.5"
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.2.5.tgz#20fed129b04a0d3f632c6d0de135345bb623b1e4"
   integrity sha512-7h5/ahY7NeaO2xygqVrSG/Y8Vs4cdjxIjowTZ5W6CKoTKn7tmnuxlUc2h74x06FKmbhAd9agOjr/AOKyxYYm9Q==
+
+"@nfttrader-io/sdk-js@^1.0.23":
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/@nfttrader-io/sdk-js/-/sdk-js-1.0.23.tgz#b64c66f587f880184aa022ac43c6a5262b249687"
+  integrity sha512-mR1zOHwJN65Z5EZxMh8OtjBX/y6DKt4MSaUDUSpQqRsi5vhUM0jxZH7DuxAY/PwdnNQGwMUSXlyR5dICIdH+HQ==
+  dependencies:
+    "@babel/runtime" "^7.16.7"
 
 "@noble/ed25519@^1.7.0":
   version "1.7.0"

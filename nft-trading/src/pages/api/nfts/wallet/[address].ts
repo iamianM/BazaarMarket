@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-
 //get nfts from wallet address
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     let headers = new Headers();

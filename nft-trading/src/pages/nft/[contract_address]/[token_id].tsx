@@ -3,8 +3,13 @@ import NFTInfo from "../../../components/nft/NFTInfo"
 import NFTShowCard from "../../../components/nft/NFTShowCard"
 import { useQuery } from "react-query"
 import { Ring } from "@uiball/loaders"
+import { useNetwork } from 'wagmi'
 
 function NFTPage() {
+
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+
     const router = useRouter()
     const contract_address = router.query.contract_address
     const token_id = router.query.token_id
@@ -41,7 +46,7 @@ function NFTPage() {
     }
 
     async function fetchNFT() {
-        const response = await fetch(`/api/nft/${contract_address}/${token_id}`)
+        const response = await fetch(`/api/nft/${contract_address}/${token_id}?chain=${connectedChain}`)
         const data = await response.json()
         const nft: NFTResult = data
         console.log(nft)

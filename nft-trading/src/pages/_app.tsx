@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import dynamic from 'next/dynamic'
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
+import { AppWrapper } from "../context/AppContext";
 
 const Header = dynamic(
   () => import('../components/Header'),
@@ -19,20 +20,25 @@ const Header = dynamic(
 )
 
 import Footer from "../components/Footer";
+import { ethers } from "ethers";
+import NFTTraderSDK from "@nfttrader-io/sdk-js"
 //wagmi.
-import { WagmiConfig, createClient, configureChains, defaultChains } from 'wagmi'
+import { WagmiConfig, createClient, configureChains, chain } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public';
+import { infuraProvider } from 'wagmi/providers/infura'
+
 //rainbow kit UI framework.
 import '@rainbow-me/rainbowkit/styles.css';
-import {
-  getDefaultWallets,
-  RainbowKitProvider,
-} from '@rainbow-me/rainbowkit';
+import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-const { chains, provider } = configureChains(defaultChains, [publicProvider()])
+
+const { chains, provider, webSocketProvider } = configureChains(
+  [chain.mainnet, chain.rinkeby, chain.polygon],
+  [publicProvider(), infuraProvider({ apiKey: process.env.INFURA_API_KEY })]
+)
 
 const { connectors } = getDefaultWallets({
-  appName: 'Babylon Traders',
+  appName: 'MetaTraderZ',
   chains
 });
 
@@ -40,9 +46,16 @@ const client = createClient({
   autoConnect: true,
   connectors,
   provider,
+  webSocketProvider,
 })
 
 const queryClient = new QueryClient()
+
+const sdk = new NFTTraderSDK({
+  ethers: ethers, //you need to provide the instance of ethers js library
+  web3Provider: provider, //or an instance of ethers.providers.Web3Provider
+  network: 'RINKEBY', //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
+})
 
 const MyApp: AppType = ({
   Component,
@@ -58,11 +71,13 @@ const MyApp: AppType = ({
       <WagmiConfig client={client}>
         <RainbowKitProvider chains={chains}>
           <QueryClientProvider client={queryClient}>
-            <div className="bg-gradient-to-tr from-primary via-secondary to-neutral">
-              <Header />
-              <Component {...pageProps} />
-              <Footer />
-            </div>
+            <AppWrapper sdk={sdk}>
+              <div className="bg-gradient-to-tr from-primary via-secondary to-neutral">
+                <Header />
+                <Component {...pageProps} />
+                <Footer />
+              </div>
+            </AppWrapper>
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
         </RainbowKitProvider>

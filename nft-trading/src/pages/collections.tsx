@@ -4,22 +4,25 @@ import CollectionCard from '../components/collections/CollectionCard'
 import { useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
-const fetchCollections = async ({ pageParam = "" }) => {
-    const response = await fetch(`/api/collections?include=insights&sort=-insights.trades&filter[network]=ethereum&page[limit]=8&page[cursor]=${pageParam}`)
-    const data = await response.json()
-    return data
-}
+import { useNetwork } from 'wagmi'
 
 function CollectionsPage() {
 
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
     const [filteredData, setFilteredData] = useState({ data: [] })
     const [wordEntered, setWordEntered] = useState("");
 
     async function searchCollections(word: string) {
-        const response = await fetch(`/api/collections/search?filter[name]=${word}&filter[network]=ethereum&page[limit]=16`)
+        const response = await fetch(`/api/collections/search?filter[name]=${word}&filter[network]=${connectedChain}&page[limit]=16`)
         const data = await response.json()
         setFilteredData(data)
+    }
+
+    const fetchCollections = async ({ pageParam = "" }) => {
+        const response = await fetch(`/api/collections?include=insights&sort=-insights.trades&filter[network]=${connectedChain}&page[limit]=8&page[cursor]=${pageParam}`)
+        const data = await response.json()
+        return data
     }
 
     const handleFilter = async (event: { target: { value: string } }) => {

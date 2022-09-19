@@ -1,8 +1,11 @@
 import { useQuery } from "react-query";
 import { Ring } from '@uiball/loaders'
 import Link from "next/link";
-
+import { useNetwork } from "wagmi";
 function ProfileCollectionCarousel({ address }: { address: string | string[] | undefined }) {
+
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
 
     type CollectionCarouselItems = {
         contracts: [
@@ -25,7 +28,7 @@ function ProfileCollectionCarousel({ address }: { address: string | string[] | u
     const isDownloading = isLoading || isFetching
 
     async function fetchCollections() {
-        const response = await fetch(`/api/profile/collections/${address}?chain=ethereum&type=owns_contract_nfts`)
+        const response = await fetch(`/api/profile/collections/${address}?chain=${connectedChain}&type=owns_contract_nfts`)
         const fetchedCollections: CollectionCarouselItems = await response.json()
         return fetchedCollections
     }

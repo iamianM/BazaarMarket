@@ -1,24 +1,29 @@
 import React from 'react'
 import Link from 'next/link'
 import type { Item } from '../../../types'
+import TradeModal from '../TradeModal'
 
-function CollectionItem({ nft }: { nft: Item }) {
+function CollectionItem({ nft, setSelectedNFT }: { nft: Item, setSelectedNFT: any }) {
+
+    const src = nft?.cached_file_url || nft?.file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image
 
     return (
-        <Link href={`/nft/${nft.contract_address}/${nft.token_id}`}>
+        <>
             <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
-                <figure className="px-10 pt-10">
-                    <img src={nft.cached_file_url || nft.file_url || nft.metadata?.ipfs_image || nft.metadata?.image}
-                        className="rounded-xl object-cover w-4/5" />
-                </figure>
+                <Link href={`/nft/${nft.contract_address}/${nft.token_id}`}>
+                    <figure className="px-10 pt-10">
+                        <img src={src}
+                            className="rounded-xl object-cover" />
+                    </figure>
+                </Link>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{nft.metadata?.name ?? nft.name}</h2>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Trade Now</button>
+                        <label htmlFor="trade-modal" className="btn btn-primary modal-button" onClick={() => { setSelectedNFT(nft) }}>Trade Now</label>
                     </div>
                 </div>
             </div>
-        </Link>
+        </>
     )
 }
 

@@ -2,7 +2,7 @@ import Link from "next/link"
 import SearchBar from "./SearchBar"
 import ThemeSelector from "./ThemeSelector"
 import { useConnectModal, useAccountModal, useChainModal } from '@rainbow-me/rainbowkit'
-import { useAccount } from 'wagmi'
+import { useAccount, useNetwork } from 'wagmi'
 import { signIn, signOut, useSession } from "next-auth/react";
 import { UserCircleIcon, StarIcon, PhotographIcon } from '@heroicons/react/outline'
 
@@ -12,6 +12,9 @@ function Header() {
     const { openAccountModal } = useAccountModal();
     const { openChainModal } = useChainModal();
     const { isConnected } = useAccount();
+    const { chain } = useNetwork()
+
+    console.log("Connected to: ", chain)
 
     const { data: session, status } = useSession();
     console.log(session)

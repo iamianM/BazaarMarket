@@ -4,8 +4,12 @@ import type { Item } from '../../../types'
 import CollectionItem from './CollectionItem'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useNetwork } from 'wagmi'
 
 function CollectionItems({ contract_address }: { contract_address: any }) {
+
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
 
     type Items = {
         response: string
@@ -15,7 +19,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
     }
 
     const fetchNFTs = async ({ pageParam = 1 }) => {
-        const res = await fetch(`http://localhost:3000/api/nfts/collection/${contract_address}?chain=ethereum&include=metadata&page_number=${pageParam}&page_size=9`)
+        const res = await fetch(`http://localhost:3000/api/nfts/collection/${contract_address}?chain=${connectedChain}&include=metadata&page_number=${pageParam}&page_size=9`)
         const data = await res.json()
         return data
     }
@@ -39,7 +43,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
     const [wordEntered, setWordEntered] = useState("");
 
     async function searchNFTs(word: string) {
-        const response = await fetch(`/api/nfts/search?chain=ethereum&page_size=9&filter_by_contract_address=${contract_address}&text=${word}`)
+        const response = await fetch(`/api/nfts/search?chain=${connectedChain}&page_size=9&filter_by_contract_address=${contract_address}&text=${word}`)
         const data = await response.json()
         setFilteredData(data)
     }
@@ -85,8 +89,8 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
                 {
                     wordEntered.length > 0 && (
                         filteredData?.search_results?.length > 0 ? (
-                            filteredData?.search_results?.map((nft: Item) => (
-                                <CollectionItem key={nft.token_id} nft={nft} />
+                            filteredData?.search_results?.map((nft: Item, index: number) => (
+                                <CollectionItem key={index} nft={nft} />
                             ))
                         ) : (
                             <div className='text-center text-2xl font-bold text-gray-500'>
@@ -98,8 +102,8 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
                     wordEntered.length === 0 && (
                         data?.pages.map((page: Items, index: number) => (
                             <React.Fragment key={index}>
-                                {page?.nfts?.map((nft: Item) => (
-                                    <CollectionItem key={nft.token_id} nft={nft} />
+                                {page?.nfts?.map((nft: Item, index: number) => (
+                                    <CollectionItem key={index} nft={nft} />
                                 ))}
                             </React.Fragment>
                         ))
