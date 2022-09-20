@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import type { Item } from '../../../types'
-import TradeModal from '../TradeModal'
 
-function CollectionItem({ nft, setSelectedNFT }: { nft: Item, setSelectedNFT: any }) {
+function CollectionItem({ nft, setSelectedNFT, owner }: { nft: Item, setSelectedNFT: any, owner: string | string[] | undefined }) {
 
     const src = nft?.cached_file_url || nft?.file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image
 
@@ -19,7 +18,10 @@ function CollectionItem({ nft, setSelectedNFT }: { nft: Item, setSelectedNFT: an
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{nft.metadata?.name ?? nft.name}</h2>
                     <div className="card-actions">
-                        <label htmlFor="trade-modal" className="btn btn-primary modal-button" onClick={() => { setSelectedNFT(nft) }}>Trade Now</label>
+                        <label htmlFor="trade-modal" className="btn btn-primary modal-button" onClick={() => {
+                            nft.owner = owner
+                            setSelectedNFT(nft)
+                        }}>Trade Now</label>
                     </div>
                 </div>
             </div>

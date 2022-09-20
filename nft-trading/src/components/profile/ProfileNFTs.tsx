@@ -43,7 +43,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
                 {data?.pages?.map((page: Items, index: number) => (
                     <React.Fragment key={index}>
                         {page?.nfts?.map((nft: Item, index: number) => (
-                            <CollectionItem key={index} nft={nft} setSelectedNFT={setSelectedNFT} />
+                            <CollectionItem key={index} owner={address} nft={nft} setSelectedNFT={setSelectedNFT} />
                         ))}
                     </React.Fragment>
                 ))}

@@ -36,5 +36,5 @@ export type Item = {
     name?: string
     file_url?: string
     cached_file_url?: string
-    owner: string
-}
+    owner: string | string[] | undefined
+} 
