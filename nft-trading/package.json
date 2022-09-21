@@ -38,6 +38,7 @@
     "superjson": "^1.9.1",
     "tailwind-scrollbar-hide": "^1.1.7",
     "theme-change": "^2.2.0",
+    "uuid": "^9.0.0",
     "wagmi": "^0.6.4",
     "zod": "^3.18.0"
   },

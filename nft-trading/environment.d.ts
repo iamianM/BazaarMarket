@@ -8,3 +8,4 @@ declare namespace NodeJS {
 }
 
 declare module '@nfttrader-io/sdk-js'
+declare module 'uuid'

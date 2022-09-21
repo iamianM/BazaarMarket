@@ -1,10 +1,11 @@
-import { createSwapSchema, insertSwapIdSchema, getMakerSwapsSchema, getTakerSwapsSchema, closeSwapSchema } from "../schema/swap.schema"
+import { createSwapSchema, createSwapOutputSchema, insertSwapIdSchema, getMakerSwapsSchema, getTakerSwapsSchema, closeSwapSchema } from "../schema/swap.schema"
 import { createRouter } from "./context"
 import * as trpc from "@trpc/server"
 
 export const swapRouter = createRouter()
     .mutation('create-swap', {
         input: createSwapSchema,
+        output: createSwapOutputSchema,
         async resolve({ ctx, input }) {
             const swap = await ctx.prisma.swapRequest.create({
                 data: {
@@ -13,6 +14,7 @@ export const swapRouter = createRouter()
             })
             return swap
         }
+
     })
     .mutation('insert-swapId', {
         input: insertSwapIdSchema,

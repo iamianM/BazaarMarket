@@ -61,28 +61,38 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
-model Nft {
-    id                 String       @id @default(cuid())
-    tokenId            String
-    contractAddress    String
-    name               String
-    image              String?
-    createdAt          DateTime     @default(now())
-    updatedAt          DateTime     @updatedAt
-    swapRequestMaker   SwapRequest? @relation("maker", fields: [swapRequestIDMaker], references: [id])
-    swapRequestTaker   SwapRequest? @relation("taker", fields: [swapRequestIDTaker], references: [id])
-    swapRequestIDTaker String?
-    swapRequestIDMaker String?
+model NftMaker {
+    id              String      @id @default(cuid())
+    tokenId         String
+    contractAddress String
+    name            String
+    image           String?
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    swapRequest     SwapRequest @relation(fields: [swapRequestId], references: [id])
+    swapRequestId   String
+}
+
+model NftTaker {
+    id              String      @id @default(cuid())
+    tokenId         String
+    contractAddress String
+    name            String
+    image           String?
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    swapRequest     SwapRequest @relation(fields: [swapRequestId], references: [id])
+    swapRequestId   String
 }
 
 model SwapRequest {
-    id           String   @id @default(uuid())
+    id           String     @id @default(uuid())
     addressMaker String
     addressTaker String
-    NFTMaker     Nft[]    @relation("maker")
-    NFTTaker     Nft[]    @relation("taker")
-    createdAt    DateTime @default(now())
-    updatedAt    DateTime @default(now()) @updatedAt
+    NFTMaker     NftMaker[]
+    NFTTaker     NftTaker[]
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @default(now()) @updatedAt
     swapId       String?
-    closed       Boolean  @default(false)
+    closed       Boolean    @default(false)
 }

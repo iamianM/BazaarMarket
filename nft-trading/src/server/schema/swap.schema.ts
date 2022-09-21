@@ -5,6 +5,10 @@ export const createSwapSchema = z.object({
     addressTaker: z.string().min(1),
 })
 
+export const createSwapOutputSchema = z.object({
+    id: z.string().min(1),
+})
+
 export const insertSwapIdSchema = z.object({
     id: z.string().min(1),
     swapId: z.string().min(1),

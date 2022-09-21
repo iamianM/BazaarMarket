@@ -2,24 +2,19 @@ import { createNFTSchema } from "../schema/nft.schema"
 import { createRouter } from "./context"
 import * as trpc from "@trpc/server"
 
-export const nftRouter = createRouter()
+export const nftMakerRouter = createRouter()
     .mutation('create-nft', {
         input: createNFTSchema,
         async resolve({ ctx, input }) {
-            const nft = await ctx.prisma.nft.create({
+            const nft = await ctx.prisma.nftMaker.create({
                 data: {
                     tokenId: input.tokenId,
                     contractAddress: input.contractAddress,
-                    name: input.name,
+                    name: input?.name,
                     image: input?.image,
-                    swapRequestTaker: {
+                    swapRequest: {
                         connect: {
-                            id: input?.swapRequestIDTaker,
-                        }
-                    },
-                    swapRequestMaker: {
-                        connect: {
-                            id: input?.swapRequestIDMaker,
+                            id: input.swapRequestId,
                         }
                     },
                 }
