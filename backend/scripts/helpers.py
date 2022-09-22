@@ -9,7 +9,7 @@ def deploy_contracts(accounts, use_previous=False, publish=False, testnet=False)
     previous = json.load(open("previous.json"))
 
     if not testnet:
-        from_dict1 = {"from": accounts.add(config["wallets"]["from_key"][3])}
+        from_dict1 = {"from": accounts.add(config["wallets"]["from_key"][0])}
     else:
         from_dict1 = {"from": accounts[0]}
 
@@ -24,9 +24,9 @@ def deploy_contracts(accounts, use_previous=False, publish=False, testnet=False)
         # accounts.load("new")
 
     if use_previous:
-        postthread = Diffemon.at(previous[cur_network]["diffemon"])
+        diffemon = Diffemon.at(previous[cur_network]["diffemon"])
 
-        return postthread, account
+        return diffemon, account
     else:
         diffemon = Diffemon.deploy(from_dict1)
 
@@ -40,7 +40,7 @@ def deploy_contracts(accounts, use_previous=False, publish=False, testnet=False)
     json.dump(previous, open("previous.json", "w"))
 
     if publish and not network.show_active() in LOCAL_BLOCKCHAIN_ENVIRONMENTS:
-        Diffemon.publish_source(postthread)
+        Diffemon.publish_source(diffemon)
 
 
     return diffemon, account
