@@ -1,18 +1,18 @@
 import NFTHistoryRow from "./NFTHistoryRow"
 
-function NFTHistory() {
+function NFTHistory({ owner }: { owner: string | any }) {
     return (
         <div className="mt-10">
             <div className="flex flex-col space-y-4">
-                <NFTHistoryRow />
+                <NFTHistoryRow owner={owner} />
                 <div className="divider" />
-                <NFTHistoryRow />
+                <NFTHistoryRow owner={owner} />
                 <div className="divider" />
-                <NFTHistoryRow />
+                <NFTHistoryRow owner={owner} />
                 <div className="divider" />
-                <NFTHistoryRow />
+                <NFTHistoryRow owner={owner} />
                 <div className="divider" />
-                <NFTHistoryRow />
+                <NFTHistoryRow owner={owner} />
             </div>
         </div>
     )

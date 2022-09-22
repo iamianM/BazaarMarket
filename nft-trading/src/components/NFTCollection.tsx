@@ -1,18 +1,26 @@
 import NFTCard from "./NFTCard"
+import { useQuery } from "react-query"
+import { useNetwork } from "wagmi"
 
 function NFTCollection() {
+
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+
+    const fetchFeaturedCollections = async () => {
+        const response = await fetch(`/api/collections?include=insights&sort=-insights.trades&filter[network]=${connectedChain}&page[limit]=9`)
+        const data = await response.json()
+        return data
+    }
+
+    const { data: featuredCollections } = useQuery('featuredCollections', () => fetchFeaturedCollections())
+
     return (
-        <div className="grid grid-cols-3 max-w-7xl mx-auto mt-10 gap-8">
-            <NFTCard src="/collection1.png" />
-            <NFTCard src="/collection2.png" />
-            <NFTCard src="/collection3.png" />
-            <NFTCard src="/collection4.png" />
-            <NFTCard src="/collection5.png" />
-            <NFTCard src="/collection6.png" />
-            <NFTCard src="/collection7.png" />
-            <NFTCard src="/collection8.png" />
-            <NFTCard src="/collection9.png" />
-        </div>
+        <>
+            {featuredCollections?.data?.map((collection: any, index: number) => (
+                <NFTCard key={index} content={collection.attributes} />
+            ))}
+        </>
     )
 }
 

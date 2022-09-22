@@ -6,16 +6,12 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.text annotations in model Account below
     // Further reading: 
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
     // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
-}
-
-model Example {
-    id String @id @default(cuid())
 }
 
 // Necessary for Next auth
@@ -25,12 +21,12 @@ model Account {
     type              String
     provider          String
     providerAccountId String
-    refresh_token     String? //@db.Text
-    access_token      String? //@db.Text
+    refresh_token     String? @db.Text
+    access_token      String? @db.Text
     expires_at        Int?
     token_type        String?
     scope             String?
-    id_token          String? //@db.Text
+    id_token          String? @db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -53,6 +49,8 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    profilePic    String?
+    bio           String?
 }
 
 model VerificationToken {
@@ -61,4 +59,40 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model NftMaker {
+    id              String      @id @default(cuid())
+    tokenId         String
+    contractAddress String
+    name            String
+    image           String?
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    swapRequest     SwapRequest @relation(fields: [swapRequestId], references: [id])
+    swapRequestId   String
+}
+
+model NftTaker {
+    id              String      @id @default(cuid())
+    tokenId         String
+    contractAddress String
+    name            String
+    image           String?
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    swapRequest     SwapRequest @relation(fields: [swapRequestId], references: [id])
+    swapRequestId   String
+}
+
+model SwapRequest {
+    id           String     @id @default(uuid())
+    addressMaker String
+    addressTaker String
+    NFTMaker     NftMaker[]
+    NFTTaker     NftTaker[]
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @default(now()) @updatedAt
+    swapId       String?
+    closed       Boolean    @default(false)
 }

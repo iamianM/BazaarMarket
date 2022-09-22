@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NFTCreatorAvatar({ nft }: { nft?: string }) {
+function NFTCreatorAvatar({ creator }: { creator: string }) {
     return (
         <div className='flex space-x-3 items-center'>
             <div className="avatar">
@@ -9,8 +9,8 @@ function NFTCreatorAvatar({ nft }: { nft?: string }) {
                 </div>
             </div>
             <div>
-                <p className='font-poppins'>Abstract Creator</p>
-                {nft && <p>{`Traded for ${nft}`}</p>}
+                <p className='font-poppins w-48 truncate'>{creator}</p>
+                {/* {nft && <p>{`Traded for ${nft}`}</p>} */}
             </div>
 
         </div>
