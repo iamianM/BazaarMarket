@@ -74,4 +74,12 @@ export const swapRouter = createRouter()
             return swap
         }
     })
-
+    .query('get-latest-swap', {
+        resolve({ ctx }) {
+            return ctx.prisma.swapRequest.findFirst({
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            })
+        }
+    })

@@ -16,16 +16,15 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     const [filteredData, setFilteredData] = useState({ data: [] })
     const [wordEntered, setWordEntered] = useState("");
     const [disable, setDisable] = useState(false)
-    const [swapRequestId, setSwapRequestId] = useState("")
     const createNFTMakerMutation = trpc.useMutation('nft-maker.create-nft')
     const createNFTTakerMutation = trpc.useMutation('nft-taker.create-nft')
     const updateSwapMutation = trpc.useMutation('swap.insert-swapId')
-    // const createSwapMutation = trpc.useMutation('swap.create-swap', {
-    //     onSuccess: (data) => {
-    //         createNFTs(data.id)
-    //     }
-    // })
     const createSwapMutation = trpc.useMutation('swap.create-swap')
+    const { refetch: refetchSwapRequestId } = trpc.useQuery(["swap.get-latest-swap"], {
+        enabled: false,
+    })
+
+    console.log("NFT OWNER ", nft?.owner)
 
     useEffect(() => {
         const loadProviders = async () => {
@@ -48,10 +47,6 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
         web3Provider: ethersProvider, //or an instance of ethers.providers.Web3Provider
         network: "RINKEBY", //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
     })
-
-    const createSwap = (addressMaker: string, addressTaker: string) => {
-        createSwapMutation.mutate({ addressMaker, addressTaker })
-    }
 
     const updateSwap = (id: string, swapId: string) => {
         updateSwapMutation.mutate({ id, swapId })
@@ -99,19 +94,24 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
             //typeError value can be: createSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
         })
         sdk.on("createSwapTransactionCreated", async ({ tx }: { tx: any }) => {
-            await createSwap(address!, nft?.owner as string)
-            const txHash = tx.hash
-            console.log('Transaction hash is ', txHash)
+            const addressMaker = address as string
+            const addressTaker = nft?.owner as string
+            await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
+                onSuccess: (data) => {
+                    createNFTs(data.id as string)
+                },
+            })
+            // const txHash = tx.hash
             toast.success("Trade created, it will be mined soon")
             //tx object is an instance of the class TransactionResponse. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse]
         })
-        sdk.on("createSwapTransactionMined", ({ receipt }: { receipt: any }) => {
+        sdk.on("createSwapTransactionMined", async ({ receipt }: { receipt: any }) => {
             //receipt object is an instance of the class TransactionReceipt. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt]
             const events = receipt.events
             const event = events[0]
             const { _swapId } = event.args
-            updateSwap(swapRequestId, _swapId._hex)
-            console.log('Swap id is ', _swapId)
+            const res = await refetchSwapRequestId()
+            updateSwap(res?.data?.id as string, _swapId._hex)
             toast.success("Trade mined")
             //do whatever you want
             setDisable(false)
@@ -123,8 +123,10 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
             swapEnd: 1, //number of days of validity of the swap. If not specified the value will be zero. Zero value means no time limit. (optional)
             assetsMaker: nftMaker, //Array of ERC721/1155/20 tokens placed by the creator of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
             assetsTaker: nftTaker, //Array of ERC721/1155/20 tokens placed by the taker (counterparty) of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
-            referralAddress: '0x0000000000000000000000000000000000000000' //Can be an address of an account or a smart contract. Referral address utility will be explained in the next sections (optional)
         })
+        sdk.off('createSwapTransactionCreated') //remove all the listener
+        sdk.off('createSwapTransactionMined') //remove all the listener
+        sdk.off('createSwapTransactionError') //remove all the listener
     }
 
     // const handleFilter = async (event: { target: { value: string } }) => {
@@ -160,12 +162,6 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
         const data = await response.json()
         return data
     }
-
-    // const fetchNFTs = async () => {
-    //     const response = await fetch(`/api/nfts/wallet/0xc839eC222F6EC940980227B39B2ef0715EEF1718?chain=${connectedChain}&include=metadata`, options)
-    //     const data = await response.json()
-    //     return data
-    // }
 
     return (
         <div>
@@ -246,10 +242,7 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                 <button className="btn btn-primary"
                                     disabled={disable}
                                     onClick={() => {
-                                        // await buildTrade()
-                                        createSwap(address!, nft?.owner as string)
-                                        console.log("DATA: " + createSwapMutation.data)
-                                        // await testDB()
+                                        buildTrade()
                                     }}>
                                     Submit Offer
                                 </button>
