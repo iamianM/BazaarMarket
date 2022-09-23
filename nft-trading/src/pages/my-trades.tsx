@@ -11,18 +11,24 @@ function MyTradesPage() {
     const [selectedTab, setSelectedTab] = useState("sent")
 
     const { data: makerSwaps } = trpc.useQuery(["swap.get-maker-swaps", {
-        addressMaker: address!,
-        closed: false,
+        addressMaker: address!
     }]);
 
     const { data: takerSwaps } = trpc.useQuery(["swap.get-taker-swaps", {
-        addressTaker: address!,
-        closed: false,
+        addressTaker: address!
     }]);
+
+    const { data: acceptedSwaps } = trpc.useQuery(["swap.get-taker-accepted-swaps", {
+        addressTaker: address!
+    }])
+
+    const { data: declinedSwaps } = trpc.useQuery(["swap.get-taker-declined-swaps", {
+        addressTaker: address!
+    }])
 
     return (
         <div className="min-h-screen max-w-7xl mx-auto flex flex-col space-y-4 py-36">
-            <ul className="menu menu-vertical lg:menu-horizontal border-b-2 ">
+            <ul className="menu menu-vertical lg:menu-horizontal border-b-2 mb-10">
                 <li><a>
                     <div className="flex items-center space-x-2" onClick={() => setSelectedTab("sent")}>
                         <PaperAirplaneIcon className="h-5 w-5" />
@@ -56,6 +62,18 @@ function MyTradesPage() {
                 ))}
             {selectedTab === "requested" &&
                 takerSwaps?.map((swap) => (
+                    <div key={uuidv4()}>
+                        <TradeRow key={uuidv4()} swap={swap} />
+                    </div>
+                ))}
+            {selectedTab === "accepted" &&
+                acceptedSwaps?.map((swap) => (
+                    <div key={uuidv4()}>
+                        <TradeRow key={uuidv4()} swap={swap} />
+                    </div>
+                ))}
+            {selectedTab === "declined" &&
+                declinedSwaps?.map((swap) => (
                     <div key={uuidv4()}>
                         <TradeRow key={uuidv4()} swap={swap} />
                     </div>

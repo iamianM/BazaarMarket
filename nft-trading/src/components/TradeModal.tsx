@@ -220,7 +220,7 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                             <p className="font-poppins text-xl font-semibold">Your NFTs:</p>
                             <div className="overflow-y-scroll h-">
                                 <div className="grid grid-cols-5 gap-3 p-4">
-                                    {nftCollection?.map((nft, index) => (
+                                    {nftCollection?.map((nft) => (
                                         <div className="relative" >
                                             <PlusCircleIcon key={uuidv4()} className="w-8 z-10 top-0 right-0 text-success absolute cursor-pointer" onClick={() => {
                                                 setSelectedNFTs([...selectedNFTs, nft])
@@ -246,7 +246,7 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                 <p className="font-poppins text-2xl">NFT to trade:</p>
                                 <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
                                     <figure className="px-10 pt-10">
-                                        <img src={nft?.cached_file_url || nft?.file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image} className="rounded-xl object-cover" />
+                                        <img src={nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image} className="rounded-xl object-cover" />
                                     </figure>
                                     <div className="card-body items-center text-center">
                                         <h2 className="card-title">{nft?.name}</h2>
@@ -257,16 +257,12 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                 <button className="btn btn-primary"
                                     disabled={disable}
                                     onClick={() => {
+                                        approveAllSelectedNFTs()
                                         buildTrade()
                                     }}>
                                     Submit Offer
                                 </button>
-                                <button className="btn btn-primary"
-                                    disabled={disable}
-                                    onClick={() => approveAllSelectedNFTs()}>
-                                    Approve
-                                </button>
-                                <label htmlFor="trade-modal" className="btn btn-secondary">
+                                <label htmlFor="trade-modal" className="btn btn-secondary" onClick={() => setSelectedNFTs([])}>
                                     Close
                                 </label>
                             </div>

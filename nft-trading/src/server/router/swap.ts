@@ -36,11 +36,53 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressMaker: input.addressMaker,
-                    closed: input?.closed,
+                    accepted: null,
+                    declined: null
                 },
                 include: {
                     NFTMaker: true,
                     NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            })
+        }
+    })
+    .query('get-maker-accepted-swaps', {
+        input: getMakerSwapsSchema,
+        resolve({ ctx, input }) {
+            return ctx.prisma.swapRequest.findMany({
+                where: {
+                    addressMaker: input.addressMaker,
+                    accepted: true,
+                    declined: null
+                },
+                include: {
+                    NFTMaker: true,
+                    NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            })
+        }
+    })
+    .query('get-maker-declined-swaps', {
+        input: getMakerSwapsSchema,
+        resolve({ ctx, input }) {
+            return ctx.prisma.swapRequest.findMany({
+                where: {
+                    addressMaker: input.addressMaker,
+                    accepted: null,
+                    declined: true
+                },
+                include: {
+                    NFTMaker: true,
+                    NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
                 }
             })
         }
@@ -51,16 +93,58 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressTaker: input.addressTaker,
-                    closed: input?.closed,
+                    accepted: null,
+                    declined: null
                 },
                 include: {
                     NFTMaker: true,
                     NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
                 }
             })
         }
     })
-    .mutation('close-swap', {
+    .query('get-taker-accepted-swaps', {
+        input: getTakerSwapsSchema,
+        resolve({ ctx, input }) {
+            return ctx.prisma.swapRequest.findMany({
+                where: {
+                    addressTaker: input.addressTaker,
+                    accepted: true,
+                    declined: null
+                },
+                include: {
+                    NFTMaker: true,
+                    NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            })
+        }
+    })
+    .query('get-taker-declined-swaps', {
+        input: getTakerSwapsSchema,
+        resolve({ ctx, input }) {
+            return ctx.prisma.swapRequest.findMany({
+                where: {
+                    addressTaker: input.addressTaker,
+                    accepted: null,
+                    declined: true
+                },
+                include: {
+                    NFTMaker: true,
+                    NFTTaker: true,
+                },
+                orderBy: {
+                    createdAt: 'desc',
+                }
+            })
+        }
+    })
+    .mutation('accept-swap', {
         input: closeSwapSchema,
         async resolve({ ctx, input }) {
             const swap = await ctx.prisma.swapRequest.update({
@@ -68,7 +152,21 @@ export const swapRouter = createRouter()
                     id: input.id,
                 },
                 data: {
-                    closed: true,
+                    accepted: true,
+                },
+            })
+            return swap
+        }
+    })
+    .mutation('decline-swap', {
+        input: closeSwapSchema,
+        async resolve({ ctx, input }) {
+            const swap = await ctx.prisma.swapRequest.update({
+                where: {
+                    id: input.id,
+                },
+                data: {
+                    declined: true,
                 },
             })
             return swap

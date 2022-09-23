@@ -52,22 +52,22 @@ function Header() {
                         <p className="lg:inline font-poppins text-inherit">Connect wallet</p>
                     </button>)
                 }
-                {isConnected && session ?
-                    <div className="flex space-x-2 items-center">
+                {session &&
+                    (<div className="flex space-x-2 items-center">
                         <button className="btn btn-sm btn-outline btn-primary normal-case" onClick={() => signOut()}>
                             <p>Sign Out</p>
                         </button>
                         <img src={session?.user?.image as string} className="peer rounded-full w-8 h-8 cursor-pointer" />
                         <UserMenu />
-                    </div>
-                    :
-                    <div className="flex space-x-2 items-center">
+                    </div>)}
+                {isConnected && !session &&
+                    (<div className="flex space-x-2 items-center">
                         <button className="btn btn-sm btn-outline btn-primary ml-3 normal-case" onClick={() => signIn("discord")}>
                             Sign In
                         </button>
                         <img src={makeBlockie(address as string)} className="peer rounded-full w-8 h-8 cursor-pointer" />
                         <UserMenu />
-                    </div>
+                    </div>)
                 }
                 <div className="hidden lg:inline-block">
                     <ThemeSelector />
