@@ -28,27 +28,27 @@ function MyTradesPage() {
 
     return (
         <div className="min-h-screen max-w-7xl mx-auto flex flex-col space-y-4 py-36">
-            <ul className="menu menu-vertical lg:menu-horizontal border-b-2 mb-10">
+            <ul className="menu menu-vertical lg:menu-horizontal mb-10">
                 <li><a>
-                    <div className="flex items-center space-x-2" onClick={() => setSelectedTab("sent")}>
+                    <div className={`flex items-center py-2 space-x-2 ${selectedTab === "sent" && "border-b-2"}`} onClick={() => setSelectedTab("sent")}>
                         <PaperAirplaneIcon className="h-5 w-5" />
                         <p className="font-poppins">Sent</p>
                     </div>
                 </a></li>
                 <li><a>
-                    <div className="flex items-center space-x-2" onClick={() => setSelectedTab("requested")}>
+                    <div className={`flex items-center py-2 space-x-2 ${selectedTab === "requested" && "border-b-2"}`} onClick={() => setSelectedTab("requested")}>
                         <ArrowCircleDownIcon className="h-5 w-5" />
                         <p className="font-poppins">Requested</p>
                     </div>
                 </a></li>
                 <li><a>
-                    <div className="flex items-center space-x-2" onClick={() => setSelectedTab("accepted")}>
+                    <div className={`flex items-center py-2 space-x-2 ${selectedTab === "accepted" && "border-b-2"}`} onClick={() => setSelectedTab("accepted")}>
                         <CheckCircleIcon className="h-5 w-5" />
                         <p className="font-poppins">Accepted</p>
                     </div>
                 </a></li>
                 <li><a>
-                    <div className="flex items-center space-x-2" onClick={() => setSelectedTab("declined")}>
+                    <div className={`flex items-center py-2 space-x-2 ${selectedTab === "declined" && "border-b-2"}`} onClick={() => setSelectedTab("declined")}>
                         <XCircleIcon className="h-5 w-5" />
                         <p className="font-poppins">Declined</p>
                     </div>

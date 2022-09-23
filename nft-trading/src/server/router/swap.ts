@@ -36,8 +36,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressMaker: input.addressMaker,
-                    accepted: null,
-                    declined: null
+                    status: "pending",
                 },
                 include: {
                     NFTMaker: true,
@@ -55,8 +54,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressMaker: input.addressMaker,
-                    accepted: true,
-                    declined: null
+                    status: "accepted",
                 },
                 include: {
                     NFTMaker: true,
@@ -74,8 +72,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressMaker: input.addressMaker,
-                    accepted: null,
-                    declined: true
+                    status: "declined"
                 },
                 include: {
                     NFTMaker: true,
@@ -93,8 +90,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressTaker: input.addressTaker,
-                    accepted: null,
-                    declined: null
+                    status: "pending",
                 },
                 include: {
                     NFTMaker: true,
@@ -112,8 +108,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressTaker: input.addressTaker,
-                    accepted: true,
-                    declined: null
+                    status: "accepted",
                 },
                 include: {
                     NFTMaker: true,
@@ -131,8 +126,7 @@ export const swapRouter = createRouter()
             return ctx.prisma.swapRequest.findMany({
                 where: {
                     addressTaker: input.addressTaker,
-                    accepted: null,
-                    declined: true
+                    status: "declined"
                 },
                 include: {
                     NFTMaker: true,
@@ -152,7 +146,7 @@ export const swapRouter = createRouter()
                     id: input.id,
                 },
                 data: {
-                    accepted: true,
+                    status: "accepted",
                 },
             })
             return swap
@@ -166,7 +160,7 @@ export const swapRouter = createRouter()
                     id: input.id,
                 },
                 data: {
-                    declined: true,
+                    status: "declined",
                 },
             })
             return swap

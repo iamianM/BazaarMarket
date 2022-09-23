@@ -21,8 +21,20 @@ function TradeRow({ swap }: {
 
     const [ethersProvider, setEthersProvider] = useState<ethers.providers.Web3Provider | null>(null)
     const { address } = useAccount()
+    const ctx = trpc.useContext();
     const acceptSwapMutation = trpc.useMutation(['swap.accept-swap'])
-    const declineSwapMutation = trpc.useMutation(['swap.decline-swap'])
+    const declineSwapMutation = trpc.useMutation(['swap.decline-swap'], {
+        onMutate: () => {
+            ctx.cancelQuery(["swap.get-taker-accepted-swaps"]);
+            const optimisticUpdate = ctx.getQueryData(["swap.get-taker-accepted-swaps", { addressTaker: address! }]);
+            if (optimisticUpdate) {
+                ctx.setQueryData(["swap.get-taker-accepted-swaps"], optimisticUpdate);
+            }
+        },
+        onSettled: () => {
+            ctx.invalidateQueries(["swap.get-taker-accepted-swaps"]);
+        }
+    })
 
     useEffect(() => {
         const loadProviders = async () => {
@@ -89,7 +101,11 @@ function TradeRow({ swap }: {
         )
     }
 
-    const declineTrade = async () => {
+    const declineTrade = () => {
+        declineSwapMutation.mutate({ id: swap?.id as string })
+    }
+
+    const cancelSwap = async () => {
         sdk.on("cancelSwapTransactionCreated", ({ tx }: { tx: any }) => {
             //make something
             toast.success("Transaction created")
@@ -108,7 +124,8 @@ function TradeRow({ swap }: {
             //typeError value can be: cancelSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
         })
         await sdk.cancelSwap({
-            swapId: swap?.swapId, //unique identifier of the swap (mandatory)
+            type: "BigNumber",
+            hex: swap?.swapId, //unique identifier of the swap (mandatory)
         })
         sdk.off('cancelSwapTransactionCreated') //remove all the listener
         sdk.off('cancelSwapTransactionMined') //remove all the listener
@@ -116,9 +133,9 @@ function TradeRow({ swap }: {
     }
 
     return (
-        <div className="p-5  bg-white bg-opacity-50 backdrop-blur-xl flex flex-col space-y-5 rounded-box shadow-xl">
+        <div className="p-5 bg-white bg-opacity-50 backdrop-blur-xl flex flex-col space-y-5 rounded-box shadow-xl">
             <div className='flex justify-between items-center'>
-                <div className='w-1/3'>
+                <div className='w-1/3 flex flex-col space-y-3'>
                     {swap?.NFTMaker?.map((nft) => (
                         <div key={uuidv4()}>
                             <div className='flex justify-center space-x-2 items-center'>
@@ -133,7 +150,7 @@ function TradeRow({ swap }: {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
                     </svg>
                 </div>
-                <div className='w-1/3'>
+                <div className='w-1/3 flex flex-col space-y-3'>
                     {swap?.NFTTaker?.map((nft) => (
                         <div key={uuidv4()}>
                             <div className='flex justify-center space-x-2 items-center'>
@@ -186,7 +203,7 @@ function TradeRow({ swap }: {
                     ))}
                 </div>
             </div>
-            {swap?.addressTaker === address &&
+            {swap?.addressTaker === address && swap?.status === "pending" &&
                 (
                     <div className='flex justify-center space-x-10 items-center'>
                         <button className="btn btn-success"
@@ -196,6 +213,13 @@ function TradeRow({ swap }: {
                             }}>Accept</button>
                         <button className="btn btn-error"
                             onClick={() => declineTrade()}>Decline</button>
+                    </div>
+                )}
+            {swap?.addressMaker === address && swap?.status === "pending" &&
+                (
+                    <div className='flex justify-center'>
+                        <button className="btn btn-error"
+                            onClick={() => cancelSwap()}>Cancel</button>
                     </div>
                 )}
         </div>

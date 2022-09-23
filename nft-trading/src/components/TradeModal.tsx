@@ -39,12 +39,9 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     }, [])
 
     const { address } = useAccount()
-    console.log("Address is ", address)
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
-    console.log("Provider: " + ethersProvider)
     const signer = ethersProvider?.getSigner(address)
-    console.log("Signer: " + signer)
 
     const approveAllSelectedNFTs = () => {
         selectedNFTs.forEach(async (nft) => {

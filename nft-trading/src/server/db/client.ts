@@ -12,7 +12,7 @@ export const prisma =
   new PrismaClient({
     datasources: {
       db: {
-        url: process.env.SUPABASE_PGBOUNCER_URL,
+        url: process.env.SUPABASE_PRISMA_PROXY_URL,
       },
     },
     log:

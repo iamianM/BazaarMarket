@@ -11,7 +11,7 @@ datasource db {
     // Further reading: 
     // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
     // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
-    url      = env("SUPABASE_POSTGRES_URL")
+    url      = env("DATABASE_URL")
 }
 
 // Necessary for Next auth
@@ -94,6 +94,5 @@ model SwapRequest {
     createdAt    DateTime   @default(now())
     updatedAt    DateTime   @default(now()) @updatedAt
     swapId       String?
-    accepted     Boolean?
-    declined     Boolean?
+    status       String     @default("pending")
 }
