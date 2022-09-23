@@ -9,6 +9,8 @@ import { ethers } from "ethers"
 import { toast } from 'react-hot-toast'
 import { trpc } from '../utils/trpc';
 import { v4 as uuidv4 } from 'uuid';
+import { erc721ABI } from 'wagmi'
+import { NftTraderRinkeby } from "../../constants"
 
 function TradeModal({ nft }: { nft: Item | null | undefined }) {
 
@@ -24,8 +26,6 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
         enabled: false,
     })
 
-    console.log("NFT OWNER ", nft?.owner)
-
     useEffect(() => {
         const loadProviders = async () => {
             if (typeof window !== 'undefined') {
@@ -39,13 +39,26 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     }, [])
 
     const { address } = useAccount()
+    console.log("Address is ", address)
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    console.log("Provider: " + ethersProvider)
+    const signer = ethersProvider?.getSigner(address)
+    console.log("Signer: " + signer)
+
+    const approveAllSelectedNFTs = () => {
+        selectedNFTs.forEach(async (nft) => {
+            console.log("Contract address:", nft.contract_address.trim())
+            const nftContract = new ethers.Contract(nft.contract_address, erc721ABI, signer)
+            console.log(NftTraderRinkeby)
+            await nftContract.setApprovalForAll(NftTraderRinkeby, true)
+        });
+    }
 
     const sdk = new NFTTraderSDK({
         ethers: ethers, //you need to provide the instance of ethers js library
         web3Provider: ethersProvider, //or an instance of ethers.providers.Web3Provider
-        network: "RINKEBY", //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
+        network: connectedChain.toUpperCase(), //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
     })
 
     const updateSwap = (id: string, swapId: string) => {
@@ -142,6 +155,8 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     const options = { method: 'GET', headers: { Accept: 'application/json', 'X-API-Key': 'test' } };
     const [nftCollection, setNftCollection] = useState<Item[]>([])
     const [selectedNFTs, setSelectedNFTs] = useState<Item[]>([])
+
+
 
     const { data, isLoading } = useQuery('trading-nfts', () => fetchNFTs(), {
         select: (data) => data?.nfts?.map((nft: Item) => ({
@@ -245,6 +260,11 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                         buildTrade()
                                     }}>
                                     Submit Offer
+                                </button>
+                                <button className="btn btn-primary"
+                                    disabled={disable}
+                                    onClick={() => approveAllSelectedNFTs()}>
+                                    Approve
                                 </button>
                                 <label htmlFor="trade-modal" className="btn btn-secondary">
                                     Close

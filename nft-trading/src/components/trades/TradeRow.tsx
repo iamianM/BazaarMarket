@@ -7,7 +7,8 @@ import { useEffect, useState } from "react"
 import NFTTraderSDK from "@nfttrader-io/sdk-js"
 import { toast } from 'react-hot-toast'
 import { useAccount } from "wagmi"
-
+import { erc721ABI } from 'wagmi'
+import { NftTraderRinkeby } from "../../../constants"
 
 function TradeRow({ swap }: {
     swap:
@@ -46,6 +47,20 @@ function TradeRow({ swap }: {
         } = await sdk.getSwapDetails(swap?.swapId)
         console.log(addressMaker, addressTaker, status)
     }
+
+
+    const signer = ethersProvider?.getSigner(address)
+    console.log("Signer: " + signer)
+
+    const approveTakerNFTs = () => {
+        swap?.NFTTaker.forEach(async (nft) => {
+            console.log("Contract address:", nft.contractAddress.trim())
+            const nftContract = new ethers.Contract(nft.contractAddress, erc721ABI, signer)
+            console.log(NftTraderRinkeby)
+            await nftContract.setApprovalForAll(NftTraderRinkeby, true)
+        });
+    }
+
 
     const acceptTrade = async () => {
         sdk.on("closeSwapTransactionCreated", ({ tx }: { tx: any }) => {
@@ -89,8 +104,10 @@ function TradeRow({ swap }: {
         })
         await sdk.cancelSwap({
             swapId: swap?.swapId, //unique identifier of the swap (mandatory)
-        },
-        )
+        })
+        sdk.off('cancelSwapTransactionCreated') //remove all the listener
+        sdk.off('cancelSwapTransactionMined') //remove all the listener
+        sdk.off('cancelSwapTransactionError') //remove all the listener
     }
 
     return (
@@ -148,6 +165,8 @@ function TradeRow({ swap }: {
                 ))}
                 {swap?.addressTaker === address && (
                     <div className='flex justify-evenly items-center'>
+                        <button className="btn btn-sm btn-outline btn-primary normal-case"
+                            onClick={() => approveTakerNFTs()}>Approve</button>
                         <button className="btn btn-sm btn-outline btn-primary normal-case"
                             onClick={() => acceptTrade()}>Accept</button>
                         <button className="btn btn-sm btn-outline btn-primary normal-case"
