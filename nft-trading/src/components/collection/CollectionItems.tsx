@@ -14,7 +14,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
     type Items = {
         response: string
         nfts: []
-        contract: {}
+        contract: any
         total: number
     }
 

@@ -4,7 +4,7 @@ import { createContext, useContext } from 'react';
 const AppContext = createContext({});
 
 export function AppWrapper({ children, sdk }: { children: any, sdk: any }) {
-    let sharedState = { sdk }
+    const sharedState = { sdk }
     return (
         <AppContext.Provider value={sharedState}>
             {children}

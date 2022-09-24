@@ -11,7 +11,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
     type Items = {
         response: string
         nfts: []
-        contract: {}
+        contract: any
         total: number
     }
 
@@ -34,6 +34,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
         isFetchingNextPage,
     } = useInfiniteQuery('nfts', (pageParam) => fetchNFTs(pageParam), {
         getNextPageParam: (lastPage, allPages) => lastPage.continuation,
+        refetchOnMount: 'always'
     })
 
     return (

@@ -26,7 +26,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    "types.d.ts"
+    "types.d.ts",
+    "./node_modules/ethers-typescript-typings/index.d.ts"
   ],
   "exclude": [
     "node_modules"

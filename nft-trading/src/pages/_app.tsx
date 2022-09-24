@@ -21,9 +21,6 @@ const Header = dynamic(
 )
 
 import Footer from "../components/Footer";
-import { ethers } from "ethers";
-import NFTTraderSDK from "@nfttrader-io/sdk-js"
-
 //wagmi.
 import { WagmiConfig, createClient, configureChains, chain } from 'wagmi'
 import { publicProvider } from 'wagmi/providers/public';
@@ -38,7 +35,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 )
 
 const { connectors } = getDefaultWallets({
-  appName: 'MetaTraderZ',
+  appName: 'BazaarMarket',
   chains
 });
 
@@ -50,13 +47,6 @@ const client = createClient({
 })
 
 const queryClient = new QueryClient()
-
-const NFTTradersSDK = new NFTTraderSDK({
-  ethers: ethers, //you need to provide the instance of ethers js library
-  web3Provider: provider, //or an instance of ethers.providers.Web3Provider
-  network: 'RINKEBY', //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
-})
-
 
 const MyApp: AppType = ({
   Component,

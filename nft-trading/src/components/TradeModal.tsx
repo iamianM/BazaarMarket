@@ -9,6 +9,8 @@ import { ethers } from "ethers"
 import { toast } from 'react-hot-toast'
 import { trpc } from '../utils/trpc';
 import { v4 as uuidv4 } from 'uuid';
+import { erc721ABI } from 'wagmi'
+import { NftTraderRinkeby } from "../../constants"
 
 function TradeModal({ nft }: { nft: Item | null | undefined }) {
 
@@ -24,28 +26,36 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
         enabled: false,
     })
 
-    console.log("NFT OWNER ", nft?.owner)
-
     useEffect(() => {
         const loadProviders = async () => {
             if (typeof window !== 'undefined') {
-                // @ts-ignore
-                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                const provider: ethers.providers.Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum)
                 await provider.send('eth_requestAccounts', [])
                 setEthersProvider(provider)
             }
         }
+
         loadProviders()
     }, [])
 
     const { address } = useAccount()
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    const signer = ethersProvider?.getSigner(address)
+
+    const approveAllSelectedNFTs = () => {
+        selectedNFTs.forEach(async (nft) => {
+            console.log("Contract address:", nft.contract_address.trim())
+            const nftContract = new ethers.Contract(nft.contract_address, erc721ABI, signer)
+            console.log(NftTraderRinkeby)
+            await nftContract.setApprovalForAll(NftTraderRinkeby, true)
+        });
+    }
 
     const sdk = new NFTTraderSDK({
         ethers: ethers, //you need to provide the instance of ethers js library
         web3Provider: ethersProvider, //or an instance of ethers.providers.Web3Provider
-        network: "RINKEBY", //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
+        network: connectedChain.toUpperCase(), //example: 'ETHEREUM', 'RINKEBY', 'POLYGON', 'MUMBAI', 'XDAI'
     })
 
     const updateSwap = (id: string, swapId: string) => {
@@ -70,10 +80,10 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     const createNFTs = (swapRequestId: string) => {
         for (let i = 0; i < selectedNFTs.length; i++) {
             const src = selectedNFTs[i]?.image || selectedNFTs[i]?.file_url || selectedNFTs[i]?.cached_file_url || selectedNFTs[i]?.metadata?.image || selectedNFTs[i]?.metadata?.ipfs_image
-            createNFT("maker", selectedNFTs[i]?.token_id!, selectedNFTs[i]?.contract_address!, selectedNFTs[i]?.name ?? "", src ?? "", swapRequestId)
-        };
+            createNFT("maker", selectedNFTs[i]?.token_id ?? "0", selectedNFTs[i]?.contract_address ?? "0", selectedNFTs[i]?.name ?? "", src ?? "", swapRequestId)
+        }
         const src = nft?.image || nft?.file_url || nft?.cached_file_url || nft?.metadata?.image || nft?.metadata?.ipfs_image
-        createNFT("taker", nft?.token_id!, nft?.contract_address!, nft?.name ?? "", src ?? "", swapRequestId)
+        createNFT("taker", nft?.token_id ?? "0", nft?.contract_address ?? "0", nft?.name ?? "", src ?? "", swapRequestId)
     }
 
     const buildTrade = async () => {
@@ -143,6 +153,8 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     const [nftCollection, setNftCollection] = useState<Item[]>([])
     const [selectedNFTs, setSelectedNFTs] = useState<Item[]>([])
 
+
+
     const { data, isLoading } = useQuery('trading-nfts', () => fetchNFTs(), {
         select: (data) => data?.nfts?.map((nft: Item) => ({
             image: nft?.cached_file_url || nft?.file_url || nft?.metadata?.image || nft?.metadata?.ipfs_image,
@@ -173,8 +185,8 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                             <p className="font-poppins text-xl font-semibold">Selected NFTs:</p>
                             {/* Left side with NFT to trade */}
                             <div className="carousel p-4 bg-transparent">
-                                {selectedNFTs.map((nft, index) => (
-                                    <div className="carousel-item p-2 w-32 space-x-4 relative">
+                                {selectedNFTs.map((nft) => (
+                                    <div className="carousel-item p-2 w-32 space-x-4 relative" key={uuidv4()}>
                                         <XCircleIcon key={uuidv4()} className="w-8 z-10 top-0 right-0 text-error absolute cursor-pointer" onClick={() => {
                                             for (let i = 0; i < selectedNFTs.length; i++) {
                                                 if (selectedNFTs[i]?.name === nft.name) {
@@ -205,8 +217,8 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                             <p className="font-poppins text-xl font-semibold">Your NFTs:</p>
                             <div className="overflow-y-scroll h-">
                                 <div className="grid grid-cols-5 gap-3 p-4">
-                                    {nftCollection?.map((nft, index) => (
-                                        <div className="relative" >
+                                    {nftCollection?.map((nft) => (
+                                        <div className="relative" key={uuidv4()}>
                                             <PlusCircleIcon key={uuidv4()} className="w-8 z-10 top-0 right-0 text-success absolute cursor-pointer" onClick={() => {
                                                 setSelectedNFTs([...selectedNFTs, nft])
                                                 for (let i = 0; i < nftCollection.length; i++) {
@@ -231,7 +243,7 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                 <p className="font-poppins text-2xl">NFT to trade:</p>
                                 <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
                                     <figure className="px-10 pt-10">
-                                        <img src={nft?.cached_file_url || nft?.file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image} className="rounded-xl object-cover" />
+                                        <img src={nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image} className="rounded-xl object-cover" />
                                     </figure>
                                     <div className="card-body items-center text-center">
                                         <h2 className="card-title">{nft?.name}</h2>
@@ -242,11 +254,12 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                                 <button className="btn btn-primary"
                                     disabled={disable}
                                     onClick={() => {
+                                        approveAllSelectedNFTs()
                                         buildTrade()
                                     }}>
                                     Submit Offer
                                 </button>
-                                <label htmlFor="trade-modal" className="btn btn-secondary">
+                                <label htmlFor="trade-modal" className="btn btn-secondary" onClick={() => setSelectedNFTs([])}>
                                     Close
                                 </label>
                             </div>

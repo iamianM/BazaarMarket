@@ -8,7 +8,7 @@ function NFTOwnership({ owner }: { owner: string | any }) {
         <div className="flex space-x-8 mt-10 items-center">
             <div className="avatar">
                 <div className="w-24 rounded-full">
-                    <img src={makeBlockie(owner)} />
+                    <img src={makeBlockie(owner ?? "0xCd8248589E085446aAbD028E97393a20A1b6C48d")} />
                 </div>
             </div>
             <div className="flex flex-col space-y-1">

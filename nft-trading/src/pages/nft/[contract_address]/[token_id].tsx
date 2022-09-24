@@ -28,7 +28,7 @@ function NFTPage() {
                 image?: string
                 ipfs_image?: string
                 name: string
-                points: {}
+                points: any
             }
             file_url?: string
             cached_file_url?: string

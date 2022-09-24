@@ -11,6 +11,7 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
                 <div className="flex items-center">
                     <form onSubmit={(e) => {
                         e.preventDefault()
+                        setAddress("")
                         router.push(`/profile/${address}`)
                     }}>
                         <input type="text" className="p-5 pl-8 h-8 rounded-md bg-transparent border shadow-lg outline-none"
