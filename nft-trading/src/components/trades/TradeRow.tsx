@@ -39,8 +39,7 @@ function TradeRow({ swap }: {
     useEffect(() => {
         const loadProviders = async () => {
             if (typeof window !== 'undefined') {
-                // @ts-ignore
-                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                const provider: ethers.providers.Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum)
                 await provider.send('eth_requestAccounts', [])
                 setEthersProvider(provider)
             }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Item } from '../../../types'
 import { useAccount } from 'wagmi'
 
-function CollectionItem({ nft, setSelectedNFT, owner }: { nft: Item, setSelectedNFT: any, owner: string | string[] | undefined }) {
+function CollectionItem({ nft, setSelectedNFT, owner }: { nft: Item, setSelectedNFT?: any, owner?: string | string[] | undefined }) {
 
     const { address } = useAccount()
     const src = nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image

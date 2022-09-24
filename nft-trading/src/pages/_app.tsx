@@ -35,7 +35,7 @@ const { chains, provider, webSocketProvider } = configureChains(
 )
 
 const { connectors } = getDefaultWallets({
-  appName: 'MetaTraderZ',
+  appName: 'BazaarMarket',
   chains
 });
 

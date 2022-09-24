@@ -11,7 +11,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
     type Items = {
         response: string
         nfts: []
-        contract: {}
+        contract: any
         total: number
     }
 

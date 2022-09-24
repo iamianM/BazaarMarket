@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function NFTCard({ content }: { content: any }) {
+function NFTCard({ content, isCollection }: { content: any, isCollection?: boolean }) {
 
     return (
         <Link href={`/collection/0x${content?.address}`}>
@@ -10,9 +10,9 @@ function NFTCard({ content }: { content: any }) {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{content?.name}</h2>
-                    <div className="card-actions">
+                    {!isCollection && <div className="card-actions">
                         <button className="btn btn-primary">Trade Now</button>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </Link>

@@ -18,7 +18,7 @@ function NFTCollection() {
     return (
         <>
             {featuredCollections?.data?.map((collection: any, index: number) => (
-                <NFTCard key={index} content={collection.attributes} />
+                <NFTCard key={index} content={collection.attributes} isCollection={true} />
             ))}
         </>
     )

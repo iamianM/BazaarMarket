@@ -25,7 +25,7 @@ function Header() {
         <header className="fixed top-0 right-0 left-0 p-7 z-50 max-w-7xl mx-auto">
             <div className="flex justify-between items-center">
                 <Link href={"/"}>
-                    <a className="font-bold text-2xl text-base-100">Meta<span className="text-primary-focus">TraderZ</span></a>
+                    <a className="font-bold text-2xl text-base-100">Bazaar<span className="text-primary-focus">Market</span></a>
                 </Link>
                 <div className="hidden md:inline-flex">
                     <SearchBar placeholder="Search an address" />

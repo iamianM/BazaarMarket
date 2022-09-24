@@ -29,12 +29,12 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     useEffect(() => {
         const loadProviders = async () => {
             if (typeof window !== 'undefined') {
-                // @ts-ignore
-                const provider = new ethers.providers.Web3Provider(window.ethereum)
+                const provider: ethers.providers.Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum)
                 await provider.send('eth_requestAccounts', [])
                 setEthersProvider(provider)
             }
         }
+
         loadProviders()
     }, [])
 
@@ -80,10 +80,10 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
     const createNFTs = (swapRequestId: string) => {
         for (let i = 0; i < selectedNFTs.length; i++) {
             const src = selectedNFTs[i]?.image || selectedNFTs[i]?.file_url || selectedNFTs[i]?.cached_file_url || selectedNFTs[i]?.metadata?.image || selectedNFTs[i]?.metadata?.ipfs_image
-            createNFT("maker", selectedNFTs[i]?.token_id!, selectedNFTs[i]?.contract_address!, selectedNFTs[i]?.name ?? "", src ?? "", swapRequestId)
-        };
+            createNFT("maker", selectedNFTs[i]?.token_id ?? "0", selectedNFTs[i]?.contract_address ?? "0", selectedNFTs[i]?.name ?? "", src ?? "", swapRequestId)
+        }
         const src = nft?.image || nft?.file_url || nft?.cached_file_url || nft?.metadata?.image || nft?.metadata?.ipfs_image
-        createNFT("taker", nft?.token_id!, nft?.contract_address!, nft?.name ?? "", src ?? "", swapRequestId)
+        createNFT("taker", nft?.token_id ?? "0", nft?.contract_address ?? "0", nft?.name ?? "", src ?? "", swapRequestId)
     }
 
     const buildTrade = async () => {
@@ -185,8 +185,8 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                             <p className="font-poppins text-xl font-semibold">Selected NFTs:</p>
                             {/* Left side with NFT to trade */}
                             <div className="carousel p-4 bg-transparent">
-                                {selectedNFTs.map((nft, index) => (
-                                    <div className="carousel-item p-2 w-32 space-x-4 relative">
+                                {selectedNFTs.map((nft) => (
+                                    <div className="carousel-item p-2 w-32 space-x-4 relative" key={uuidv4()}>
                                         <XCircleIcon key={uuidv4()} className="w-8 z-10 top-0 right-0 text-error absolute cursor-pointer" onClick={() => {
                                             for (let i = 0; i < selectedNFTs.length; i++) {
                                                 if (selectedNFTs[i]?.name === nft.name) {
@@ -218,7 +218,7 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
                             <div className="overflow-y-scroll h-">
                                 <div className="grid grid-cols-5 gap-3 p-4">
                                     {nftCollection?.map((nft) => (
-                                        <div className="relative" >
+                                        <div className="relative" key={uuidv4()}>
                                             <PlusCircleIcon key={uuidv4()} className="w-8 z-10 top-0 right-0 text-success absolute cursor-pointer" onClick={() => {
                                                 setSelectedNFTs([...selectedNFTs, nft])
                                                 for (let i = 0; i < nftCollection.length; i++) {
