@@ -4,12 +4,11 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 // Diffemon main smart contract
-contract Diffemon is AccessControl, ERC721, ERC721URIStorage  {
+contract Diffemon is AccessControl, ERC721  {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
 
@@ -21,30 +20,30 @@ contract Diffemon is AccessControl, ERC721, ERC721URIStorage  {
     string baseURI;  
 
     // Initializes the contract by setting a `name` and a `symbol` to the token collection.
-    constructor () public ERC721('Diffemon NFT Collection', 'DIFF') {
+    constructor () public ERC721('Diffemon', 'DMON') {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
 
-        numCards = 100;
+        numCards = 104;
         sizeOfBoosterPack = 6;
         
-        baseURI = "ipfs://bafybeicxklfbyhwgt3p4cuwd54to6edtfo7n6pnt6np3gsbgh4vmoxc73q";
+        baseURI = "ipfs://bafybeic6nxm4pxgr2sfwxwjoin6xalhpoyoichio2abxlnimdxssvx257a/";
     }
 
     // The following functions are overrides required by Solidity.
 
-    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage) {
+    function _burn(uint256 tokenId) internal override(ERC721) {
         super._burn(tokenId);
     }
 
     function tokenURI(uint256 tokenId)
         public
         view
-        override(ERC721, ERC721URIStorage)
+        override(ERC721)
         returns (string memory)
     {
         _requireMinted(tokenId);
 
-        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, Strings.toString(cards[tokenId]))) : "";
+        return bytes(baseURI).length > 0 ? string(abi.encodePacked(baseURI, Strings.toString(cards[tokenId]), ".json")) : "";
     }
 
     function supportsInterface(bytes4 interfaceId)
@@ -101,7 +100,7 @@ contract Diffemon is AccessControl, ERC721, ERC721URIStorage  {
 
     function mintTokens(address to) internal {
         for(uint8 i = 0; i < sizeOfBoosterPack; i++) {
-            uint256 cardId = random(numCards, 1);
+            uint256 cardId = random(numCards, i);
     
             mint(cardId, to);
         }
