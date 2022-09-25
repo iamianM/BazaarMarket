@@ -7,8 +7,12 @@ import FrontHero from "../components/FrontHero";
 import NFTCollection from "../components/NFTCollection";
 import Partners from "../components/Partners";
 import { trpc } from "../utils/trpc";
+import { useSession } from "next-auth/react";
 
 const Home: NextPage = () => {
+
+  const { data: session } = useSession()
+  console.log(session)
 
   return (
     <div >

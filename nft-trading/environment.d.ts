@@ -4,6 +4,7 @@ declare namespace NodeJS {
         UBIQUITY_API_KEY: string;
         RARIFY_API_KEY: string;
         INFURA_API_KEY: string;
+        PACK_ADMIN_PRIVATE_KEY: string;
     }
 }
 
