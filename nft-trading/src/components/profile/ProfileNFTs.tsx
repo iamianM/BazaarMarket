@@ -18,7 +18,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
 
-    const [selectedNFT, setSelectedNFT] = useState<Item | null | undefined>()
+    const [selectedNFT, setSelectedNFT] = useState<any>()
 
     // const fetchNFTs = async ({ pageParam = "" }) => {
     //     const res = await fetch(`/api/nfts/wallet/${address}?chain=${connectedChain}&include=metadata&continuation=${pageParam}&page_size=8`)
@@ -29,8 +29,8 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
 
     const addressNo0x = address?.toString().replace('0x', '')
 
-    const fetchNFTs = async ({ pageParam = 8 }) => {
-        const res = await fetch(`/api/nfts/wallet?filter[owner]=${connectedChain}:${addressNo0x}&include=token`)
+    const fetchNFTs = async ({ pageParam = "" }) => {
+        const res = await fetch(`/api/nfts/wallet?filter[owner]=${connectedChain}:${addressNo0x}&include=token&page[limit]=8&page[cursor]=${pageParam}`)
         const data = await res.json()
         console.log(data)
         return data
@@ -52,11 +52,7 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
         hasNextPage,
         isFetchingNextPage,
     } = useInfiniteQuery('nfts', (pageParam) => fetchNFTs(pageParam), {
-        getNextPageParam: (lastPage, allPages) => {
-            const maxPages = lastPage.meta?.total_results / 8
-            const nextPage = allPages.length + 1
-            return nextPage <= maxPages ? nextPage : undefined
-        },
+        getNextPageParam: (lastPage, allPages) => lastPage.meta?.next_cursor,
         refetchOnMount: true
     })
 

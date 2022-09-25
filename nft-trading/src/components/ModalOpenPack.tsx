@@ -15,6 +15,7 @@ function ModalOpenPack() {
     const { address } = useAccount()
     const [code, setCode] = useState('')
     const [diffemonContract, setDiffemonContract] = useState<ethers.Contract | null>(null)
+    const [ethersProvider, setEthersProvider] = useState<ethers.providers.Web3Provider>()
     const [isAllotted, setIsAllotted] = useState(false)
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
@@ -25,7 +26,10 @@ function ModalOpenPack() {
         const loadContract = async () => {
             if (typeof window !== 'undefined') {
                 const provider: ethers.providers.Provider = new ethers.providers.Web3Provider((window as any).ethereum)
-                const signer = new ethers.Wallet("53b75ea781e20f63f0a5b0c883e3ce340e66d6ce0bbc88f3cd2ba4b26a48274a", provider)
+                const ethprovider: ethers.providers.Web3Provider = new ethers.providers.Web3Provider((window as any).ethereum)
+                await ethprovider.send('eth_requestAccounts', [])
+                setEthersProvider(ethprovider)
+                const signer = new ethers.Wallet(process.env.NEXT_PUBLIC_PACK_ADMIN_PRIVATE_KEY, provider)
                 // @ts-ignore
                 const diffemonContract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
                 setDiffemonContract(diffemonContract)
@@ -64,9 +68,10 @@ function ModalOpenPack() {
     const getCards = async () => {
         const feeData = await provider.getFeeData()
         const loadingId = toast.loading("Minting cards...")
-        const diffemonContract = new ethers.Contract(diffemonAddress, DiffemonABI)
+        const signer = ethersProvider?.getSigner(address)
+        const diffemonContractMetamask = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
         try {
-            await diffemonContract?.buyBooster({ gasPrice: feeData.gasPrice })
+            await diffemonContractMetamask?.buyBooster({ gasPrice: feeData.gasPrice })
             toast.success("Cards correctly minted!", {
                 id: loadingId
             })
