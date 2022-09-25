@@ -49,7 +49,7 @@ function CollectionsPage() {
         <div className='min-h-screen'>
             <div className='flex flex-col space-y-12 w-5/6 mx-auto'>
                 {/* Title */}
-                <h1 className='text-5xl font-semibold font-poppins pt-48'>Explore collections</h1>
+                <p className='text-5xl font-semibold font-poppins pt-48'>Explore collections</p>
                 {/* Search bar */}
                 <input type="text" className="p-6 pl-8 h-8 rounded-xl bg-base-100 border shadow-lg outline-none"
                     placeholder='Search a collection'
@@ -64,13 +64,13 @@ function CollectionsPage() {
                     {
                         wordEntered.length > 0 ? (
                             filteredData?.data?.map((collection: any) => (
-                                <CollectionCard key={collection.id} banner={collection.attributes.image_url} logo={collection.attributes.image_preview_icon_url} name={collection.attributes.name} address={collection.attributes.address} />
+                                <CollectionCard key={collection.id} attributes={collection.attributes} />
                             ))
                         ) : (
                             data?.pages?.map((page, index) => (
                                 <React.Fragment key={index}>
                                     {page?.data?.map((collection: any) => (
-                                        <CollectionCard key={collection.id} banner={collection.attributes.image_url} logo={collection.attributes.image_preview_icon_url} name={collection.attributes.name} address={collection.attributes.address} />
+                                        <CollectionCard key={collection.id} attributes={collection.attributes} />
                                     ))}
                                 </React.Fragment>
                             )))
