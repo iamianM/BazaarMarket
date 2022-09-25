@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import CardPack from './CardPack'
 import { useState } from "react"
 import ShowCard from './ShowCard'
-import { useProvider, useAccount, usePrepareContractWrite, useContractWrite, useSigner } from 'wagmi'
-import { DiffemonRinkeby, DiffemonBoosterCode } from '../../constants'
+import { useAccount, useNetwork, useProvider } from 'wagmi'
+import { DiffemonRinkeby, DiffemonPolygon, DiffemonBoosterCode } from '../../constants'
 import DiffemonABI from "../abi/DiffemonABI.json"
 import { ethers } from 'ethers'
 import { toast } from 'react-hot-toast'
@@ -16,7 +16,10 @@ function ModalOpenPack() {
     const [code, setCode] = useState('')
     const [diffemonContract, setDiffemonContract] = useState<ethers.Contract | null>(null)
     const [isAllotted, setIsAllotted] = useState(false)
-
+    const { chain } = useNetwork()
+    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    const diffemonAddress = connectedChain === 'polygon' ? DiffemonPolygon : DiffemonRinkeby
+    const provider = useProvider()
 
     useEffect(() => {
         const loadContract = async () => {
@@ -24,36 +27,53 @@ function ModalOpenPack() {
                 const provider: ethers.providers.Provider = new ethers.providers.Web3Provider((window as any).ethereum)
                 const signer = new ethers.Wallet("53b75ea781e20f63f0a5b0c883e3ce340e66d6ce0bbc88f3cd2ba4b26a48274a", provider)
                 // @ts-ignore
-                const diffemonContract = new ethers.Contract(DiffemonRinkeby, DiffemonABI, signer)
+                const diffemonContract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
                 setDiffemonContract(diffemonContract)
             }
         }
         loadContract()
     }, [])
 
+
     const allotBoosters = async () => {
-        await diffemonContract?.allotBoosters(address, 1)
+        const feeData = await provider.getFeeData()
+        // @ts-ignore
+        await diffemonContract?.allotBoosters(address, 1, { gasPrice: feeData.gasPrice })
     }
 
     const allotPackets = async () => {
+        const loadingId = toast.loading("Allotting packets...")
         if (code === DiffemonBoosterCode) {
             try {
-                allotBoosters?.()
+                allotBoosters()
                 setIsAllotted(true)
-                toast.success("Packet correctly allotted!")
+                toast.success("Packet correctly allotted!", {
+                    id: loadingId
+                })
             }
-            catch (e) { toast.error("Ops! Something went wrong, try again later") }
+            catch (e) {
+                toast.error("Ops! Something went wrong, try again later", {
+                    id: loadingId
+                })
+            }
         } else {
             toast.error("You entered a wrong code")
         }
     }
 
     const getCards = async () => {
+        const feeData = await provider.getFeeData()
+        const loadingId = toast.loading("Minting cards...")
+        const diffemonContract = new ethers.Contract(diffemonAddress, DiffemonABI)
         try {
-            await diffemonContract?.buyBooster()
-            toast.success("Cards correctly minted!")
+            await diffemonContract?.buyBooster({ gasPrice: feeData.gasPrice })
+            toast.success("Cards correctly minted!", {
+                id: loadingId
+            })
         } catch (e) {
-            toast.error("Ops! Something went wrong, try again later")
+            toast.error("Ops! Something went wrong, try again later", {
+                id: loadingId
+            })
             console.error(e)
         }
     }

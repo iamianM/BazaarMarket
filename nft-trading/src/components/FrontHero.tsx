@@ -12,9 +12,8 @@ function FrontHero() {
                     </p>
                     <div className='flex space-x-4'>
                         <Link href="/collections">
-                            <button className="btn btn-secondary shadow-md">Explore</button>
+                            <button className="btn btn-primary shadow-md">Explore</button>
                         </Link>
-                        <button className="btn btn-primary shadow-md">Trade</button>
                     </div>
                     <div className="flex justify-between mt-10">
                         <div className="">

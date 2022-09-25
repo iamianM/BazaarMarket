@@ -10,7 +10,7 @@ import { toast } from 'react-hot-toast'
 import { trpc } from '../utils/trpc';
 import { v4 as uuidv4 } from 'uuid';
 import { erc721ABI } from 'wagmi'
-import { NftTraderRinkeby } from "../../constants"
+import { NftTraderRinkeby, NftTraderEthereum, NftTraderPolygon } from "../../constants"
 
 function TradeModal({ nft }: { nft: Item | null | undefined }) {
 
@@ -47,7 +47,6 @@ function TradeModal({ nft }: { nft: Item | null | undefined }) {
         selectedNFTs.forEach(async (nft) => {
             console.log("Contract address:", nft.contract_address.trim())
             const nftContract = new ethers.Contract(nft.contract_address, erc721ABI, signer)
-            console.log(NftTraderRinkeby)
             await nftContract.setApprovalForAll(NftTraderRinkeby, true)
         });
     }

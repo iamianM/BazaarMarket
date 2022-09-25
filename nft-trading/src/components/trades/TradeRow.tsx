@@ -8,7 +8,7 @@ import NFTTraderSDK from "@nfttrader-io/sdk-js"
 import { toast } from 'react-hot-toast'
 import { useAccount, useNetwork } from "wagmi"
 import { erc721ABI } from 'wagmi'
-import { NftTraderRinkeby } from "../../../constants"
+import { NftTraderEthereum, NftTraderPolygon, NftTraderRinkeby } from "../../../constants"
 import { trpc } from '../../utils/trpc';
 
 function TradeRow({ swap }: {
@@ -49,6 +49,22 @@ function TradeRow({ swap }: {
 
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    let nftTraderAddress = ""
+
+    switch (connectedChain) {
+        case "ethereum":
+            nftTraderAddress = NftTraderEthereum
+            break;
+        case "polygon":
+            nftTraderAddress = NftTraderPolygon
+            break;
+        case "rinkeby":
+            nftTraderAddress = NftTraderRinkeby
+            break;
+        default:
+            nftTraderAddress = NftTraderEthereum
+            break;
+    }
 
     const sdk = new NFTTraderSDK({
         ethers: ethers, //you need to provide the instance of ethers js library
@@ -70,8 +86,7 @@ function TradeRow({ swap }: {
     const approveTakerNFTs = () => {
         swap?.NFTTaker.forEach(async (nft) => {
             const nftContract = new ethers.Contract(nft.contractAddress, erc721ABI, signer)
-            console.log(NftTraderRinkeby)
-            await nftContract.setApprovalForAll(NftTraderRinkeby, true)
+            await nftContract.setApprovalForAll(nftTraderAddress, true)
         });
     }
 

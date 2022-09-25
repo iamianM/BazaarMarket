@@ -4,11 +4,12 @@ import Link from 'next/link';
 
 function NFTOwnership({ owner }: { owner: string | any }) {
 
+    const seed = owner.length > 10 ? owner : "0xCd8248589E085446aAbD028E97393a20A1b6C48d"
     return (
         <div className="flex space-x-8 mt-10 items-center">
             <div className="avatar">
                 <div className="w-24 rounded-full">
-                    <img src={makeBlockie(owner ?? "0xCd8248589E085446aAbD028E97393a20A1b6C48d")} />
+                    <img src={makeBlockie(seed)} />
                 </div>
             </div>
             <div className="flex flex-col space-y-1">

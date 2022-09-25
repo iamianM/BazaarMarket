@@ -20,10 +20,7 @@ function ProfileCollectionCarousel({ address }: { address: string | string[] | u
         ]
     }
 
-    const { data: collections, isLoading, isFetching } = useQuery('collections', () => fetchCollections(), {
-        retry: 10,
-        retryDelay: attempt => Math.min(attempt > 1 ? 2 ** attempt * 1000 : 1000, 30 * 1000)
-    })
+    const { data: collections, isLoading, isFetching } = useQuery('collections', () => fetchCollections())
 
     const isDownloading = isLoading || isFetching
 
@@ -47,18 +44,16 @@ function ProfileCollectionCarousel({ address }: { address: string | string[] | u
                         />
                     </div> :
                     collections?.contracts?.map((collection, index) => (
-                        <Link href={`/collection/${collection.address}`} key={index}>
-                            <div className="carousel-item cursor-pointer" key={index}>
-                                <div className="flex flex-col">
-                                    <div className="avatar">
-                                        <div className="w-24 rounded-full">
-                                            <img src={collection?.metadata?.cached_thumbnail_url ?? collection?.metadata?.thumbnail_url} alt="carousel-item" />
-                                        </div>
+                        <div className="carousel-item" key={index}>
+                            <div className="flex flex-col">
+                                <div className="avatar">
+                                    <div className="w-24 rounded-full">
+                                        <img src={collection?.metadata?.cached_thumbnail_url ?? collection?.metadata?.thumbnail_url} alt="carousel-item" />
                                     </div>
-                                    <p className="text-center w-24 font-poppins truncate">{collection?.name}</p>
                                 </div>
+                                <p className="text-center w-24 font-poppins truncate">{collection?.name}</p>
                             </div>
-                        </Link>
+                        </div>
                     ))}
             </div>
         </div>
