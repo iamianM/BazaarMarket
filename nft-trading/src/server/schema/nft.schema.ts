@@ -5,6 +5,7 @@ export const createNFTSchema = z.object({
     contractAddress: z.string().min(1),
     name: z.string(),
     image: z.string(),
+    description: z.string(),
     swapRequestId: z.string().min(1),
 })
 

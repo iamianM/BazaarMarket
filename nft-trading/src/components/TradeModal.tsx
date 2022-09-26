@@ -73,27 +73,25 @@ function TradeModal({ nft }: { nft: any }) {
         contractAddress: string,
         name: string,
         image: string,
+        description: string,
         swapRequestId: string,
     ) => {
         if (type === 'maker') {
-            createNFTMakerMutation.mutate({ tokenId, contractAddress, name, image, swapRequestId })
+            createNFTMakerMutation.mutate({ tokenId, contractAddress, name, image, description, swapRequestId })
         } else if (type === 'taker') {
-            createNFTTakerMutation.mutate({ tokenId, contractAddress, name, image, swapRequestId })
+            createNFTTakerMutation.mutate({ tokenId, contractAddress, name, image, description, swapRequestId })
         }
     }
 
     const createNFTs = (swapRequestId: string) => {
-        console.log(selectedNFTs)
-        for (let i = 0; i < selectedNFTs?.included?.length; i++) {
-            const contract_address = (selectedNFTs?.included[i]?.id as string).split(":")[1]
-            const token_id = (selectedNFTs?.included[i].id as string).split(":")[2]
-            const src = selectedNFTs?.included[i]?.attributes?.image_preview_icon_url || selectedNFTs?.included[i].attributes?.image_preview_small_url
-            createNFT("maker", token_id ?? "0", contract_address ?? "0", selectedNFTs?.included[i].attributes?.name ?? "", src ?? "", swapRequestId)
+        console.log("Selected nfts: " + JSON.stringify(selectedNFTs))
+        for (let i = 0; i < selectedNFTs?.length; i++) {
+            createNFT("maker", selectedNFTs[i]?.token_id ?? "0", selectedNFTs[i]?.contract_address ?? "0", selectedNFTs[i]?.name ?? "", selectedNFTs[i]?.image, selectedNFTs[i]?.description, swapRequestId)
         }
         const contract_address = (nft?.id as string).split(":")[1]
         const token_id = (nft?.id as string).split(":")[2]
         const src = nft?.attributes?.image_preview_icon_url || nft?.attributes?.image_preview_small_url
-        createNFT("taker", token_id ?? "0", contract_address ?? "0", nft?.attributes?.name ?? "", src ?? "", swapRequestId)
+        createNFT("taker", token_id ?? "0", contract_address ?? "0", nft?.attributes?.name ?? "", src ?? "", nft?.attributes?.description, swapRequestId)
     }
 
     const buildTrade = async () => {
@@ -115,46 +113,54 @@ function TradeModal({ nft }: { nft: any }) {
 
     const submitTrade = async (nftMaker: [any], nftTaker: [any]) => {
         setDisable(true)
-        sdk.on("createSwapTransactionError", ({ error, typeError }: { error: any, typeError: any }) => {
-            console.log({ error, typeError })
-            toast.error("Error creating trade")
-            setDisable(false)
-            //typeError value can be: createSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
+        const addressMaker = address as string
+        const addressTaker = nft?.owner as string
+        await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
+            onSuccess: (data) => {
+                createNFTs(data.id as string)
+            },
         })
-        sdk.on("createSwapTransactionCreated", async ({ tx }: { tx: any }) => {
-            const addressMaker = address as string
-            const addressTaker = nft?.owner as string
-            await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
-                onSuccess: (data) => {
-                    createNFTs(data.id as string)
-                },
-            })
-            // const txHash = tx.hash
-            toast.success("Trade created, it will be mined soon")
-            //tx object is an instance of the class TransactionResponse. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse]
-        })
-        sdk.on("createSwapTransactionMined", async ({ receipt }: { receipt: any }) => {
-            //receipt object is an instance of the class TransactionReceipt. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt]
-            const events = receipt.events
-            const event = events[0]
-            const { _swapId } = event.args
-            const res = await refetchSwapRequestId()
-            updateSwap(res?.data?.id as string, _swapId._hex)
-            toast.success("Trade mined")
-            //do whatever you want
-            setDisable(false)
-        })
-        await sdk.createSwap({
-            ethMaker: "100000000000", //amount in wei placed by the creator of the swap (mandatory)
-            taker: nft?.owner, //address of the taker (counterparty) of the swap. If you provide the value '0x0000000000000000000000000000000000000000' the swap can be closed by everyone (mandatory)
-            ethTaker: "100000000000", //amount in wei placed by the taker of the swap (mandatory)
-            swapEnd: 1, //number of days of validity of the swap. If not specified the value will be zero. Zero value means no time limit. (optional)
-            assetsMaker: nftMaker, //Array of ERC721/1155/20 tokens placed by the creator of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
-            assetsTaker: nftTaker, //Array of ERC721/1155/20 tokens placed by the taker (counterparty) of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
-        })
-        sdk.off('createSwapTransactionCreated') //remove all the listener
-        sdk.off('createSwapTransactionMined') //remove all the listener
-        sdk.off('createSwapTransactionError') //remove all the listener
+        setDisable(false)
+        // sdk.on("createSwapTransactionError", ({ error, typeError }: { error: any, typeError: any }) => {
+        //     console.log({ error, typeError })
+        //     toast.error("Error creating trade")
+        //     setDisable(false)
+        //     //typeError value can be: createSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
+        // })
+        // sdk.on("createSwapTransactionCreated", async ({ tx }: { tx: any }) => {
+        //     const addressMaker = address as string
+        //     const addressTaker = nft?.owner as string
+        //     await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
+        //         onSuccess: (data) => {
+        //             createNFTs(data.id as string)
+        //         },
+        //     })
+        //     // const txHash = tx.hash
+        //     toast.success("Trade created, it will be mined soon")
+        //     //tx object is an instance of the class TransactionResponse. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse]
+        // })
+        // sdk.on("createSwapTransactionMined", async ({ receipt }: { receipt: any }) => {
+        //     //receipt object is an instance of the class TransactionReceipt. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt]
+        //     const events = receipt.events
+        //     const event = events[0]
+        //     const { _swapId } = event.args
+        //     const res = await refetchSwapRequestId()
+        //     updateSwap(res?.data?.id as string, _swapId._hex)
+        //     toast.success("Trade mined")
+        //     //do whatever you want
+        //     setDisable(false)
+        // })
+        // await sdk.createSwap({
+        //     ethMaker: "100000000000", //amount in wei placed by the creator of the swap (mandatory)
+        //     taker: nft?.owner, //address of the taker (counterparty) of the swap. If you provide the value '0x0000000000000000000000000000000000000000' the swap can be closed by everyone (mandatory)
+        //     ethTaker: "100000000000", //amount in wei placed by the taker of the swap (mandatory)
+        //     swapEnd: 1, //number of days of validity of the swap. If not specified the value will be zero. Zero value means no time limit. (optional)
+        //     assetsMaker: nftMaker, //Array of ERC721/1155/20 tokens placed by the creator of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
+        //     assetsTaker: nftTaker, //Array of ERC721/1155/20 tokens placed by the taker (counterparty) of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
+        // })
+        // sdk.off('createSwapTransactionCreated') //remove all the listener
+        // sdk.off('createSwapTransactionMined') //remove all the listener
+        // sdk.off('createSwapTransactionError') //remove all the listener
     }
 
     // const handleFilter = async (event: { target: { value: string } }) => {
@@ -170,8 +176,6 @@ function TradeModal({ nft }: { nft: any }) {
     const options = { method: 'GET', headers: { Accept: 'application/json', 'X-API-Key': 'test' } };
     const [nftCollection, setNftCollection] = useState<any>([])
     const [selectedNFTs, setSelectedNFTs] = useState<any>([])
-
-
 
     const { data, isLoading } = useQuery('trading-nfts', () => fetchNFTs(), {
         select: (data) => data?.included?.map((nft: any) => ({

@@ -23,8 +23,10 @@ function NFTPage() {
         image_preview_large_url: string
         image_preview_small_url: string
         image_url: string
+        image: string
         name: string
         token_id: string
+        contractAddress: string
     }
 
     const queryData: Data = JSON.parse(router.query.data as string ?? "{}")
@@ -66,10 +68,10 @@ function NFTPage() {
     }
 
     const showNFT = queryData &&
-        <main className="flex flex-col justify-center max-w-7xl lg:grid lg:grid-cols-3 lg:gap-10 mx-auto">
+        <main className="flex flex-col justify-center max-w-7xl lg:grid lg:grid-cols-3 lg:gap-10 mx-auto mb-10">
             <section className="lg:col-span-1 ">
                 {data?.nft && <NFTShowCard
-                    image={queryData.image_preview_large_url}
+                    image={queryData.image_preview_large_url ?? queryData.image}
                     name={queryData.name} />}
             </section>
             <section className="lg:col-span-2 mb-10 mt-5">
@@ -77,7 +79,7 @@ function NFTPage() {
                     <NFTInfo
                         owner={data?.owner}
                         description={queryData.description}
-                        collection_address={data?.nft?.contract_address}
+                        collection_address={data?.nft?.contract_address ?? queryData?.contractAddress}
                         attributes={data?.nft?.metadata?.attributes} />
                 }
             </section>

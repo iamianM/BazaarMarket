@@ -12,6 +12,7 @@ export const nftTakerRouter = createRouter()
                     contractAddress: input.contractAddress,
                     name: input?.name,
                     image: input?.image,
+                    description: input?.description,
                     swapRequest: {
                         connect: {
                             id: input.swapRequestId,
