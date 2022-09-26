@@ -6,8 +6,10 @@ import { useAccount } from 'wagmi'
 function CollectionItem({ nft, setSelectedNFT, owner }: { nft: any, setSelectedNFT?: any, owner?: string | string[] | undefined }) {
 
     const { address } = useAccount()
-    const contractAddress = "0x" + nft.id.split(":")[1]
-    const tokenId = nft.id.split(":")[2]
+    console.log(nft)
+
+    const contractAddress = nft?.contract_address ?? "0x" + nft.id.split(":")[1]
+    const tokenId = nft?.token_id ?? nft.id.split(":")[2]
     const src = nft?.attributes?.image_preview_icon_large_url || nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image
     return (
         <>
