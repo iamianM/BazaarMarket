@@ -30,8 +30,7 @@ function ModalOpenPack() {
                 await ethprovider.send('eth_requestAccounts', [])
                 setEthersProvider(ethprovider)
                 const signer = new ethers.Wallet(process.env.NEXT_PUBLIC_PACK_ADMIN_PRIVATE_KEY, provider)
-                // @ts-ignore
-                const diffemonContract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
+                const diffemonContract: ethers.Contract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
                 setDiffemonContract(diffemonContract)
             }
         }
@@ -41,7 +40,6 @@ function ModalOpenPack() {
 
     const allotBoosters = async () => {
         const feeData = await provider.getFeeData()
-        // @ts-ignore
         await diffemonContract?.allotBoosters(address, 1, { gasPrice: feeData.gasPrice })
     }
 
@@ -69,7 +67,7 @@ function ModalOpenPack() {
         const feeData = await provider.getFeeData()
         const loadingId = toast.loading("Minting cards...")
         const signer = ethersProvider?.getSigner(address)
-        const diffemonContractMetamask = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
+        const diffemonContractMetamask: ethers.Contract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
         try {
             await diffemonContractMetamask?.buyBooster({ gasPrice: feeData.gasPrice })
             toast.success("Cards correctly minted!", {

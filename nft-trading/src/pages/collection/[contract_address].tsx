@@ -17,7 +17,7 @@ function CollectionPage() {
 
     const router = useRouter()
     const contract_address = router.query.contract_address
-    const queryData: Data = JSON.parse(router.query.data as string)
+    const queryData: Data = JSON.parse(router.query.data as string ?? "{}")
 
     return (
         <div className="min-h-screen">

@@ -27,7 +27,7 @@ function NFTPage() {
         token_id: string
     }
 
-    const queryData: Data = JSON.parse(router.query.data as string)
+    const queryData: Data = JSON.parse(router.query.data as string ?? "{}")
 
     type NFTResult = {
         nft: {
