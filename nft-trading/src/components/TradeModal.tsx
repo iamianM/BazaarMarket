@@ -41,14 +41,19 @@ function TradeModal({ nft }: { nft: any }) {
     const { address } = useAccount()
     const addressNo0x = address?.replace('0x', '')
     const { chain } = useNetwork()
-    const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    let connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    if (connectedChain === 'polygon mumbai') {
+        connectedChain = 'mumbai'
+    }
+    const NftTrader = connectedChain === 'rinkeby' ? NftTraderRinkeby : connectedChain === 'polygon' ? NftTraderPolygon : NftTraderEthereum
     const signer = ethersProvider?.getSigner(address)
+
 
     const approveAllSelectedNFTs = () => {
         selectedNFTs.forEach(async (nft: any) => {
             console.log("Contract address:", nft.contract_address.trim())
             const nftContract = new ethers.Contract(nft.contract_address, erc721ABI, signer)
-            await nftContract.setApprovalForAll(NftTraderRinkeby, true)
+            await nftContract.setApprovalForAll(NftTrader, true)
         });
     }
 
@@ -93,66 +98,63 @@ function TradeModal({ nft }: { nft: any }) {
 
     const buildTrade = async () => {
         const selectedNFTsArray = new sdk.AssetsArray()
+        console.log(selectedNFTs)
         for (let i = 0; i < selectedNFTs?.included?.length; i++) {
             const contract_address = (selectedNFTs?.included[i]?.id as string).split(":")[1]
             const token_id = (selectedNFTs?.included[i]?.id as string).split(":")[2]
-            selectedNFTsArray.addERC721Asset(contract_address, token_id)
+            selectedNFTsArray.addERC721Asset("0x" + contract_address, token_id)
         }
         const nftToTrade = new sdk.AssetsArray()
         const contract_address = (nft?.id as string).split(":")[1]
+        console.log("Address: " + contract_address)
         const token_id = (nft?.id as string).split(":")[2]
-        nftToTrade.addERC721Asset(contract_address, token_id)
+        console.log("ID : " + token_id)
+        nftToTrade.addERC721Asset("0x" + contract_address, token_id)
         await submitTrade(selectedNFTsArray.getAssetsArray(), nftToTrade.getAssetsArray())
     }
 
     const submitTrade = async (nftMaker: [any], nftTaker: [any]) => {
         setDisable(true)
-        const addressMaker = address as string
-        const addressTaker = nft?.owner as string
-        await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
-            onSuccess: (data) => {
-                createNFTs(data.id as string)
-            },
+        sdk.on("createSwapTransactionError", ({ error, typeError }: { error: any, typeError: any }) => {
+            console.log({ error, typeError })
+            toast.error("Error creating trade")
+            setDisable(false)
+            //typeError value can be: createSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
         })
-        // sdk.on("createSwapTransactionError", ({ error, typeError }: { error: any, typeError: any }) => {
-        //     console.log({ error, typeError })
-        //     toast.error("Error creating trade")
-        //     //typeError value can be: createSwapIntentError or waitError. The first one means the error is occured during the process creation of the transaction. The second one means the error is occured during the mining process of the transaction.
-        // })
-        // sdk.on("createSwapTransactionCreated", async ({ tx }: { tx: any }) => {
-        //     const addressMaker = address as string
-        //     const addressTaker = nft?.owner as string
-        //     await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
-        //         onSuccess: (data) => {
-        //             createNFTs(data.id as string)
-        //         },
-        //     })
-        //     // const txHash = tx.hash
-        //     toast.success("Trade created, it will be mined soon")
-        //     //tx object is an instance of the class TransactionResponse. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse]
-        // })
-        // sdk.on("createSwapTransactionMined", async ({ receipt }: { receipt: any }) => {
-        //     //receipt object is an instance of the class TransactionReceipt. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt]
-        //     const events = receipt.events
-        //     const event = events[0]
-        //     const { _swapId } = event.args
-        //     const res = await refetchSwapRequestId()
-        //     updateSwap(res?.data?.id as string, _swapId._hex)
-        //     toast.success("Trade mined")
-        //     //do whatever you want
-        //     setDisable(false)
-        // })
-        // await sdk.createSwap({
-        //     ethMaker: "100000000000", //amount in wei placed by the creator of the swap (mandatory)
-        //     taker: nft?.owner, //address of the taker (counterparty) of the swap. If you provide the value '0x0000000000000000000000000000000000000000' the swap can be closed by everyone (mandatory)
-        //     ethTaker: "100000000000", //amount in wei placed by the taker of the swap (mandatory)
-        //     swapEnd: 1, //number of days of validity of the swap. If not specified the value will be zero. Zero value means no time limit. (optional)
-        //     assetsMaker: nftMaker, //Array of ERC721/1155/20 tokens placed by the creator of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
-        //     assetsTaker: nftTaker, //Array of ERC721/1155/20 tokens placed by the taker (counterparty) of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
-        // })
-        // sdk.off('createSwapTransactionCreated') //remove all the listener
-        // sdk.off('createSwapTransactionMined') //remove all the listener
-        // sdk.off('createSwapTransactionError') //remove all the listener
+        sdk.on("createSwapTransactionCreated", async ({ tx }: { tx: any }) => {
+            const addressMaker = address as string
+            const addressTaker = nft?.owner as string
+            await createSwapMutation.mutateAsync({ addressMaker, addressTaker }, {
+                onSuccess: (data) => {
+                    createNFTs(data.id as string)
+                },
+            })
+            // const txHash = tx.hash
+            toast.success("Trade created, it will be mined soon")
+            //tx object is an instance of the class TransactionResponse. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionResponse]
+        })
+        sdk.on("createSwapTransactionMined", async ({ receipt }: { receipt: any }) => {
+            //receipt object is an instance of the class TransactionReceipt. For more info visit the ethers js docs [https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt]
+            const events = receipt.events
+            const event = events[0]
+            const { _swapId } = event.args
+            const res = await refetchSwapRequestId()
+            updateSwap(res?.data?.id as string, _swapId._hex)
+            toast.success("Trade mined")
+            //do whatever you want
+            setDisable(false)
+        })
+        await sdk.createSwap({
+            ethMaker: "100000000000", //amount in wei placed by the creator of the swap (mandatory)
+            taker: nft?.owner, //address of the taker (counterparty) of the swap. If you provide the value '0x0000000000000000000000000000000000000000' the swap can be closed by everyone (mandatory)
+            ethTaker: "100000000000", //amount in wei placed by the taker of the swap (mandatory)
+            swapEnd: 1, //number of days of validity of the swap. If not specified the value will be zero. Zero value means no time limit. (optional)
+            assetsMaker: nftMaker, //Array of ERC721/1155/20 tokens placed by the creator of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
+            assetsTaker: nftTaker, //Array of ERC721/1155/20 tokens placed by the taker (counterparty) of the swap. The default value is an empty array. The SDK provides utility methods to build this array. (optional)
+        })
+        sdk.off('createSwapTransactionCreated') //remove all the listener
+        sdk.off('createSwapTransactionMined') //remove all the listener
+        sdk.off('createSwapTransactionError') //remove all the listener
     }
 
     // const handleFilter = async (event: { target: { value: string } }) => {
@@ -173,13 +175,12 @@ function TradeModal({ nft }: { nft: any }) {
 
     const { data, isLoading } = useQuery('trading-nfts', () => fetchNFTs(), {
         select: (data) => data?.included?.map((nft: any) => ({
-            image: nft?.attributes?.image_preview_icon_url || nft?.attributes?.image_preview_small_url,
+            image: nft?.attributes?.image_preview_icon_large_url || nft?.attributes?.image_preview_small_url,
             name: nft?.attributes?.name,
             contract_address: nft?.id.split(":")[1],
             token_id: nft?.id.split(":")[2],
             owner: address,
-        }
-        )),
+        })),
         onSuccess: (data) => {
             setNftCollection(data)
         }
@@ -259,7 +260,7 @@ function TradeModal({ nft }: { nft: any }) {
                                 <p className="font-poppins text-2xl">NFT to trade:</p>
                                 <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
                                     <figure className="px-10 pt-10">
-                                        <img src={nft?.attributes?.image_preview_icon_url || nft?.attributes?.image_preview_large_url} className="rounded-xl object-fill" />
+                                        <img src={nft?.attributes?.image_preview_large_url || nft?.attributes?.image_preview_icon_url} className="rounded-xl object-fill" />
                                     </figure>
                                     <div className="card-body items-center text-center">
                                         <h2 className="card-title">{nft?.attributes?.name}</h2>
@@ -270,7 +271,7 @@ function TradeModal({ nft }: { nft: any }) {
                                 <button className="btn btn-primary"
                                     disabled={disable}
                                     onClick={() => {
-                                        approveAllSelectedNFTs()
+                                        // approveAllSelectedNFTs()
                                         buildTrade()
                                     }}>
                                     Submit Offer

@@ -1,12 +1,28 @@
+import { useQuery } from "react-query"
 import NFTCollectionAvatar from "./NFTCollectionAvatar"
 import NFTDetails from "./NFTDetails"
+import { useNetwork } from 'wagmi'
 
-function NFTInfo({ owner, description, collection_image, collection_name, attributes, collection_address }: { owner: string | any, description: string, collection_image: string, collection_name: string, attributes: [], collection_address: string }) {
+function NFTInfo({ owner, description, attributes, collection_address }: { owner: string | any, description: string, attributes: [], collection_address: string }) {
+
+    // const { data } = useQuery('collection', () => fetchCollection())
+    // const { chain } = useNetwork()
+    // const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+
+    // const fetchCollection = async () => {
+    //     const response = await fetch(`/api/collection/${collection_address}?chain=${connectedChain}`)
+    //     const data = await response.json()
+    //     return data
+    // }
+
     return (
         <div className="mt-28">
             <div className="bg-white flex flex-col space-y-10 bg-opacity-25 backdrop-blur-xl rounded-2xl shadow-md p-5">
-                <NFTCollectionAvatar src={collection_image} name={collection_name} address={collection_address} />
-                <p className="font-poppins">
+                {/* <NFTCollectionAvatar src={collection_image} name={collection_name} address={collection_address} /> */}
+                <p className="font-poppins italic text-xl">
+                    Description:
+                </p>
+                <p className="font-poppins mt-5">
                     {description}
                 </p>
                 {attributes && <p className="font-poppins italic text-xl">

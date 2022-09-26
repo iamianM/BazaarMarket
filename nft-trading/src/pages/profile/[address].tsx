@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import ProfileBanner from '../../components/profile/ProfileBanner'
 import ProfileCollectionCarousel from '../../components/profile/ProfileCollectionCarousel'
 import ProfileDescription from '../../components/profile/ProfileDescription'
