@@ -43,7 +43,7 @@ function Header() {
                 </div>
                 {isConnected ?
                     (<>
-                        <button className="btn btn-sm btn-outline btn-primary normal-case" onClick={openAccountModal}><p>Profile</p></button>
+                        <button className="btn btn-sm btn-outline btn-primary normal-case" onClick={openAccountModal}><p>Account</p></button>
                         <button className="btn btn-sm btn-outline btn-primary normal-case" onClick={openChainModal}><p>Chain</p></button>
 
                     </>)

@@ -5,6 +5,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const headers = new Headers();
     headers.append('Content-Type', 'application/json')
     headers.append('Authorization', process.env.NFT_PORT_API_KEY)
+    headers.append('Access-Control-Allow-Origin', '*')
     const contract_address = req.query.contract_address
     const data: any = await fetch(`https://api.nftport.xyz/v0/nfts/${contract_address}?` + new URLSearchParams({
         ...req.query as any

@@ -21,7 +21,7 @@ function NFTCollection() {
             <Link href="/collection/diffemon">
                 <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
                     <figure className="px-10 pt-10">
-                        <img src={DiffemonCollection.attributes.image_preview_icon_url} className="rounded-xl object-cover w-4/5 " />
+                        <img src="/diffemon/corgichu.png" className="rounded-xl object-cover w-4/5 " />
                     </figure>
                     <div className="card-body items-center text-center">
                         <h2 className="card-title">{DiffemonCollection.attributes.name}</h2>

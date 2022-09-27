@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'next/link'
-import type { Item } from '../../../types'
 import { useAccount } from 'wagmi'
 
 function CollectionItem({ nft, setSelectedNFT, owner }: { nft: any, setSelectedNFT?: any, owner?: string | string[] | undefined }) {

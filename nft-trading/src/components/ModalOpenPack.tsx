@@ -26,7 +26,7 @@ function ModalOpenPack() {
 
     // get user from id
     const { data: user } = trpc.useQuery(['user.get-user', {
-        id: session?.user?.id || ''
+        id: session?.user?.id || '1'
     }])
 
     const updateClaimMutation = trpc.useMutation(['user.update-claim'])
