@@ -100,14 +100,14 @@ function TradeModal({ nft }: { nft: any }) {
         for (let i = 0; i < selectedNFTs?.included?.length; i++) {
             const contract_address = (selectedNFTs?.included[i]?.id as string).split(":")[1]
             const token_id = (selectedNFTs?.included[i]?.id as string).split(":")[2]
-            selectedNFTsArray.addERC721Asset("0x" + contract_address, (Number("0x" + token_id)).toString())
+            selectedNFTsArray.addERC721Asset("0x" + contract_address, (parseInt(token_id ?? "0")).toString())
         }
         const nftToTrade = new sdk.AssetsArray()
         const contract_address = (nft?.id as string).split(":")[1]
         console.log("Address: " + contract_address)
         const token_id = (nft?.id as string).split(":")[2]
         console.log("ID : " + token_id)
-        nftToTrade.addERC721Asset("0x" + contract_address, (Number("0x" + token_id)).toString())
+        nftToTrade.addERC721Asset("0x" + contract_address, (parseInt(token_id ?? "0")).toString())
         await submitTrade(selectedNFTsArray.getAssetsArray(), nftToTrade.getAssetsArray())
     }
 
@@ -267,7 +267,7 @@ function TradeModal({ nft }: { nft: any }) {
                                 <button className="btn btn-primary"
                                     disabled={disable}
                                     onClick={() => {
-                                        // approveAllSelectedNFTs()
+                                        approveAllSelectedNFTs()
                                         buildTrade()
                                     }}>
                                     Submit Offer
