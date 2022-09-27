@@ -30,7 +30,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.mainnet, chain.rinkeby, chain.polygon, chain.polygonMumbai],
+  [chain.mainnet, chain.rinkeby, chain.polygon],
   [infuraProvider({ apiKey: process.env.INFURA_API_KEY }), publicProvider()]
 )
 

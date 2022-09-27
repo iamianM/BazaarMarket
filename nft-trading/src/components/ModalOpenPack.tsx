@@ -8,11 +8,13 @@ import DiffemonABI from "../abi/DiffemonABI.json"
 import { ethers } from 'ethers'
 import { toast } from 'react-hot-toast'
 import { trpc } from '../utils/trpc'
+import { useSession } from 'next-auth/react'
 
 function ModalOpenPack() {
 
     const [opened, setOpened] = useState(false)
-    const { address } = useAccount()
+    const { data: session } = useSession()
+    const { address, isConnected } = useAccount()
     const [code, setCode] = useState('')
     const [diffemonContract, setDiffemonContract] = useState<ethers.Contract | null>(null)
     const [ethersProvider, setEthersProvider] = useState<ethers.providers.Web3Provider>()
@@ -21,6 +23,13 @@ function ModalOpenPack() {
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
     const diffemonAddress = connectedChain === 'polygon' ? DiffemonPolygon : DiffemonRinkeby
     const provider = useProvider()
+
+    // get user from id
+    const { data: user } = trpc.useQuery(['user.get-user', {
+        id: session?.user?.id || ''
+    }])
+
+    const updateClaimMutation = trpc.useMutation(['user.update-claim'])
 
     useEffect(() => {
         const loadContract = async () => {
@@ -44,19 +53,31 @@ function ModalOpenPack() {
     }
 
     const allotPackets = async () => {
-        const loadingId = toast.loading("Allotting packets...")
         if (code === DiffemonBoosterCode) {
-            try {
-                allotBoosters()
-                setIsAllotted(true)
-                toast.success("Packet correctly allotted!", {
-                    id: loadingId
-                })
+            if (!session) {
+                toast.error("You must be logged in to get a packet")
             }
-            catch (e) {
-                toast.error("Ops! Something went wrong, try again later", {
-                    id: loadingId
-                })
+            else if (!isConnected) {
+                toast.error("You must connect your wallet to get a packet")
+            }
+            else {
+                if (user?.hasClaimedBooster) {
+                    toast.error("You already claimed your packet")
+                }
+                else {
+                    const loadingId = toast.loading("Retrieving packet...")
+                    try {
+                        allotBoosters()
+                        setIsAllotted(true)
+                        toast.success("Packet correctly retrieved!", {
+                            id: loadingId
+                        })
+                    } catch (e) {
+                        toast.error("Ops! Something went wrong, try again later", {
+                            id: loadingId
+                        })
+                    }
+                }
             }
         } else {
             toast.error("You entered a wrong code")
@@ -73,6 +94,7 @@ function ModalOpenPack() {
             toast.success("Cards correctly minted!", {
                 id: loadingId
             })
+            updateClaimMutation.mutate({ id: user?.id || '' })
         } catch (e) {
             toast.error("Ops! Something went wrong, try again later", {
                 id: loadingId
@@ -88,7 +110,10 @@ function ModalOpenPack() {
                 <input type="text" placeholder='Insert your code here...' className='p-5 h-8 placeholder:text-base-100 placeholder:italic rounded-md bg-transparent border shadow-lg outline-none'
                     onChange={(e) => setCode(e.target.value)} />
                 <div className='shadow-2xl cursor-pointer flex justify-center items-center rounded-full w-32 h-32 bg-gradient-to-bl from-white via-yellow-200 to-secondary'>
-                    <p className='font-poppins text-lg' onClick={() => allotPackets()}>Claim</p>
+                    <p className='font-poppins text-lg' onClick={() => {
+                        setCode("")
+                        allotPackets()
+                    }}>Claim</p>
                 </div>
                 {isAllotted && <button className='btn btn-primary' onClick={() => getCards()}>Mint your cards</button>}
             </div>
