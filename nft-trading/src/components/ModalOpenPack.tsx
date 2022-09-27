@@ -90,6 +90,7 @@ function ModalOpenPack() {
         const signer = ethersProvider?.getSigner(address)
         const diffemonContractMetamask: ethers.Contract = new ethers.Contract(diffemonAddress, DiffemonABI, signer)
         try {
+            setIsAllotted(false)
             await diffemonContractMetamask?.buyBooster({ gasPrice: feeData.gasPrice })
             toast.success("Cards correctly minted!", {
                 id: loadingId
