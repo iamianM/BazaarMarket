@@ -4,6 +4,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const headers = new Headers();
     headers.append('Content-Type', 'application/json')
     headers.append('Authorization', process.env.NFT_PORT_API_KEY)
+    headers.append('Access-Control-Allow-Same-Origin', 'true')
     headers.append('Access-Control-Allow-Origin', '*')
     headers.append('Access-Control-Allow-Methods', 'OPTIONS, HEAD, GET, POST, PUT, DELETE')
     headers.append('Access-Control-Allow-Credentials', 'true')
