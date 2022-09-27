@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     headers.append('Access-Control-Allow-Origin', '*')
     headers.append('Access-Control-Allow-Methods', 'OPTIONS, HEAD, GET, POST, PUT, DELETE')
     headers.append('Access-Control-Allow-Credentials', 'true')
-    headers.append('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, X-HTTP-Method-Override, Accept, Origin, Access-Control-Request-Method, Access-Control-Request-Headers')
+    headers.append('Access-Control-Allow-Headers', 'X-Requested-With, X-Auth-Token, Content-Type, Content-Length, Authorization, Access-Control-Allow-Headers, Accept, Access-Control-Allow-Methods, Access-Control-Allow-Origin, Access-Control-Allow-Credentials')
     const contract_address = req.query.contract_address
     const token_id = req.query.token_id
     const data: any = await fetch(`https://api.nftport.xyz/v0/nfts/${contract_address}/${token_id}?` + new URLSearchParams({
