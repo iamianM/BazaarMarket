@@ -10,7 +10,7 @@ function CollectionItem({ nft, setSelectedNFT, owner }: { nft: any, setSelectedN
 
     const contractAddress = nft?.contract_address ?? "0x" + nft.id.split(":")[1]
     const tokenId = nft?.token_id ?? nft.id.split(":")[2]
-    const src = nft?.attributes?.image_preview_icon_large_url || nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image
+    const src = nft?.attributes?.image_preview_large_url || nft?.file_url || nft?.cached_file_url || nft?.metadata?.ipfs_image || nft?.metadata?.image
     return (
         <>
             <div className="card card-normal w-96 glass shadow-xl cursor-pointer">
