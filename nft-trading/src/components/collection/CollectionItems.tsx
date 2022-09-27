@@ -19,7 +19,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
     }
 
     const fetchNFTs = async ({ pageParam = 1 }) => {
-        const res = await fetch(`http://localhost:3000/api/nfts/collection/${contract_address}?chain=${connectedChain}&include=metadata&page_number=${pageParam}&page_size=9`)
+        const res = await fetch(`/api/nfts/collection/${contract_address}?chain=${connectedChain}&include=metadata&page_number=${pageParam}&page_size=9`)
         const data = await res.json()
         return data
     }
