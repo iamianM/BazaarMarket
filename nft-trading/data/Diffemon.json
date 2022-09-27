@@ -1,0 +1,522 @@
+[
+    {
+        "name": "Corgichu",
+        "description": "This creature is very independent and has a strong sense of self. They are confident and usually make their own decisions without input from others. They can be impulsive and act on instinct rather than logic, but they are also fiercely loyal and will protect their friends and family with their lives.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/0.png"
+    },
+    {
+        "name": "Gibble",
+        "description": "This creature is a loner who prefers to keep to itself. It is not outgoing or particularly friendly, but it is not unfriendly either. It is calm and collected, and has a good head on its shoulders. It is not easily rattled, and is able to think clearly even in the most chaotic of situations. This creature is also very intelligent, and is always able to see the bigger picture.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/1.png"
+    },
+    {
+        "name": "Snizen",
+        "description": "This creature is a loner by nature, and prefers to keep to itself most of the time. It's not really a pro-social creature, and would rather avoid other creatures if it can help it. It's not necessarily a hostile creature, but it's not really one that's looking to make friends either. It's generally just trying to get by and stay out of trouble.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/2.png"
+    },
+    {
+        "name": "Quiggle",
+        "description": "This creature is brave and determined, always ready to face a challenge. It has a strong sense of justice and a deep loyalty to its friends and allies. Although it can be impulsive and headstrong at times, this creature is always quick to apologize if it has acted rashly.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/3.png"
+    },
+    {
+        "name": "Drumplenose",
+        "description": "This creature is a timid and gentle soul, who is easily frightened and prone to fits of crying. They are kindhearted and easily forgiven, but their lack of courage can be a flaw.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/4.png"
+    },
+    {
+        "name": "Beebo",
+        "description": "This creature is very shy and withdrawn, preferring to stay in the background and let others take the lead. They are gentle and kind-hearted, but can be easily overwhelmed by loud noises or aggressive behaviour. They are loyal and protective of those they care for, and have a deep love of nature and the peace it brings.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/5.png"
+    },
+    {
+        "name": "Flern",
+        "description": "This creature is very shy and reserved, preferring to stay in the background and observe others rather than engage in social interaction. It is intelligent and quick-witted, able to size up a situation and figure out the best course of action. This creature is also patient and level-headed, able to maintain a cool head even in the face of adversity.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/6.png"
+    },
+    {
+        "name": "Snigglet",
+        "description": "This creature is a loner who is content to while away its days in solitude. It is fiercely independent and has a sharp tongue, but is also fiercely loyal to its friends. It is quick to anger, but just as quick to forgive. It is a survivor, and has an unyielding determination.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/7.png"
+    },
+    {
+        "name": "Fuzzle",
+        "description": "This creature is outgoing and loves to socialize. It is always looking for new friends and experiences, and loves nothing more than a good party. It is also fiercely loyal to those it considers family or friends, and will go to great lengths to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/8.png"
+    },
+    {
+        "name": "Furp",
+        "description": "This creature is a brave and determined fighter who never backs down from a challenge. They are also fiercely loyal to their friends and allies, and will do whatever it takes to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/9.png"
+    },
+    {
+        "name": "Jabberwock",
+        "description": "This creature is outgoing and talkative, always looking to make new friends. It loves to learn about other cultures and customs, and is always full of questions. It's cheerful and optimistic, even in the face of adversity.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/10.png"
+    },
+    {
+        "name": "Doovenbeast",
+        "description": "This creature is curious and inquisitive, always poking its nose into places it shouldn't. It's also rather fearless, walking up to creatures much larger than itself without an ounce of fear. This creature is also rather playful, enjoying a good game of tag or hide-and-seek.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/11.png"
+    },
+    {
+        "name": "Flim",
+        "description": "This creature is very solitary, and doesn't really seem to care for the company of others. It is content to live in its own little world, and seems to be quite happy with that. It is patient and methodical, preferring to take its time and do things right rather than rushing into things. It is also quite intelligent, and is always looking for ways to learn and grow.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/12.png"
+    },
+    {
+        "name": "Snicklebeast",
+        "description": "This creature is fiercely independent and doesn't take kindly to being told what to do. It is also very intelligent and resourceful, able to figure out solutions to problems that others wouldn't even think of. However, this creature can also be quite temperamental, lashing out when it doesn't get its way or feels threatened.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/13.png"
+    },
+    {
+        "name": "Guggle",
+        "description": "This creature is a loner who enjoys spending time in nature. It is patient and good at stalking prey. It is also very intelligent and cunning, able to outwit opponents.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/14.png"
+    },
+    {
+        "name": "Flibber Tigibbet",
+        "description": "This creature is very intelligent and knows how to get what it wants. It is very cunning and manipulative, and is always looking for ways to get ahead. It is also very charmimg and persuasive, and can often get others to do what it wants.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/15.png"
+    },
+    {
+        "name": "Snazzlebeast",
+        "description": "This creature is quiet and withdrawn, preferring to lurk in the shadows than interact with others. It is a cunning and patient hunter, stalking its prey for days before striking. It is also fiercely protective of its territory and will readily attack any creature that strays too close.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/16.png"
+    },
+    {
+        "name": "Flumox",
+        "description": "This creature is very shy and introverted, preferring to stay in the background and let others take the spotlight. They are gentle and compassionate, always quick to comfort and lend a helping hand. Although they may seem fragile, they are actually quite strong-willed and determined, and will stand up for what they believe in despite any adversity.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/17.png"
+    },
+    {
+        "name": "Croo",
+        "description": "This creature is very independent and has a strong sense of self. They are confident and self-assured, and always seem to know what they are doing. They are also very loyal and protective of their friends and family.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/18.png"
+    },
+    {
+        "name": "Abeemoth",
+        "description": "This creature is notoriously difficult to read, their motivations and desires often remaining a mystery even to those who know them best. They are fiercely independent and value their freedom above all else, but they can also be fiercely loyal to those they care for. They are often impulsive and unpredictable, but they are also fiercely intelligent and resourceful",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/19.png"
+    },
+    {
+        "name": "Fluf",
+        "description": "This creature is sly and cunning, always looking for an opportunity to get ahead. It is quick-witted and resourceful, able to talk its way out of any situation. It is also charming and charismatic, able to talk its way into any situation.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/20.png"
+    },
+    {
+        "name": "Squonk",
+        "description": "This creature is very charismatic and has a natural ability to charm others. It is also very intelligent and can quickly learn new things. However, this creature can also be very manipulative and will use its charm and intelligence to get what it wants from others.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/21.png"
+    },
+    {
+        "name": "Snozzwangle",
+        "description": "This creature is a true force to be reckoned with. Strong and skilled in combat, this creature is also extremely intelligent, able to think strategically and always remaining one step ahead of its enemies. assertive and always seeking to be in control, this creature can be quite domineering, but is also fiercely loyal to its allies and always ready to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/22.png"
+    },
+    {
+        "name": "Unglut",
+        "description": "This creature is very brave and courageous, always looking for a new adventure. Its is very outgoing and always ready to face any challenges that come their way. It is very loyal to their party and always willing to help out however they can.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/23.png"
+    },
+    {
+        "name": "Fluffer Nutter",
+        "description": "This creature is very chaotic and tends to impulsively act on its desires. It is also very cunning and manipulative, often using others to get what it wants. This creature can be quite charming when it wants to be, but it is also fiercely independent and doesn't like being constrained by others.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/24.png"
+    },
+    {
+        "name": "Gibblet",
+        "description": "This creature is a sly and cunning creature. It is very quick and agile, making it difficult for its prey to escape. It is also very clever, able to outwit its opponents.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/25.png"
+    },
+    {
+        "name": "Fluzzel",
+        "description": "This creature is outgoing and curious, always exploring its surroundings and seeking out new experiences. It is brave and determined, never backing down from a challenge, and is always ready to lend a helping hand to others. It has a strong sense of justice and fairness, and will not hesitate to stand up for what it believes in",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/26.png"
+    },
+    {
+        "name": "Snargleblat",
+        "description": "This creature is outgoing and confident, always seeking adventure and new challenges. It is quick-witted and resourceful, able to think on its feet and come up with creative solutions to problems. This creature is also charismatic and persuasive, able to charm and convince others to see its point of view.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/27.png"
+    },
+    {
+        "name": "Snorkack",
+        "description": "This creature is outgoing and always looking for a good time. It loves to meet new people and try new things, and is always up for a party. It's also quite confident and fearless, which can sometimes get it into trouble. But overall, this creature is just looking to have a good time and make everyone around it happy.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/28.png"
+    },
+    {
+        "name": "Bibble",
+        "description": "This creature is a brave and determined fighter, always ready to take on any challenge. It is also very loyal to its friends and allies, and will always stand by them in a fight.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/29.png"
+    },
+    {
+        "name": "Drat",
+        "description": "This creature is small and furtive, darting about quickly and never staying in one place for very long. It is very curious and inquisitive, always poking and prodding at things to see what they do. It is also very playful, and loves to play games and have fun.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/30.png"
+    },
+    {
+        "name": "Puffleg",
+        "description": "This creature is a loner who rarely interacts with others. It is very shy and reserved, but can be fiercely protective of its allies. It is quick to anger, but just as quick to forgive. It is fiercely independent, but will accept help from others if it is needed.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/31.png"
+    },
+    {
+        "name": "Flurp",
+        "description": "This creature has a carefree and friendly personality, always looking for new friends and adventures. It loves to explore and is always curious about everything around it. It is also very brave and is not afraid to stand up for what it believes in.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/32.png"
+    },
+    {
+        "name": "Snozzling",
+        "description": "This creature is quiet and introspective, preferring to spend time alone in thought or contemplation. It is gentle and compassionate, but also fiercely independent. It has a strong sense of justice and is always seeking to find the truth. It is loyal and protective of those it cares for, but can also be quick to anger if it feels that its principles are being violated.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/33.png"
+    },
+    {
+        "name": "D'lit",
+        "description": "This creature is calm and introspective, but also has a mischievous side. It enjoys studying and learning new things, but is also fond of playing tricks on others. It is patient and wise, but can also be impatient and impulsive at times. It is a loyal and reliable friend, but can also be a fierce enemy.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/34.png"
+    },
+    {
+        "name": "Doodledog",
+        "description": "This creature is a loner who is always looking for a fight. It is constantly testing its strength against others and is never satisfied. It is always seeking to improve itself and is never content with what it has. It is also fiercely independent and does not take kindly to being told what to do.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/35.png"
+    },
+    {
+        "name": "Pizazz",
+        "description": "This creature is very shy and withdrawn, preferring to stay in the background and avoid attention. It is extremely gentle and has a deep love for nature. This creature is also very wise and always seems to have sage advice for those who seek it out.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/36.png"
+    },
+    {
+        "name": "Snarg",
+        "description": "This creature is an enigma wrapped in a mystery. It is inscrutable and enigmatic, always appearing calm and collected. It has a quick wit and sharp tongue, and is always ready with a clever quip or scathing retort. It is also fiercely independent and abrasive, preferring to work alone and shunning the company of others",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/37.png"
+    },
+    {
+        "name": "Blorb",
+        "description": "This creature has a personality of a confident and intelligent individual. They are quick-witted and resourceful, always looking for new ways to solve problems. They have a strong sense of self and are not afraid to stand up for what they believe in. They are also fiercely loyal to their friends and family.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/38.png"
+    },
+    {
+        "name": "Sneedle",
+        "description": "This creature is very charismatic and has a strong presence. They are also very confident and tend to be very persuasive. They are also resourceful and often find creative ways to solve problems. They are also highly intelligent and tend to be quick thinkers. They are also very adaptable and often adjust well to new situations.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/39.png"
+    },
+    {
+        "name": "Gweth",
+        "description": "This creature has a warm personality, always seeking to make friends and help others. It is an optimist, always seeing the best in people and situations. It is also a bit of a goofball, always ready to make a joke and have a good time.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/40.png"
+    },
+    {
+        "name": "Grumplenose",
+        "description": "This creature is outgoing and enjoys meeting new people. They are always up for a social event and love to be the center of attention. They are also quite intuitive and have a strong sense of gut instinct.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/41.png"
+    },
+    {
+        "name": "Gloop",
+        "description": "This creature is incredibly intelligent and cunning, always seeking out new ways to outsmart others. It is also very manipulative, using its silver tongue to get what it wants. Despite its small size, this creature is incredibly brave and will fight tooth and claw to defend itself and those it cares for.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/42.png"
+    },
+    {
+        "name": "Flabbergast",
+        "description": "This creature is very calm and reserved, preferring to stay in the background and observe those around it. It is patient and intelligent, able to pick up on social cues and learn new things quickly. It is also fiercely loyal to its friends and family, and will do whatever it takes to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/43.png"
+    },
+    {
+        "name": "Peng-Pong",
+        "description": "This creature has an outgoing personality, and is always looking for a good time. It loves to party and is always up for a good time. It is also very loyal to its friends, and always has their back.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/44.png"
+    },
+    {
+        "name": "Snugglupagus",
+        "description": "This creature is very brave and always ready for a fight. It is also quite intelligent and can outwit its opponents.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/45.png"
+    },
+    {
+        "name": "Boogle",
+        "description": "This creature is charismatic and quick-witted, always ready with a joke or a kind word. They enjoy social interactions and are natural leaders, effortlessly drawing others into their orbit. They're also devilishly charming, and have a knack for getting what they want.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/46.png"
+    },
+    {
+        "name": "Blubfish",
+        "description": "This creature is very quiet and introspective, preferring to stay in the background and observe others rather than draw attention to itself. It is content to let others take the lead, and is happy to provide support however it can. This creature is patient and wise, and its calm demeanor is soothing to those around it.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/47.png"
+    },
+    {
+        "name": "Wumpus",
+        "description": "This creature has a playful personality, always eager to explore and have new experiences. It loves to meet new people and learn about their cultures and customs. The creature is also very curious, always asking questions and wanting to know more about the world around it.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/48.png"
+    },
+    {
+        "name": "Flurb",
+        "description": "This creature is outgoing and personable, always looking for a new adventure. It is brave and courageous, never backing down from a challenge. And it has a heart of gold, always willing to help others in need.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/49.png"
+    },
+    {
+        "name": "Nargle",
+        "description": "This creature has a personality that is best described as maniacal. It is always looking for a fight, and loves to cause trouble. It is also very impatient and easily bored.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/50.png"
+    },
+    {
+        "name": "Flibble",
+        "description": "This creature is very confident and always seems sure of itself. It has a strong sense of self and is always looking to improve itself. This creature is always striving to be the best it can be and is always looking for new challenges. It is also very helpful and always willing to lend a hand to others.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/51.png"
+    },
+    {
+        "name": "Lurkle",
+        "description": "This creature is brave and bold, always ready for a fight. It has a strong sense of justice, and will always stand up for what it believes in. It is also very loyal to its friends and family, and will do anything to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/52.png"
+    },
+    {
+        "name": "Mooch",
+        "description": "This creature is very quiet and withdrawn. It prefers to observe and study its surroundings rather than interact with others. It is patient and methodical, but can be quick to anger if it feels threatened. It is an excellent strategist and planner, always thinking several steps ahead. It is also very intelligent and resourceful, able to come up with clever solutions to problems.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/53.png"
+    },
+    {
+        "name": "Furble",
+        "description": "This creature is extremely self-confident and always ready for a fight. It likes to charge into battle and is always looking for ways to prove its strength. It is also very loyal to its friends and will always stand up for them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/54.png"
+    },
+    {
+        "name": "Flump",
+        "description": "This creature is very independent and has a strong sense of self. They are always seeking new challenges and opportunities to test their skills and abilities. They are very confident and always seem to come out on top, no matter the situation. They have a strong sense of justice and always stands up for what they believe in.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/55.png"
+    },
+    {
+        "name": "Slith",
+        "description": "This creature is very independent and tends to be a loner. It is very resourceful and ingenious, able to come up with creative solutions to problems. It is also brave and determined, never backing down from a challenge. However, this creature can also be impulsive and reckless, acting on impulse without thinking things through.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/56.png"
+    },
+    {
+        "name": "Snurfle",
+        "description": "This creature is very charismatic and has a natural affinity for leadership. It is also very brave and courageous, always willing to take on any challenge. It is very intelligent and resourceful, able to think on its feet and come up with strategies on the fly",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/57.png"
+    },
+    {
+        "name": "Beefalo",
+        "description": "This creature is calm and collected, but also has a sharp and intuitive mind. They are quick thinkers and are always one step ahead of their opponents. They are also very resourceful, able to make use of whatever is available to them to get the job done.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/58.png"
+    },
+    {
+        "name": "Blibble",
+        "description": "This creature is very driven, often has a clear goal or mission in life, and is very strategic in their actions. It is quick to make decisions and is not afraid of taking risks. This type of creature would also be very independent, and would not rely on others for help.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/59.png"
+    },
+    {
+        "name": "Snugglewump",
+        "description": "This creature is very shy and introverted, preferring to stay in the background and let others take the lead. It is gentle and charming, with aence. However, it can also be fiercely protective of those it cares for, and has a sharp tongue when provoked. This creature is known for its incredible intelligence, and its ability to solve problems that others cannot",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/60.png"
+    },
+    {
+        "name": "Furbiggle",
+        "description": "This creature is outgoing and loves attention. It enjoys being around others and is always up for a good time. This creature is also fiercely loyal to those it cares about and will go to great lengths to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/61.png"
+    },
+    {
+        "name": "Snozzwaddle",
+        "description": "This creature is very shy and introverted, preferring to stay in the background and let others take the lead. It is kind and gentle, but can be easily scared off by loud noises or sudden movements. When it feels comfortable, it will come out of its shell and be playful and curious. It is very loyal to its friends and family, and will do anything to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/62.png"
+    },
+    {
+        "name": "Rumple",
+        "description": "This creature is brave and confident, always ready for a fight. It has high attack and defense stats, but its low speed leaves it vulnerable to agile opponents.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/63.png"
+    },
+    {
+        "name": "Sneegle",
+        "description": "This creature is quiet and gentle, but has a fierce determination and strength of will. They are highly intelligent and have a strong understanding of the world around them. They are natural leaders and are quick to see the best in people. They are also known for being very loyal and protective of their loved ones.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/64.png"
+    },
+    {
+        "name": "Snuzzlegump",
+        "description": "This creature is very outgoing and loves to meet new people. It is always up for a party and loves to have a good time. It is also very brave and is always the first one to volunteer for anything.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/65.png"
+    },
+    {
+        "name": "Snoflurk",
+        "description": "This creature is very timid and tends to avoid conflict. It is gentle and compassionate, and is always working to help others. This creature is also quite creative, and often comes up with new ways to solve problems.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/66.png"
+    },
+    {
+        "name": "Poodlebeast",
+        "description": "This creature is very independent and has a strong will. They are often seen as the leader type, and are very confident. They can be a bit impulsive, but are usually level-headed. They have a strong sense of justice, and are always looking out for others. They are also very loyal and protective of their friends and family.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/67.png"
+    },
+    {
+        "name": "Snurple",
+        "description": "This creature is very charismatic and can easily sway others to its point of view. It is also very cunning and manipulative, often using others to achieve its goals. It is also very impatient and has a short temper, often lashing out at those who cross it.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/68.png"
+    },
+    {
+        "name": "Poo-Bah",
+        "description": "This creature is very introverted and does not like to be around others. It is very independent and likes to do things on its own. It is also very intelligent and has a great memory.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/69.png"
+    },
+    {
+        "name": "Snargle",
+        "description": "This creature is very independent and prefers to work alone. They are very self-sufficient and are very resourceful. They are also very cunning and sly, and are often one step ahead of their opponents. They are very quick thinkers and are always able to come up with a plan on the fly. They are also very brave and are not afraid to take risks.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/70.png"
+    },
+    {
+        "name": "Quagga",
+        "description": "This creature is a loner who is content to stay in the background and let others take the spotlight. It is content with its own company and enjoys a good book or nature walk as much as anything else. It is patient and has a deep understanding of the world and those around it. It is a creature of few words, but when it does speak, others listen.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/71.png"
+    },
+    {
+        "name": "Woofle",
+        "description": "This creature is a quiet and introspective type, who enjoys spending time alone in nature, contemplating the mysteries of life. They are kind-hearted and compassionate, always ready to lend a helping hand to those in need. However, they can also be fiercely protective of those they care for, and have a fierce temper when provoked.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/72.png"
+    },
+    {
+        "name": "Sizzlebeak",
+        "description": "This creature is very curious and prone to taking risks. It's also quite charming and tends to make friends easily. However, it can also be quite impulsive and careless at times.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/73.png"
+    },
+    {
+        "name": "Lirpa",
+        "description": "This creature is very bubbly and outgoing. They love meeting new people and making friends. They're always up for a good time and loves to have a good time. They're also very brave and has a strong sense of justice.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/74.png"
+    },
+    {
+        "name": "Blurp",
+        "description": "This creature is very shy and prefers to stay in the background, only coming out when absolutely necessary. It is gentle and kind, but can be fiercely protective if its friends are threatened. It is a pacifist by nature, but will fight if it has to.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/75.png"
+    },
+    {
+        "name": "Utuitewa",
+        "description": "This creature is fiercely independent and tends to be a loner. It is very self-sufficient and is always looking out for itself. It is cunning and resourceful, able to survive in even the most hostile environments. It is also brave and fearless, never backing down from a fight.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/76.png"
+    },
+    {
+        "name": "Pzzkkssll",
+        "description": "This creature is outgoing and adventurous, always looking for new challenges and experiences. She is fiercely independent and doesn't take kindly to being told what to do, preferring to follow her own intuition and gut instinct. She is also very loyal to her friends and family, and has a strong sense of justice.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/77.png"
+    },
+    {
+        "name": "Snozzwad",
+        "description": "This creature is sly and cunning, always looking for an opportunity to take advantage of others. It is charming and charismatic, but also manipulative and often ruthless. It is intelligent and quick-witted, but also calculating and patient. It is always seeking power and influence, and is willing to do whatever it takes to obtain and maintain it.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/78.png"
+    },
+    {
+        "name": "Nug",
+        "description": "This creature is a bit of a loner, preferring to keep to itself most of the time. It is very independent and resourceful, able to take care of itself quite easily. However, it is also quite curious and inquisitive, often poking its nose into places it probably shouldn't. This creature is also quite brave, often standing up to creatures much larger than itself.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/79.png"
+    },
+    {
+        "name": "Noodle",
+        "description": "The creature has an outgoing personality, and is always looking for new friends. It loves to play and explore, and is always up for a good time.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/80.png"
+    },
+    {
+        "name": "Snoggle",
+        "description": "This creature is outgoing and expressive, loves to socialize and be around others. They enjoy being the life of the party and bringing people together. They're always up for a good time, and their infectious personality is impossible to resist. They're also incredibly spontaneous, and are always game for anything - no matter how wild or dangerous it may be.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/81.png"
+    },
+    {
+        "name": "Floop",
+        "description": "This creature is outgoing and tends to be the life of the party, but can also be fiercely independent and a bit of a loner. It is loyal to its friends and always ready for a fight, but it is also quick to forgive and forget. Its impulsive and impetuous, but it also has a heart of gold.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/82.png"
+    },
+    {
+        "name": "Furblin",
+        "description": "This creature has a personality that is outgoing and energetic. They are always up for a good time and enjoy being around others. They have a strong sense of justice and are always willing to help those in need. They can be impulsive at times and have a short temper, but they are overall good natured and well intentioned.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/83.png"
+    },
+    {
+        "name": "Slithy",
+        "description": "This creature is independent and analytical, always seeking to understand the world around it. It is patient and detail-oriented, but can also be quite cold and detached. It is not easily swayed by emotions or swayed by others, preferring to make its own decisions. This creature is often regarded as intelligent and logical, but it can also be seen as aloof and unemotional.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/84.png"
+    },
+    {
+        "name": "Snozzberry",
+        "description": "Sassy and independent, this creature is always ready for a fight. It has a sharp tongue and is quick to anger, but it is also fiercely loyal to its friends and family. This creature is always looking for a challenge, and is never afraid to speak its mind.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/85.png"
+    },
+    {
+        "name": "Snork",
+        "description": "This creature is incredibly curious, and loves nothing more than exploring its surroundings. It\u2019s also very playful, and loves to play games with anyone who will indulge it. It can be quite mischievous at times, but is always quick to apologize if it knows it has caused harm. This creature is also very protective of its loved ones, and will go to great lengths to keep them safe.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/86.png"
+    },
+    {
+        "name": "Snozzlop",
+        "description": "This creature is very shy and introverted, preferring to spend time alone in its own thoughts than with others. It is gentle and loving, but can be fiercely protective of those it cares for. It is a bit of a dreamer, often getting lost in its own thoughts and imaginings. It can be stubborn at times, but is generally easy-going.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/87.png"
+    },
+    {
+        "name": "Furple",
+        "description": "This creature is wise beyond its years, and its manipulate ability reflects this. It is able to easily read and understand people, and uses this knowledge to its advantage. It can be quite persuasive when it wants to be, and is very adept at getting what it wants from others. This creature is also very cunning and sneaky, and is always looking for ways to get ahead.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/88.png"
+    },
+    {
+        "name": "Troglodyte",
+        "description": "The creature has a very stoic personality, often remaining calm in even the most chaotic of situations. It is very intelligent and often uses this to its advantage, outsmarting its opponents or prey. The creature is also very strong and powerful, able to take down even the largest of foes with ease.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/89.png"
+    },
+    {
+        "name": "Snark",
+        "description": "This creature is outgoing and charismatic, always looking for new friends and adventures. It's optimistic and cheerful, always able to see the bright side of things. However, it can also be impulsive and reckless, sometimes biting off more than it can chew. Nevertheless, it's a kind and good-natured creature that always means well.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/90.png"
+    },
+    {
+        "name": "Snurf",
+        "description": "This creature is outgoing and loves attention. It is always looking for new friends and enjoys being the center of attention. It is playful and mischievous, and loves to explore its surroundings. It is also very brave and is not afraid to take on new challenges.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/91.png"
+    },
+    {
+        "name": "Quangle",
+        "description": "This creature is a loner who is always on the lookout for a fight. It is quick to anger and has little patience for others. It is fiercely independent and does not take kindly to being told what to do. It is also fiercely loyal to those it cares about and will go to great lengths to protect them.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/92.png"
+    },
+    {
+        "name": "Flurf",
+        "description": "This creature is a loner who prefers to keep to themselves. They are independent and resourceful, able to take care of themselves without depending on others. They can be suspicious and distrusting of others, and are often misunderstood. But despite their rough exterior, they have a soft heart and a strong sense of loyalty",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/93.png"
+    },
+    {
+        "name": "Wug",
+        "description": "This creature is highly adventurous, bold, and daring. It is quick to take risks and explore new areas, and is very enthusiastic about battle and combat. It is very outgoing and social, and enjoys interacting with other characters",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/94.png"
+    },
+    {
+        "name": "Snargle Fritz",
+        "description": "This creature is outgoing and adventurous, always looking for new things to experience. It's also quite impulsive, and often acts without thinking things through first. As a result, it often ends up in dangerous or difficult situations. Despite all this, it is incredibly brave and always ready to face whatever challenges come its way.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/95.png"
+    },
+    {
+        "name": "Flugle",
+        "description": "This creature is quite shy and introverted, but is also very intelligent and inquisitive. They are quick to learn and remember things, and are often quite resourceful. They can be quite determined when they set their mind to something, and are often very good at problem solving. However, they can also be quite stubborn, and are sometimes quick to judge others.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/96.png"
+    },
+    {
+        "name": "Lalala",
+        "description": "This creature is very calm and level-headed. It is not easily swayed by emotions, and is able to think critically and objectively. It is patient and methodical, preferring to take its time and plan things out carefully. It is reliable and dependable, always keeping its word. It is also courageous and confident, never backing down from a challenge.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/97.png"
+    },
+    {
+        "name": "Droon",
+        "description": "This creature has a calm personality, but is also very inquisitive. It loves learning new things, and is always looking for new ways to improve its skills. However, it can also be quite stubborn, and doesn't like giving up on things easily.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/98.png"
+    },
+    {
+        "name": "Whimblenook",
+        "description": "This creature is very shy and introverted, preferring to stay in the background and observe others rather than engage in social interaction. It is quiet and unobtrusive, but also has a sharp mind and is quick to notice details that others might miss. It is patient and careful, preferring to take its time and plan things out rather than rushing into action",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/99.png"
+    },
+    {
+        "name": "Drumfog",
+        "description": "This creature is outgoing and tends to be the life of the party. They enjoy socializing and meeting new people. They can be quite charming and have a magnetic personality. They are also quite impulsive and tend to act on impulse. They can be reckless and careless at times. However, they are also fiercely loyal and protective of their friends and family.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/100.png"
+    },
+    {
+        "name": "Blarf",
+        "description": "This creature is very quiet and tends to stay to itself. It is very gentle and has a calming personality.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/101.png"
+    },
+    {
+        "name": "Flumple",
+        "description": "This creature is very timid and shy. It is easily scared and will often hide from anything that it perceives as a threat. It is gentle and kind, but can be aggressive if provoked. It is intelligent and resourceful, able to solve problems quickly and efficiently.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/102.png"
+    },
+    {
+        "name": "Squirkle",
+        "description": "This creature has a very calm personality, and is very Collected. It doesn't get out of it's comfort zone often, but when it does, it's able to keep a clear head. The creature is also quite intelligent, and is able to understand complex concepts.",
+        "image": "ipfs://bafybeid6nfss3k5dwcfvo2x5dzfug6d3lszgm2vaasaoobtd2wulpxrjkm/103.png"
+    }
+]

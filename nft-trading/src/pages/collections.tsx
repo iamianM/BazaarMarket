@@ -5,6 +5,8 @@ import { useState } from 'react'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useNetwork } from 'wagmi'
+import Diffemon from "../../data/diffemonCollection.json"
+import DiffemonCollectionCard from '../components/collections/DiffemonCollectionCard'
 
 function CollectionsPage() {
 
@@ -56,11 +58,7 @@ function CollectionsPage() {
                     value={wordEntered}
                     onChange={handleFilter} />
                 <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 pb-10'>
-                    {
-                        isLoading || isFetching || isFetchingNextPage && (
-                            <Skeleton count={8} />
-                        )
-                    }
+                    <DiffemonCollectionCard attributes={Diffemon.attributes} />
                     {
                         wordEntered.length > 0 ? (
                             filteredData?.data?.map((collection: any) => (
