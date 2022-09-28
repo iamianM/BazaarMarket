@@ -14,7 +14,7 @@ export default function SearchBar({ placeholder }: { placeholder: string }) {
                         setAddress("")
                         router.push(`/profile/${address}`)
                     }}>
-                        <input type="text" className="p-5 pl-8 h-8 rounded-md bg-transparent border shadow-lg outline-none"
+                        <input type="text" className="p-5 pl-8 h-8 rounded-md placeholder:text-base-100 placeholder:italic bg-transparent border shadow-lg outline-none"
                             placeholder={placeholder}
                             value={address}
                             onChange={(e) => setAddress(e.target.value)} />

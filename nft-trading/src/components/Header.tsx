@@ -28,7 +28,7 @@ function Header() {
                     <a className="font-bold text-2xl text-base-100">Bazaar<span className="text-primary-focus">Market</span></a>
                 </Link>
                 <div className="hidden md:inline-flex">
-                    <SearchBar placeholder="Search an address" />
+                    <SearchBar placeholder="Search an address..." />
                 </div>
                 <div className="hidden xl:flex xl:space-x-7">
                     <Link href={"/collections"}>
