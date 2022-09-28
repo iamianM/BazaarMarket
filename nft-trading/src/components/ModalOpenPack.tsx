@@ -60,6 +60,9 @@ function ModalOpenPack() {
             else if (!isConnected) {
                 toast.error("You must connect your wallet to get a packet")
             }
+            else if (connectedChain !== "polygon") {
+                toast.error("The airdrop is only available on polygon mainnet")
+            }
             else {
                 if (user?.hasClaimedBooster) {
                     toast.error("You already claimed your packet")
@@ -108,7 +111,7 @@ function ModalOpenPack() {
         <>
             {/* <label htmlFor="my-modal-6" className="modal-button"> */}
             <div className='flex flex-col space-y-3 justify-center items-center'>
-                <input type="text" placeholder='Insert your code here...' className='p-5 h-8 placeholder:text-base-100 placeholder:italic rounded-md bg-transparent border shadow-lg outline-none'
+                <input type="text" placeholder='Insert your code here...' className='p-5 h-8 placeholder:text-base-100 text-base-100 placeholder:italic rounded-md bg-transparent border shadow-lg outline-none'
                     onChange={(e) => setCode(e.target.value)} />
                 <div className='shadow-2xl cursor-pointer flex justify-center items-center rounded-full w-32 h-32 bg-gradient-to-bl from-white via-yellow-200 to-secondary'>
                     <p className='font-poppins text-lg' onClick={() => {
