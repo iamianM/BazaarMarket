@@ -39,8 +39,8 @@ function NFTInfo({ owner, description, attributes, collection_address }: { owner
                                         <p className="font-poppins text-inherit">{attribute.trait_type}: {attribute.value} </p>
                                     </div>
                                 )) :
-                                Object?.keys(attributes).map((key) => (
-                                    <div className='p-2 rounded-md border-primary border-2 shadow-md'>
+                                Object?.keys(attributes).map((key, index: number) => (
+                                    <div key={index} className='p-2 rounded-md border-primary border-2 shadow-md'>
                                         <p className="font-poppins text-inherit">{key}: {attributes[key]}</p>
                                     </div>
                                 ))
