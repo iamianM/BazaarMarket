@@ -5,6 +5,7 @@ import { useNetwork } from 'wagmi'
 
 function NFTInfo({ owner, description, attributes, collection_address }: { owner: string | any, description: string, attributes: [], collection_address: string }) {
 
+
     // const { data } = useQuery('collection', () => fetchCollection())
     // const { chain } = useNetwork()
     // const connectedChain = chain?.name.toLowerCase() || 'ethereum'
@@ -31,11 +32,19 @@ function NFTInfo({ owner, description, attributes, collection_address }: { owner
                 }
                 <div className="flex flex-wrap space-x-4 space-y-3">
                     {
-                        attributes && attributes.map((attribute: any, index: number) => (
-                            <div key={index} className='p-2 rounded-md border-primary border-2 shadow-md'>
-                                <p className="font-poppins text-inherit">{attribute.trait_type}: {attribute.value} </p>
-                            </div>
-                        ))
+                        attributes && (
+                            (attributes instanceof Array) ?
+                                attributes?.map((attribute: any, index: number) => (
+                                    <div key={index} className='p-2 rounded-md border-primary border-2 shadow-md'>
+                                        <p className="font-poppins text-inherit">{attribute.trait_type}: {attribute.value} </p>
+                                    </div>
+                                )) :
+                                Object?.keys(attributes).map((key) => (
+                                    <div className='p-2 rounded-md border-primary border-2 shadow-md'>
+                                        <p className="font-poppins text-inherit">{key}: {attributes[key]}</p>
+                                    </div>
+                                ))
+                        )
                     }
                 </div>
                 <div className="mx-12 mt-5">

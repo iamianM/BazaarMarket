@@ -31,10 +31,13 @@ const Home: NextPage = () => {
             <Partners />
           </section>
           <section>
-            <div className="mt-24">
+            <AirdropCards />
+          </section>
+          <section>
+            <div className="mt-12">
               <div className="text-center">
                 <h1 className="text-5xl font-bold font-poppins">Featured Collections</h1>
-                <p className="font-poppins text-lg mt-5">Lorem ipsum dolor sit amet</p>
+                <p className="font-poppins text-lg mt-5">Check out these popular collections</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 
                               max-w-lg md:max-w-3xl xl:max-w-7xl mx-auto mt-10 
@@ -43,14 +46,11 @@ const Home: NextPage = () => {
               </div>
             </div>
           </section>
-          <section>
+          {/* <section>
             <ProfileCarousel />
-          </section>
-          <section>
+          </section> */}
+          <section className="mb-10">
             <FAQ />
-          </section>
-          <section>
-            <AirdropCards />
           </section>
         </div>
       </main>

@@ -9,7 +9,7 @@ function NFTCollection() {
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
 
     const fetchFeaturedCollections = async () => {
-        const response = await fetch(`/api/collections?include=insights&sort=-insights.trades&filter[network]=${connectedChain}&page[limit]=8`)
+        const response = await fetch(`/api/collections?include=insights&sort=-insights_trends.volume_change_percent&filter[network]=${connectedChain}&page[limit]=8`)
         const data = await response.json()
         return data
     }

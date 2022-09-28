@@ -12,9 +12,10 @@ function NFTPage() {
 
     const router = useRouter()
     const contract_address = router.query.contract_address
-    const token_id = router.query.token_id
+    const containsLetter = /[a-zA-Z]/g.test(router.query.token_id as string)
+    const token_id = containsLetter ? parseInt("0x" + router.query.token_id as string).toString() : router.query.token_id
 
-    const { data, isLoading, isFetching } = useQuery('nft', () => fetchNFT())
+    const { data, isLoading, isFetching } = useQuery(['nft', token_id], () => fetchNFT())
     const isDownloading = isLoading || isFetching
 
     type Data = {
@@ -70,9 +71,9 @@ function NFTPage() {
     const showNFT = queryData &&
         <main className="flex flex-col justify-center max-w-7xl lg:grid lg:grid-cols-3 lg:gap-10 mx-auto mb-10">
             <section className="lg:col-span-1 ">
-                {data?.nft && <NFTShowCard
-                    image={queryData.image_preview_large_url ?? queryData.image}
-                    name={queryData.name} />}
+                <NFTShowCard
+                    image={data?.nft?.cached_file_url ?? data?.nft?.file_url ?? queryData.image ?? queryData.image_preview_large_url ?? queryData.image_preview_small_url ?? queryData.image_preview_icon_url ?? queryData.image_url}
+                    name={queryData.name ?? data?.nft?.metadata?.name} />
             </section>
             <section className="lg:col-span-2 mb-10 mt-5">
                 {data?.nft &&

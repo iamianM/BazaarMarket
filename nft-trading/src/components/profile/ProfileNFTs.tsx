@@ -42,9 +42,8 @@ function ProfileNFTs({ address }: { address: string | string[] | undefined }) {
         isFetchingNextPage,
         refetch,
         isLoading,
-    } = useInfiniteQuery('nfts', (pageParam) => fetchNFTs(pageParam), {
-        getNextPageParam: (lastPage, allPages) => lastPage.meta?.next_cursor,
-        refetchOnMount: true
+    } = useInfiniteQuery(['nfts', address], (pageParam) => fetchNFTs(pageParam), {
+        getNextPageParam: (lastPage) => lastPage.meta?.next_cursor
     })
 
     return (

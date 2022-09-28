@@ -12,9 +12,6 @@ function NFTCard({ content, isCollection }: { content: any, isCollection?: boole
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{content?.name}</h2>
-                    {!isCollection && <div className="card-actions">
-                        <button className="btn btn-primary">Trade Now</button>
-                    </div>}
                 </div>
             </div>
         </Link>

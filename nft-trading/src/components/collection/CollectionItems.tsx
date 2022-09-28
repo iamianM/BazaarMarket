@@ -5,11 +5,15 @@ import CollectionItem from './CollectionItem'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { useNetwork } from 'wagmi'
+import { useRouter } from 'next/router'
 
 function CollectionItems({ contract_address }: { contract_address: any }) {
 
     const { chain } = useNetwork()
     const connectedChain = chain?.name.toLowerCase() || 'ethereum'
+    const router = useRouter()
+    const url = router.query.contract_address
+
 
     type Items = {
         response: string
@@ -31,7 +35,7 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
         isFetchingNextPage,
         isFetching,
         isLoading,
-    } = useInfiniteQuery('nfts', ({ pageParam = 1 }) => fetchNFTs(pageParam), {
+    } = useInfiniteQuery(['nfts', url], (pageParam) => fetchNFTs(pageParam), {
         getNextPageParam: (lastPage, allPages) => {
             const maxPages = lastPage.total / 9
             const nextPage = allPages.length + 1
@@ -81,11 +85,6 @@ function CollectionItems({ contract_address }: { contract_address: any }) {
                 </select> */}
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 mx-auto mt-10 gap-6 xl:gap-8'>
-                {
-                    isLoading || isFetching && (
-                        <Skeleton count={10} />
-                    )
-                }
                 {
                     wordEntered.length > 0 && (
                         filteredData?.search_results?.length > 0 ? (
