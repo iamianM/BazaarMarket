@@ -1,0 +1,92 @@
+{
+    "data": [
+        {
+            "attributes": {
+                "name": "The Sandbox",
+                "address": "0x9d305a42a3975ee4c1c57555bed5919889dce63f",
+                "description": "The Sandbox is a community-driven platform where creators can monetize voxel assets and gaming experiences on the blockchain. The Sandbox metaverse comprises a map made up of 166,464 LANDS. LAND owners can host contests and events, stake SAND to earn and customize assets, monetize assets and experiences, vote in the metaverse governance, play games that you or others create, and more! Trade the collection and keep your eyes peeled for future drops.",
+                "image": "https://i.seadn.io/gae/SXH8tW1siikB80rwCRnjm1a5xM_MwTg9Xl9Db6mioIk9HIlDM09pVoSR7GKJgS6ulSUpgW9BDtMk_ePX_NKgO9A?auto=format&w=256",
+                "banner": "https://i.seadn.io/gcs/files/fb46c14805de22fb1565130608b52f62.png?auto=format&w=1920",
+                "tokens": 166000,
+                "unique_owners": 13
+            }
+        },
+        {
+            "attributes": {
+                "name": "CyberKongz VX",
+                "address": "0x05df72d911e52AB122f7d9955728BC96A718782C",
+                "description": "This collection holds CyberKongz VX bridged over from our CyberKongz VX collection on the Ethereum Mainnet. Bridged CyberKongz VX can be locked to take part in Play & Kollect! ",
+                "image": "https://i.seadn.io/gcs/files/29e36a1f835951a819c1aef08527ac2b.png?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/8QAOgrzgfu8tR0K80iZW_93o9dUpyGMACpwr4kSeTvinu2hYBvzMOyLoHspo6IPpz7G2Xe57VTXfgGPECzWTaH_oYFNVCuA12AIDJA?auto=format&w=1920",
+                "tokens": 9400,
+                "unique_owners": 18
+            }
+        },
+        {
+            "attributes": {
+                "name": "Chumbi Valley Official",
+                "address": "0x5492Ef6aEebA1A3896357359eF039a8B11621b45",
+                "description": "Chumbi Valley is an enchanting RPG Play-to-Earn game being built on BSC & Polygon. Chumbi Valley features NFT creatures and original art inspired by Pokemon, and Studio Ghibli.",
+                "image": "https://i.seadn.io/gae/BMA1U68bhqomAbrdKTske865bLFr5NiJpwb8EVlSiHqkOGRZkZWIerLUMemJgqBtIKulbDp2hQ8c321W5sxvs6-KJD-qXia28gn2hQ?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/DfhsiDjbocuMnyb1mSWc4njzOBOOQLW0rDCd5PbCS5U3rNW2Yy06xfM_SJmI3WJSCptA3OAiaMGSs1x3TYLIYKe7geZtvFbAytTb4Q?auto=format&w=1920",
+                "tokens": 4100,
+                "unique_owners": 43
+            }
+        },
+        {
+            "attributes": {
+                "name": "Crypto Unicorns Land Market",
+                "address": "0xA2a13cE1824F3916fC84C65e559391fc6674e6e8",
+                "description": "Crypto Unicorns is a Digital Pet Collecting and Farming Game built on the blockchain. In Crypto Unicorns, gameplay centers around awesomely unique Unicorn NFTs which players combine with Land NFTs to utilize in a fun farming simulation, as well as other gameplay including Jousting, Racing, and Team RPG.",
+                "image": "https://i.seadn.io/gae/jLi7QyLxZLXAeAqtKuecs5ebhGpDwWG6iI_EsfeXanpCCjCnDtqW9Db4b2ZAO0poqfIgBuGdYmyJCFL-c9wVJFIjJUZ2Lmna13kTDg?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/1CbIubOWnJC3q50wSwbFi0EwuLZIocdUq6SeBBQhenNp2XdBotRFXWmLgGg_j6u-mClIm89GwxXI4GupRepmXIKtMTn8N2xv3RJ-4w?auto=format&w=1920",
+                "tokens": 31100,
+                "unique_owners": 17
+            }
+        },
+        {
+            "attributes": {
+                "name": "Cryptoys Classics",
+                "token_address": "0xbE71Bc476369f88AB80e9D0d65c10894A64422B1",
+                "description": "Cryptoys Classics are 2D pixelated characters created as gifts for early supporters of the project. Among other perks, they will grant early access to beta testing of our games and experiences when our 3D project launches in 2022.",
+                "image": "https://i.seadn.io/gae/8LfTGwMvwMkyoNaBKrwih8iF3sx2gWZ4d9K1YqkxVf0P-_7VaDhTLPFjv14FPkAClq8fqNSDahH0BW32ceotlfAYNcWVqk3HMUnHbw?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/DwxW3rZOpyGGs6WLedXgyMdeX1egFjqxZ2aiEwrG1WdQPZZbwV1UHDk7qNwMQ1Fq82f6Kptf3ZfpO9FjqTRDTIkBo_QwmMg-OPRfwA?auto=format&w=1920",
+                "tokens": 3900,
+                "unique_owners": 67
+            }
+        },
+        {
+            "attributes": {
+                "name": "Medieval Empires - Lands",
+                "address": "0x895753f33e413655DdAfF8E325d02539631c0510",
+                "description": "Land is an integral part of Medieval Empires' economy and gameplay. The land within the game is divided into 6 tiers with the plots within each tier carrying distinctive features and resource generation capabilities.Each Land NFT is associated with a location on the world map, made up of geographically accurate provinces, divided among multiple counties that will be part of this collection. While Tier 0 is dedicated for onboarding the players, the counties from Tiers 1 to 5 can be bought as NFTs. Each tier carries certain capacity of intrinsic qualities such as Production boost, Time Boost and Unlocking units and decorations. Along with the intrinsic features for the lands in each tier, the landowners will also get the opportunity to upgrade the land with the help of in-game NFT structures. The in-game revenue can also be collected by renting out plots on the owned land and collecting tax from other players who choose to live and play on these counties.",
+                "image": "https://i.seadn.io/gcs/files/9043842e459da234f3f2ace635d4aa87.png?auto=format&w=256",
+                "banner": "https://i.seadn.io/gcs/files/3d05d69f0b78136ed680ac76239682fb.png?auto=format&w=1920",
+                "tokens": 171,
+                "unique_owners": 26
+            }
+        },
+        {
+            "attributes": {
+                "name": "Lens Protocol Profiles",
+                "address": "0xDb46d1Dc155634FbC732f92E853b10B288AD5a1d",
+                "description": "Planted in this collection, you'll find all the Lens Protocol Profile NFTs that have been claimed so far. By owning a Lens Profile NFT, you are in control. You can choose where and how you use it. Welcome to a new era of decentralized social media, welcome to Lens!",
+                "image": "https://i.seadn.io/gae/S67RadRtlIbTNk0UojZM-TEl4pybcblKyg3HxQHl0-JmxYZ2deLX-pK2Z89khCWHGeaXeYfE8Vxqj06YCUcqk0q1KWD9T997lGnGHw?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/Lf3xTb_wMWlRqYVcKhQVFRZNIPrwOOfyVKlmg4RRhzIxPgbTDDD63eUT7-rOj-1nYn91zPaVGZZaQJvsI_DAlNjEsNl15wHtjiCG3A?auto=format&w=1920",
+                "tokens": 73300,
+                "unique_owners": 91
+            }
+        },
+        {
+            "attributes": {
+                "name": "ZED RUN",
+                "address": "0x67F4732266C7300cca593C814d46bee72e40659F",
+                "description": "The NFT horse racing game, Zed Run, on Matic network.",
+                "image": "https://i.seadn.io/gae/tgpgbT3OwxX4REASLdyafzCWQ5EhOtgSiIlhI3am3aZ_mYPS0WbM9Z4F6hOhb0D-AKqhHlFg6BNBquchQy-_bwY?auto=format&w=256",
+                "banner": "https://i.seadn.io/gae/KYfdBRF071FyU4kOHDahIYvCrcXbQACgaocHry_IsVcZkjg1MRH5l2KZqp3p8-nDdvi74FBrcK-6iT97M8fJpMMMJKh5ke7SHwof8Q?auto=format&w=1920",
+                "tokens": 270000,
+                "unique_owners": 13
+            }
+        }
+    ]
+}

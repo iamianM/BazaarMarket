@@ -3,6 +3,9 @@ import { useQuery } from "react-query"
 import { useNetwork } from "wagmi"
 import DiffemonCollection from "../../data/diffemonCollection.json"
 import Link from "next/link"
+import featuredCollectionsETH from "../../data/featuredCollectionsETH.json"
+import featuredCollectionsMATIC from "../../data/featuredCollectionsMATIC.json"
+
 function NFTCollection() {
 
     const { chain } = useNetwork()
@@ -28,9 +31,21 @@ function NFTCollection() {
                     </div>
                 </div>
             </Link>
-            {featuredCollections?.data?.map((collection: any, index: number) => (
-                <NFTCard key={index} content={collection.attributes} isCollection={true} />
-            ))}
+            {
+                connectedChain === 'ethereum' &&
+                featuredCollectionsETH?.data?.map((collection: any, index: number) => (
+                    <NFTCard key={index} content={collection.attributes} isCollection={true} />
+                ))}
+            {
+                connectedChain === 'polygon' &&
+                featuredCollectionsMATIC?.data?.map((collection: any, index: number) => (
+                    <NFTCard key={index} content={collection.attributes} isCollection={true} />
+                ))}
+            {
+                connectedChain === 'rinkeby' &&
+                featuredCollections?.data?.map((collection: any, index: number) => (
+                    <NFTCard key={index} content={collection.attributes} isCollection={true} />
+                ))}
         </>
     )
 }
