@@ -15,16 +15,11 @@ function CollectionTrades() {
                     </tr>
                 </thead>
                 <tbody>
-                    {/* <!-- row 1 --> */}
                     <CollectionTradeRow />
-                    {/* <!-- row 2 --> */}
                     <CollectionTradeRow />
-                    {/* <!-- row 3 --> */}
                     <CollectionTradeRow />
-                    {/* <!-- row 4 --> */}
                     <CollectionTradeRow />
                 </tbody>
-                {/* <!-- foot --> */}
                 <tfoot>
                     <tr>
                         <th>Item</th>

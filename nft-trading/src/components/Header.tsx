@@ -15,10 +15,9 @@ function Header() {
     const { openChainModal } = useChainModal();
     const { isConnected, address } = useAccount();
     const { chain } = useNetwork()
+    const { data: session, status } = useSession();
 
     console.log("Connected to: ", chain)
-
-    const { data: session, status } = useSession();
     console.log(session)
 
     return (

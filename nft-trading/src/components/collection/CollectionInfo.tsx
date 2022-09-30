@@ -8,6 +8,7 @@ function CollectionInfo({ contract_address }: { contract_address: any }) {
 
     return (
         <>
+            {/* tabs */}
             <div>
                 <ul className="flex border-b border-gray-100">
                     <li className="flex-1 cursor-pointer">
@@ -28,6 +29,7 @@ function CollectionInfo({ contract_address }: { contract_address: any }) {
                     </li>
                 </ul>
             </div>
+            {/* content */}
             {activeTab === 'nfts' && <CollectionItems contract_address={contract_address} />}
             {activeTab === 'activity' && <CollectionActivity />}
         </>

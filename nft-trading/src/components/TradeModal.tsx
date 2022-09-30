@@ -51,7 +51,6 @@ function TradeModal({ nft }: { nft: any }) {
 
     const approveAllSelectedNFTs = () => {
         selectedNFTs.forEach(async (nft: any) => {
-            console.log("Contract address:", nft.contract_address.trim())
             const nftContract = new ethers.Contract(nft.contract_address, erc721ABI, signer)
             await nftContract.setApprovalForAll(NftTrader, true)
         });
@@ -84,7 +83,6 @@ function TradeModal({ nft }: { nft: any }) {
     }
 
     const createNFTs = (swapRequestId: string) => {
-        console.log("Selected nfts: " + JSON.stringify(selectedNFTs))
         for (let i = 0; i < selectedNFTs?.length; i++) {
             createNFT("maker", selectedNFTs[i]?.token_id ?? "0", selectedNFTs[i]?.contract_address ?? "0", selectedNFTs[i]?.name ?? "", selectedNFTs[i]?.image, selectedNFTs[i]?.description, swapRequestId)
         }
@@ -104,9 +102,7 @@ function TradeModal({ nft }: { nft: any }) {
         }
         const nftToTrade = new sdk.AssetsArray()
         const contract_address = (nft?.id as string).split(":")[1]
-        console.log("Address: " + contract_address)
         const token_id = (nft?.id as string).split(":")[2]
-        console.log("ID : " + token_id)
         nftToTrade.addERC721Asset("0x" + contract_address, (parseInt(token_id ?? "0")).toString())
         await submitTrade(selectedNFTsArray.getAssetsArray(), nftToTrade.getAssetsArray())
     }

@@ -121,7 +121,6 @@ function ModalOpenPack() {
                 </div>
                 {isAllotted && <button className='btn btn-primary' onClick={() => getCards()}>Mint your cards</button>}
             </div>
-            {/* </label> */}
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box w-auto max-w-5xl">
