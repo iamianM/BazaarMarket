@@ -3,7 +3,7 @@ import CardPack from './CardPack'
 import { useState } from "react"
 import ShowCard from './ShowCard'
 import { useAccount, useNetwork, useProvider } from 'wagmi'
-import { DiffemonRinkeby, DiffemonPolygon, DiffemonBoosterCode } from '../../constants'
+import { DiffemonRinkeby, DiffemonPolygon, DiffemonBoosterCodes } from '../../constants'
 import DiffemonABI from "../abi/DiffemonABI.json"
 import { ethers } from 'ethers'
 import { toast } from 'react-hot-toast'
@@ -53,7 +53,7 @@ function ModalOpenPack() {
     }
 
     const allotPackets = async () => {
-        if (code === DiffemonBoosterCode) {
+        if (code === DiffemonBoosterCodes[0] || code === DiffemonBoosterCodes[1]) {
             if (!session) {
                 toast.error("You must be logged in to get a packet")
             }
@@ -121,6 +121,7 @@ function ModalOpenPack() {
                 </div>
                 {isAllotted && <button className='btn btn-primary' onClick={() => getCards()}>Mint your cards</button>}
             </div>
+            {/* </label> */}
             <input type="checkbox" id="my-modal-6" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box w-auto max-w-5xl">
